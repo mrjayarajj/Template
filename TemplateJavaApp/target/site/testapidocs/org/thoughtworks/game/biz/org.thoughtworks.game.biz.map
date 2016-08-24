@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="c3426" href="./GLGameRule.html" title="org.thoughtworks.game.biz.GLGameRule" alt="" coords="15,118,134,143"/>
+<area shape="rect" id="node1" href="./GLGameRule.html" title="&lt;TABLE&gt;" alt="" coords="5,107,144,155"/>
+<area shape="rect" id="c3427" href="./GLGameInfo.html" title="org.thoughtworks.game.biz.GLGameInfo" alt="" coords="172,19,287,45"/>
+<area shape="rect" id="node2" href="./GLGameInfo.html" title="&lt;TABLE&gt;" alt="" coords="161,8,297,56"/>
+<area shape="rect" id="c3428" href="./GLGame.html" title="org.thoughtworks.game.biz.GLGame" alt="" coords="331,19,418,45"/>
+<area shape="rect" id="node3" href="./GLGame.html" title="&lt;TABLE&gt;" alt="" coords="321,8,428,56"/>
+<area shape="rect" id="c3429" href="./GameRule.html" title="org.thoughtworks.game.biz.GameRule" alt="" coords="22,11,127,53"/>
+<area shape="rect" id="node4" href="./GameRule.html" title="&lt;TABLE&gt;" alt="" coords="12,6,137,58"/>
+<area shape="rect" id="c3430" href="./CardAllocation.html" title="org.thoughtworks.game.biz.CardAllocation" alt="" coords="462,11,591,53"/>
+<area shape="rect" id="node5" href="./CardAllocation.html" title="&lt;TABLE&gt;" alt="" coords="452,6,601,58"/>
+</map>

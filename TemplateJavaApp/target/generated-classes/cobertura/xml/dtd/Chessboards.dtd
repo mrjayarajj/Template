@@ -1,0 +1,3 @@
+<!ELEMENT CHESSBOARDS (CHESSBOARD*)>
+<!ENTITY % chessboard SYSTEM "Chessboard.dtd">
+%chessboard;

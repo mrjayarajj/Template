@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="c8006" href="./PostalAddress.html" title="xml.third_party.digestor.dto.order.PostalAddress" alt="" coords="15,17,142,42"/>
+<area shape="rect" id="node1" href="./PostalAddress.html" title="&lt;TABLE&gt;" alt="" coords="5,5,152,53"/>
+<area shape="rect" id="c8007" href="./PartyName.html" title="xml.third_party.digestor.dto.order.PartyName" alt="" coords="187,17,291,42"/>
+<area shape="rect" id="node2" href="./PartyName.html" title="&lt;TABLE&gt;" alt="" coords="176,5,301,53"/>
+<area shape="rect" id="c8008" href="./Party.html" title="xml.third_party.digestor.dto.order.Party" alt="" coords="336,17,397,42"/>
+<area shape="rect" id="node3" href="./Party.html" title="&lt;TABLE&gt;" alt="" coords="325,5,408,53"/>
+<area shape="rect" id="c8009" href="./Order.html" title="xml.third_party.digestor.dto.order.Order" alt="" coords="442,17,507,42"/>
+<area shape="rect" id="node4" href="./Order.html" title="&lt;TABLE&gt;" alt="" coords="432,5,517,53"/>
+<area shape="rect" id="c8010" href="./BuyerCustomerParty.html" title="xml.third_party.digestor.dto.order.BuyerCustomerParty" alt="" coords="552,17,728,42"/>
+<area shape="rect" id="node5" href="./BuyerCustomerParty.html" title="&lt;TABLE&gt;" alt="" coords="541,5,739,53"/>
+</map>

@@ -1,0 +1,9 @@
+FEATURE LIST
+============
+1.application of promotion in shopping cart
+2.application of tax in shopping cart
+3.application of gift cards in shopping cart
+4.application of block buster bucks in shopping cart
+5.application of credit cards in shopping cart
+6.user must review the order before submitting
+7.user submits an order

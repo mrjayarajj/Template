@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+
+<digester-rules>
+	
+	<object-create-rule pattern="catalog" classname="apache.common.digestor.dto.Catalog" />
+	
+	<set-properties-rule pattern="catalog">
+		<alias attr-name="library" prop-name="library" />
+	</set-properties-rule>
+
+	<pattern value="catalog/book">
+		<object-create-rule classname="apache.common.digestor.dto.Book" />
+		<call-method-rule pattern="author" methodname="setAuthor" paramcount="0" />
+		<call-method-rule pattern="title" methodname="setTitle" paramcount="0" />
+		<set-next-rule methodname="addBook" />
+	</pattern>
+
+	<pattern value="catalog/magazine">
+		<object-create-rule classname="apache.common.digestor.dto.Magazine" />
+
+		<call-method-rule pattern="name" methodname="setName" paramcount="0" />
+
+		<pattern value="article">
+			<object-create-rule classname="apache.common.digestor.dto.Article" />
+			<set-properties-rule>
+				<alias attr-name="page" prop-name="page" />
+			</set-properties-rule>
+			<call-method-rule pattern="headline" methodname="setHeadline" paramcount="0" />
+			<set-next-rule methodname="addArticle" />
+		</pattern>
+
+		<set-next-rule methodname="addMagazine" />
+	</pattern>
+</digester-rules>

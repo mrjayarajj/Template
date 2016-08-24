@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="c125" href="./Util.html" title="java_oo.coingame.Util" alt="" coords="19,19,64,45"/>
+<area shape="rect" id="node1" href="./Util.html" title="&lt;TABLE&gt;" alt="" coords="5,8,77,56"/>
+<area shape="rect" id="c126" href="./User.html" title="java_oo.coingame.User" alt="" coords="111,19,169,45"/>
+<area shape="rect" id="node2" href="./User.html" title="&lt;TABLE&gt;" alt="" coords="101,8,179,56"/>
+<area shape="rect" id="c127" href="./CoinGame.html" title="java_oo.coingame.CoinGame" alt="" coords="213,19,313,45"/>
+<area shape="rect" id="node3" href="./CoinGame.html" title="&lt;TABLE&gt;" alt="" coords="203,8,323,56"/>
+<area shape="rect" id="c128" href="./CoinFace.html" title="java_oo.coingame.CoinFace" alt="" coords="357,11,488,53"/>
+<area shape="rect" id="node4" href="./CoinFace.html" title="&lt;TABLE&gt;" alt="" coords="347,6,499,58"/>
+<area shape="rect" id="c129" href="./Coin.html" title="java_oo.coingame.Coin" alt="" coords="533,19,590,45"/>
+<area shape="rect" id="node5" href="./Coin.html" title="&lt;TABLE&gt;" alt="" coords="523,8,600,56"/>
+</map>

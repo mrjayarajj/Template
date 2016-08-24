@@ -1,0 +1,14 @@
+<map id="G" name="G">
+<area shape="rect" id="c4573" href="./Rover.html" title="org.thoughtworks.rovers.stage2.Rover" alt="" coords="15,19,81,45"/>
+<area shape="rect" id="node1" href="./Rover.html" title="&lt;TABLE&gt;" alt="" coords="5,8,91,56"/>
+<area shape="rect" id="c4574" href="./Plateau.html" title="org.thoughtworks.rovers.stage2.Plateau" alt="" coords="125,19,203,45"/>
+<area shape="rect" id="node2" href="./Plateau.html" title="&lt;TABLE&gt;" alt="" coords="115,8,213,56"/>
+<area shape="rect" id="c4575" href="./Main.html" title="org.thoughtworks.rovers.stage2.Main" alt="" coords="247,19,305,45"/>
+<area shape="rect" id="node3" href="./Main.html" title="&lt;TABLE&gt;" alt="" coords="237,8,315,56"/>
+<area shape="rect" id="c4576" href="./Direction.html" title="org.thoughtworks.rovers.stage2.Direction" alt="" coords="349,11,480,53"/>
+<area shape="rect" id="node4" href="./Direction.html" title="&lt;TABLE&gt;" alt="" coords="339,6,491,58"/>
+<area shape="rect" id="c4577" href="./Coordinate.html" title="org.thoughtworks.rovers.stage2.Coordinate" alt="" coords="525,19,627,45"/>
+<area shape="rect" id="node5" href="./Coordinate.html" title="&lt;TABLE&gt;" alt="" coords="515,8,637,56"/>
+<area shape="rect" id="c4578" href="./Command.html" title="org.thoughtworks.rovers.stage2.Command" alt="" coords="672,11,803,53"/>
+<area shape="rect" id="node6" href="./Command.html" title="&lt;TABLE&gt;" alt="" coords="661,6,813,58"/>
+</map>

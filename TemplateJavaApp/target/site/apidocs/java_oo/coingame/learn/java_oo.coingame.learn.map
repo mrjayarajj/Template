@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="c183" href="./User.html" title="java_oo.coingame.learn.User" alt="" coords="15,19,73,45"/>
+<area shape="rect" id="node1" href="./User.html" title="&lt;TABLE&gt;" alt="" coords="5,8,83,56"/>
+<area shape="rect" id="c184" href="./CoinGame.html" title="java_oo.coingame.learn.CoinGame" alt="" coords="117,19,217,45"/>
+<area shape="rect" id="node2" href="./CoinGame.html" title="&lt;TABLE&gt;" alt="" coords="107,8,227,56"/>
+<area shape="rect" id="c185" href="./CoinFace.html" title="java_oo.coingame.learn.CoinFace" alt="" coords="261,11,392,53"/>
+<area shape="rect" id="node3" href="./CoinFace.html" title="&lt;TABLE&gt;" alt="" coords="251,6,403,58"/>
+<area shape="rect" id="c186" href="./Coin.html" title="java_oo.coingame.learn.Coin" alt="" coords="437,19,494,45"/>
+<area shape="rect" id="node4" href="./Coin.html" title="&lt;TABLE&gt;" alt="" coords="427,8,504,56"/>
+</map>

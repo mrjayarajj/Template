@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+
+<digester-rules>
+
+	<object-create-rule pattern="Order" classname="xml.third_party.digestor.dto.order.Order" />
+
+	<pattern value="Order">
+		<call-method-rule pattern="cbc:UBLVersionID" methodname="setUBLVersionID" paramcount="0" />
+		<call-method-rule pattern="cbc:CustomizationID" methodname="setCustomizationID" paramcount="0" />
+		<call-method-rule pattern="cbc:ProfileID" methodname="setProfileID" paramcount="0" />
+		<call-method-rule pattern="cbc:ID" methodname="setID" paramcount="0" />
+		<call-method-rule pattern="cbc:SalesOrderID" methodname="setSalesOrderID" paramcount="0" />
+		<call-method-rule pattern="cbc:CopyIndicator" methodname="setCopyIndicator" paramcount="0" />
+		<call-method-rule pattern="cbc:UUID" methodname="setUUID" paramcount="0" />
+		<call-method-rule pattern="cbc:IssueDate" methodname="setIssueDate" paramcount="0" />
+		<call-method-rule pattern="cbc:UBLVersionID" methodname="setUBLVersionID" paramcount="0" />
+	</pattern>
+
+	<pattern value="Order/cac:BuyerCustomerParty">
+		<object-create-rule classname="xml.third_party.digestor.dto.order.BuyerCustomerParty" />
+		<call-method-rule pattern="cbc:CustomerAssignedAccountID" methodname="setCustomerAssignedAccountID" paramcount="0" />
+		<call-method-rule pattern="cbc:SupplierAssignedAccountID" methodname="setSupplierAssignedAccountID" paramcount="0" />
+		<set-next-rule methodname="setBuyerCustomerParty" />
+
+		<pattern value="cac:Party">
+			<object-create-rule classname="xml.third_party.digestor.dto.order.Party" />
+			<pattern value="cac:PartyName">
+				<object-create-rule classname="xml.third_party.digestor.dto.order.PartyName" />
+				<call-method-rule pattern="cbc:Name" methodname="setName" paramcount="0" />
+				<set-next-rule methodname="setPartyName" />
+			</pattern>
+
+			<pattern value="cac:PostalAddress">
+				<object-create-rule classname="xml.third_party.digestor.dto.order.PostalAddress" />
+				<call-method-rule pattern="cbc:StreetName" methodname="setStreetName" paramcount="0" />
+				<call-method-rule pattern="cbc:BuildingName" methodname="setBuildingName" paramcount="0" />
+				<call-method-rule pattern="cbc:BuildingNumber" methodname="setBuildingNumber" paramcount="0" />
+				<call-method-rule pattern="cbc:CityName" methodname="setCityName" paramcount="0" />
+				<call-method-rule pattern="cbc:PostalZone" methodname="setPostalZone" paramcount="0" />
+				<call-method-rule pattern="cbc:CountrySubentity" methodname="setCountrySubentity" paramcount="0" />
+				<set-next-rule methodname="setPostalAddress" />
+			</pattern>
+			<set-next-rule methodname="setParty" />
+		</pattern>
+	</pattern>
+</digester-rules>

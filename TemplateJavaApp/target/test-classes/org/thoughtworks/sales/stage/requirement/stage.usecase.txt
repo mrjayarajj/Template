@@ -1,0 +1,13 @@
+1. user selects and add a item from inventory to cart
+2. user checkout item from the cart 
+3. sales tax is calculated at a rate of 10% except food,medicine and books in normal shops
+   3.1 no sales tax in airport shops
+4. additional sales tax is calculated at a rate of 5% if imported 
+5. user checkout a item in normal shop 
+   5.1 user checkout a item in airport shop with passport number  
+   5.2 find passport location , 
+       if start with TW followed by 12 digit or
+   	   if start with 6 digit followed by 4 alphanumeric and end with OFTW
+   	   then it is domestic else international
+   5.3 import duty is calculated at a rate of 3% except food for local citizen
+   5.4 import duty is zero for foreigner

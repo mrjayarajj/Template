@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="c4867" href="./ItemType.html" title="org.thoughtworks.sales.stage.dc.ItemType" alt="" coords="16,11,147,53"/>
+<area shape="rect" id="node1" href="./ItemType.html" title="&lt;TABLE&gt;" alt="" coords="5,6,157,58"/>
+<area shape="rect" id="c4868" href="./ItemException.html" title="org.thoughtworks.sales.stage.dc.ItemException" alt="" coords="192,19,317,45"/>
+<area shape="rect" id="node2" href="./ItemException.html" title="&lt;TABLE&gt;" alt="" coords="181,8,328,56"/>
+<area shape="rect" id="c4869" href="./Item.html" title="org.thoughtworks.sales.stage.dc.Item" alt="" coords="363,19,416,45"/>
+<area shape="rect" id="node3" href="./Item.html" title="&lt;TABLE&gt;" alt="" coords="352,8,427,56"/>
+<area shape="rect" id="c4870" href="./Inventory.html" title="org.thoughtworks.sales.stage.dc.Inventory" alt="" coords="461,19,550,45"/>
+<area shape="rect" id="node4" href="./Inventory.html" title="&lt;TABLE&gt;" alt="" coords="451,8,560,56"/>
+</map>

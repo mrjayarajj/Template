@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="c4287" href="./Direction.html" title="org.thoughtworks.rovers.stage1.board.Direction" alt="" coords="16,11,147,53"/>
+<area shape="rect" id="node1" href="./Direction.html" title="&lt;TABLE&gt;" alt="" coords="5,6,157,58"/>
+<area shape="rect" id="c4288" href="./Command.html" title="org.thoughtworks.rovers.stage1.board.Command" alt="" coords="192,11,323,53"/>
+<area shape="rect" id="node2" href="./Command.html" title="&lt;TABLE&gt;" alt="" coords="181,6,333,58"/>
+<area shape="rect" id="c4289" href="./Board.html" title="org.thoughtworks.rovers.stage1.board.Board" alt="" coords="368,19,435,45"/>
+<area shape="rect" id="node3" href="./Board.html" title="&lt;TABLE&gt;" alt="" coords="357,8,445,56"/>
+</map>

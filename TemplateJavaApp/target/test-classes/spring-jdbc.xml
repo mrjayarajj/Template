@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- 
+		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"/>
+	-->
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+		<property name="url" value="jdbc:hsqldb:file:../Template/db/HIBER" />
+		<property name="username" value="SA" />
+		<property name="password" value="" />
+	</bean>
+
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="managementDAOTarget" class="spring.jdbc.dao.ManagementDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="managementDAO"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager" ref="txManager" />
+		<property name="target" ref="managementDAOTarget" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="selectAllDepartment">PROPAGATION_NOT_SUPPORTED,readOnly</prop>
+				<prop key="insertDepartmentAndEmployee">PROPAGATION_REQUIRES_NEW</prop>
+				<prop key="insertDepartment">PROPAGATION_REQUIRED</prop>
+				<prop key="insertEmpolyee">PROPAGATION_MANDATORY</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="departmentService" class="spring.jdbc.service.DepartmentService">
+		<property name="departmentDAO" ref="departmentDAO" />
+	</bean>
+
+</beans>

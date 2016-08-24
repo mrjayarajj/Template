@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="c5441" href="./SalesTaxFactory.html" title="org.thoughtworks.sales.stage1.biz.SalesTaxFactory" alt="" coords="16,19,160,45"/>
+<area shape="rect" id="node1" href="./SalesTaxFactory.html" title="&lt;TABLE&gt;" alt="" coords="5,8,171,56"/>
+<area shape="rect" id="c5442" href="./SalesTaxEngine.html" title="org.thoughtworks.sales.stage1.biz.SalesTaxEngine" alt="" coords="205,11,344,53"/>
+<area shape="rect" id="node2" href="./SalesTaxEngine.html" title="&lt;TABLE&gt;" alt="" coords="195,6,355,58"/>
+<area shape="rect" id="c5443" href="./SalesService.html" title="org.thoughtworks.sales.stage1.biz.SalesService" alt="" coords="389,19,507,45"/>
+<area shape="rect" id="node3" href="./SalesService.html" title="&lt;TABLE&gt;" alt="" coords="379,8,517,56"/>
+</map>

@@ -1,0 +1,3 @@
+/**
+* value object for sales
+*/

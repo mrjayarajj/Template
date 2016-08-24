@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="dto">
+	<class
+		name="dto.Department"
+		table="DEPARTMENT">
+		<id
+			name="id"
+			column="DEPARTMENT_ID" />
+		<property
+			name="name"
+			column="DEPARTMENT_NAME" />
+        <!--  (inverse="true") means employee is the owner/responsible for db operation i.e insert or update
+        so when u insert new department with new/old employee . employee related info is not inserted/updated in db
+        -->  
+		<set name="employee">		
+			<key column="DEPARTMENT_ID"></key>
+			<one-to-many class="Employee" />
+		</set>
+	</class>
+	<query name="hql_update_department">select d from Department d left outer join fetch d.employee</query>
+</hibernate-mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  targetNamespace="http://mde.sun.com/Chessboards"
+  xmlns="http://mde.sun.com/Chessboards"
+  xmlns:cb="http://mde.sun.com/Chessboard">
+
+ <xsd:import namespace="http://mde.sun.com/Chessboard" 
+   schemaLocation='Chessboard.xsd' />
+
+ <xsd:element name="CHESSBOARDS">
+  <xsd:complexType>
+   <xsd:sequence>
+    <xsd:element ref="cb:CHESSBOARD" 
+      maxOccurs='unbounded'/>
+   </xsd:sequence>
+  </xsd:complexType>
+ </xsd:element>   
+</xsd:schema>

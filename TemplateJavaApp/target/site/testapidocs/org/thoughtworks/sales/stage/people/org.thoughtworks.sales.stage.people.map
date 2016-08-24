@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="c5012" href="./User.html" title="org.thoughtworks.sales.stage.people.User" alt="" coords="15,19,73,45"/>
+<area shape="rect" id="node1" href="./User.html" title="&lt;TABLE&gt;" alt="" coords="5,8,83,56"/>
+<area shape="rect" id="c5013" href="./PassportType.html" title="org.thoughtworks.sales.stage.people.PassportType" alt="" coords="117,11,248,53"/>
+<area shape="rect" id="node2" href="./PassportType.html" title="&lt;TABLE&gt;" alt="" coords="107,6,259,58"/>
+<area shape="rect" id="c5014" href="./Passport.html" title="org.thoughtworks.sales.stage.people.Passport" alt="" coords="293,19,379,45"/>
+<area shape="rect" id="node3" href="./Passport.html" title="&lt;TABLE&gt;" alt="" coords="283,8,389,56"/>
+</map>

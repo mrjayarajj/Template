@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="c348" href="./Rover.html" title="java_oo.mars.Rover" alt="" coords="15,19,81,45"/>
+<area shape="rect" id="node1" href="./Rover.html" title="&lt;TABLE&gt;" alt="" coords="5,8,91,56"/>
+<area shape="rect" id="c349" href="./Plateau.html" title="java_oo.mars.Plateau" alt="" coords="125,19,203,45"/>
+<area shape="rect" id="node2" href="./Plateau.html" title="&lt;TABLE&gt;" alt="" coords="115,8,213,56"/>
+<area shape="rect" id="c350" href="./Direction.html" title="java_oo.mars.Direction" alt="" coords="248,11,379,53"/>
+<area shape="rect" id="node3" href="./Direction.html" title="&lt;TABLE&gt;" alt="" coords="237,6,389,58"/>
+</map>

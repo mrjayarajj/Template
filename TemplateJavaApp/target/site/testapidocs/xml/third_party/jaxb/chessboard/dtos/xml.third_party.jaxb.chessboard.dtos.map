@@ -1,0 +1,24 @@
+<map id="G" name="G">
+<area shape="rect" id="c8295" href="./WHITEPIECES.html" title="xml.third_party.jaxb.chessboard.dtos.WHITEPIECES" alt="" coords="15,17,153,42"/>
+<area shape="rect" id="node1" href="./WHITEPIECES.html" title="&lt;TABLE&gt;" alt="" coords="5,5,163,53"/>
+<area shape="rect" id="c8296" href="./ROOK.html" title="xml.third_party.jaxb.chessboard.dtos.ROOK" alt="" coords="197,17,267,42"/>
+<area shape="rect" id="node2" href="./ROOK.html" title="&lt;TABLE&gt;" alt="" coords="187,5,277,53"/>
+<area shape="rect" id="c8297" href="./QUEEN.html" title="xml.third_party.jaxb.chessboard.dtos.QUEEN" alt="" coords="311,17,390,42"/>
+<area shape="rect" id="node3" href="./QUEEN.html" title="&lt;TABLE&gt;" alt="" coords="301,5,400,53"/>
+<area shape="rect" id="c8298" href="./POSITION.html" title="xml.third_party.jaxb.chessboard.dtos.POSITION" alt="" coords="435,17,533,42"/>
+<area shape="rect" id="node4" href="./POSITION.html" title="&lt;TABLE&gt;" alt="" coords="424,5,544,53"/>
+<area shape="rect" id="c8299" href="./PAWN.html" title="xml.third_party.jaxb.chessboard.dtos.PAWN" alt="" coords="578,17,651,42"/>
+<area shape="rect" id="node5" href="./PAWN.html" title="&lt;TABLE&gt;" alt="" coords="568,5,661,53"/>
+<area shape="rect" id="c8300" href="./ObjectFactory.html" title="xml.third_party.jaxb.chessboard.dtos.ObjectFactory" alt="" coords="696,17,821,42"/>
+<area shape="rect" id="node6" href="./ObjectFactory.html" title="&lt;TABLE&gt;" alt="" coords="685,5,832,53"/>
+<area shape="rect" id="c8301" href="./KNIGHT.html" title="xml.third_party.jaxb.chessboard.dtos.KNIGHT" alt="" coords="866,17,947,42"/>
+<area shape="rect" id="node7" href="./KNIGHT.html" title="&lt;TABLE&gt;" alt="" coords="856,5,957,53"/>
+<area shape="rect" id="c8302" href="./KING.html" title="xml.third_party.jaxb.chessboard.dtos.KING" alt="" coords="992,17,1053,42"/>
+<area shape="rect" id="node8" href="./KING.html" title="&lt;TABLE&gt;" alt="" coords="981,5,1064,53"/>
+<area shape="rect" id="c8303" href="./CHESSBOARD.html" title="xml.third_party.jaxb.chessboard.dtos.CHESSBOARD" alt="" coords="1099,17,1235,42"/>
+<area shape="rect" id="node9" href="./CHESSBOARD.html" title="&lt;TABLE&gt;" alt="" coords="1088,5,1245,53"/>
+<area shape="rect" id="c8304" href="./BLACKPIECES.html" title="xml.third_party.jaxb.chessboard.dtos.BLACKPIECES" alt="" coords="1279,17,1417,42"/>
+<area shape="rect" id="node10" href="./BLACKPIECES.html" title="&lt;TABLE&gt;" alt="" coords="1269,5,1427,53"/>
+<area shape="rect" id="c8305" href="./BISHOP.html" title="xml.third_party.jaxb.chessboard.dtos.BISHOP" alt="" coords="1461,17,1545,42"/>
+<area shape="rect" id="node11" href="./BISHOP.html" title="&lt;TABLE&gt;" alt="" coords="1451,5,1555,53"/>
+</map>

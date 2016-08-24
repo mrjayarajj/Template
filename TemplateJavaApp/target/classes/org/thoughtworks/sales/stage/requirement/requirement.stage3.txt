@@ -1,0 +1,53 @@
+PROBLEM SALES TAXES (Stage 3)
+#############################
+
+Sales Promotional Coupon Codes or Promotion Codes,voucher codes can be used to obtain a special discount,  
+Reduce the cost of an item.
+
+VALIDITY
+########
+promotion is valid only if it satisfy the below following conditions
+1. it must be active
+2. start date must be lesser than todays date
+3. end date must be greater than todays date
+4. it is applied to for particular shopping cart eg) LIBRARY_RLK,LIBRARY_DA,LIBRARY_ON_DEMAND,LIBRARY_SUBSCRIPTION,LIBRARY_RENTEL,LIBRARY_RETAIL, SUPERMARKET, LIBRARY_BUCKS
+5. it could have a limit type as LIMITED_PER_COUPON , LIMITED_PER_PROMOTION or UNLIMITED
+6. check for valid max user limit
+   if it is LIMITED_PER_COUPON then user can use each promotional code for 5 times MAX_USER_LIMIT
+   if it is LIMITED_PER_PROMOTION then each user can use any promotional code for 5 times under one promotion MAX_USER_LIMIT
+
+ELIGIBILITY
+###########
+promotion is eligible only if it satisfy the below following conditions 
+eligibility is divided into order level and order detail level
+
+ORDER LEVEL ELIGIBILITY
+-----------------------
+1. it could be eligible only if transaction amount > 5$ MIN_TRANSACTION
+2. buy one and get one free (differed)
+3. it could be eligible for particular shipping type eg) PRIORITY,FIRST_CLASS
+4. it could be eligible for particular sale type SALE_TYPE eg) PRP,NEW
+
+ORDER DETAIL LEVEL ELIGIBILITY (NOTE: promotion is applied to only the eligible item)
+------------------------------
+1. it could be eligible for 
+	a particular item type	ELIGIBLE_ITEM_TYPE eg) MOVIE,GAME,FOOD,MEDICINE,BOOKS etc
+	a particular item id    ELIGIBLE_ITEM_ID
+	a particular brand eg) SONY,BPL,SAMSUNG	
+
+DISCOUNT
+########
+promotion is applied based on the following condition
+1. discount type could be one among eg) BASIC_DISCOUNT_TYPE 
+	DOLLAR_ITEM,
+	DOLLAR_TRANSACTION,
+	DOLLAR_SH,
+	PERSENTAGE_ITEM,	
+	PERCENTAGE_TRANSACTION,
+	PERCENTAGE_SH
+2. additional discount could be one among eg) ADDITIONAL_DISCOUNT_TYPE
+	PERCENTAGE_SUBSCRIPTION
+
+
+MAX_APPLICATIONS
+MAKE_MODEL

@@ -1,0 +1,14 @@
+<map id="G" name="G">
+<area shape="rect" id="c8447" href="./Science.html" title="xml.third_party.jaxb.library.dtos.Science" alt="" coords="16,17,99,42"/>
+<area shape="rect" id="node1" href="./Science.html" title="&lt;TABLE&gt;" alt="" coords="5,5,109,53"/>
+<area shape="rect" id="c8448" href="./ObjectFactory.html" title="xml.third_party.jaxb.library.dtos.ObjectFactory" alt="" coords="144,17,269,42"/>
+<area shape="rect" id="node2" href="./ObjectFactory.html" title="&lt;TABLE&gt;" alt="" coords="133,5,280,53"/>
+<area shape="rect" id="c8449" href="./Library.html" title="xml.third_party.jaxb.library.dtos.Library" alt="" coords="315,17,389,42"/>
+<area shape="rect" id="node3" href="./Library.html" title="&lt;TABLE&gt;" alt="" coords="304,5,400,53"/>
+<area shape="rect" id="c8450" href="./Fiction.html" title="xml.third_party.jaxb.library.dtos.Fiction" alt="" coords="435,17,507,42"/>
+<area shape="rect" id="node4" href="./Fiction.html" title="&lt;TABLE&gt;" alt="" coords="424,5,517,53"/>
+<area shape="rect" id="c8451" href="./Book.html" title="xml.third_party.jaxb.library.dtos.Book" alt="" coords="551,17,611,42"/>
+<area shape="rect" id="node5" href="./Book.html" title="&lt;TABLE&gt;" alt="" coords="541,5,621,53"/>
+<area shape="rect" id="c8452" href="./Biography.html" title="xml.third_party.jaxb.library.dtos.Biography" alt="" coords="655,17,753,42"/>
+<area shape="rect" id="node6" href="./Biography.html" title="&lt;TABLE&gt;" alt="" coords="645,5,763,53"/>
+</map>

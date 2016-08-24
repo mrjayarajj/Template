@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="dto.OrderDetail" table="ORDER_DETAIL">
+		<id name="orderDetailId" column="ORDER_DETAIL_ID" />
+		<property name="orderId" column="ORDER_ID" />
+		
+		<set name="orderDetailPayments" table="ORDER_PAYMENT" where="TRANSACTION_TYPE='ORDER_DETAIL'">
+			<key column="TRANSACTION_ID" />
+			<many-to-many column="PAYMENT_ID" unique="true" class="dto.Payment" fetch="join" />
+		</set>
+	</class>
+</hibernate-mapping>

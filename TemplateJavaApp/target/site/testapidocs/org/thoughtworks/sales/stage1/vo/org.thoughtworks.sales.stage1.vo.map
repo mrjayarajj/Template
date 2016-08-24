@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="c6153" href="./Result.html" title="org.thoughtworks.sales.stage1.vo.Result" alt="" coords="16,19,83,45"/>
+<area shape="rect" id="node1" href="./Result.html" title="&lt;TABLE&gt;" alt="" coords="5,8,93,56"/>
+<area shape="rect" id="c6154" href="./ItemType.html" title="org.thoughtworks.sales.stage1.vo.ItemType" alt="" coords="127,11,233,53"/>
+<area shape="rect" id="node2" href="./ItemType.html" title="&lt;TABLE&gt;" alt="" coords="117,6,243,58"/>
+<area shape="rect" id="c6155" href="./Item.html" title="org.thoughtworks.sales.stage1.vo.Item" alt="" coords="277,19,331,45"/>
+<area shape="rect" id="node3" href="./Item.html" title="&lt;TABLE&gt;" alt="" coords="267,8,341,56"/>
+</map>

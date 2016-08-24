@@ -1,0 +1,4 @@
+1. Need to place squad of robotic rovers on a plateau on Mars by NASA
+2. Need to place rovers on the plateau by x,y position and direction
+3. Need to have ability to move rovers position by a particular command
+4. rovers has to be controlled sequentially

@@ -1,0 +1,14 @@
+<map id="G" name="G">
+<area shape="rect" id="c4720" href="./Tax.html" title="org.thoughtworks.sales.stage.cart.Tax" alt="" coords="17,17,65,42"/>
+<area shape="rect" id="node1" href="./Tax.html" title="&lt;TABLE&gt;" alt="" coords="5,5,77,53"/>
+<area shape="rect" id="c4721" href="./ShoppingCart.html" title="org.thoughtworks.sales.stage.cart.ShoppingCart" alt="" coords="112,17,235,42"/>
+<area shape="rect" id="node2" href="./ShoppingCart.html" title="&lt;TABLE&gt;" alt="" coords="101,5,245,53"/>
+<area shape="rect" id="c4722" href="./Receipt.html" title="org.thoughtworks.sales.stage.cart.Receipt" alt="" coords="280,17,357,42"/>
+<area shape="rect" id="node3" href="./Receipt.html" title="&lt;TABLE&gt;" alt="" coords="269,5,368,53"/>
+<area shape="rect" id="c4723" href="./OrderDetail.html" title="org.thoughtworks.sales.stage.cart.OrderDetail" alt="" coords="402,17,507,42"/>
+<area shape="rect" id="node4" href="./OrderDetail.html" title="&lt;TABLE&gt;" alt="" coords="392,5,517,53"/>
+<area shape="rect" id="c4724" href="./Order.html" title="org.thoughtworks.sales.stage.cart.Order" alt="" coords="551,17,617,42"/>
+<area shape="rect" id="node5" href="./Order.html" title="&lt;TABLE&gt;" alt="" coords="541,5,627,53"/>
+<area shape="rect" id="c4725" href="./CheckoutTester.html" title="org.thoughtworks.sales.stage.cart.CheckoutTester" alt="" coords="661,17,798,42"/>
+<area shape="rect" id="node6" href="./CheckoutTester.html" title="&lt;TABLE&gt;" alt="" coords="651,5,808,53"/>
+</map>

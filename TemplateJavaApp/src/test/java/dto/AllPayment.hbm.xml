@@ -1,0 +1,18 @@
+<!--Strategy 2: One Table per class hierarchy-->
+
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+     <class name="dto.Payment" table="ALL_PAYMENT">
+        <id name="id" type="long" column="PAYMENT_ID">
+            <generator class="native"/>
+        </id>
+        <discriminator column="PAYMENT_TYPE" type="string"/>
+        <property name="amount" column="AMOUNT"/>        
+        <subclass name="dto.CreditCard" discriminator-value="CREDIT">
+            <property name="creditCardNumber" column="CREDIT_CARD_NUMBER"/>
+        </subclass>
+        <subclass name="dto.Promotion" discriminator-value="PROMOTION">
+            <property name="promotionCode" column="PROMOTION_CODE"/>
+        </subclass>
+    </class>
+</hibernate-mapping> 
