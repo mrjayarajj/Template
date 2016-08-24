@@ -1,4 +1,0 @@
-1. create a plateau with upper-right coordinates 
-2. position a rovers on the plateau 
-3. move the rovers position by command
-4. go to step 2 for next rovers
