@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	   http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd">
+
+	<bean
+		id="cacheManager"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property
+			name="configLocation"
+			value="classpath:cache/ehcache/ehcache.xml" />
+	</bean>
+
+	<ehcache:annotation-driven
+		cache-manager="cacheManager" />
+
+	<bean
+		id="cacheKeyFinder"
+		class="cache.ehcache.CacheKeyFinder" />
+
+	<bean
+		id="argumentTriggersRemoveInteceptor"
+		class="cache.ehcache.ArgumentTriggersRemoveInteceptorName" />
+
+	<bean
+		id="returnAllCacheableInterceptor"
+		class="cache.ehcache.ReturnTypeCacheableInterceptor" />
+
+	<bean
+		id="argumentCacheableInterceptor"
+		class="cache.ehcache.ArgumentCacheableInterceptor" />
+
+	<bean
+		id="mockUserDAO"
+		class="cache.ehcache.MockUserDAOImpl" />
+
+</beans>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 3, 2010 9:11:36 PM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.baseframework.domain.security.access.Function" table="function">
+        <id name="functionId" type="java.lang.Integer">
+            <column name="FUNCTION_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="functionName" type="string">
+            <column name="FUNCTION_NAME" length="45" not-null="true" unique="true" />
+        </property>
+        <property name="functionMnemonic" type="string">
+            <column name="FUNCTION_MNEMONIC" length="45" not-null="true" unique="true" />
+        </property>
+         <many-to-one name="module" class="com.baseframework.domain.security.access.Module" lazy="proxy" >
+            <column name="MODULE_ID" not-null="true" />
+        </many-to-one>       
+    </class>
+</hibernate-mapping>

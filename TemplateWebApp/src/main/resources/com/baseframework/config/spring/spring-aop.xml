@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd http://www.springframework.org/schema/context 
+                        http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Implement AspectJ for spring objects -->
+	<!-- <aop:aspectj-autoproxy /> <bean id="doBeforeAspect" class="com.baseframework.log.DoBeforeAspect" 
+		/> -->
+
+	<bean
+		id="aopLogging"
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<list>
+				<!-- http://stackoverflow.com/questions/5831855/nosuchmethodexception-thrown-by-annotationvalidationinterceptor-when-executing-a -->
+				<value>*Service</value>
+				<value>*DAO</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>logInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean
+		id="aopDAO"
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<list>
+				<value>*DAO</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean
+		id="logInterceptor"
+		class="com.baseframework.log.BaseLoggerInterceptor" />
+</beans>

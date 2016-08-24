@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="com.baseframework.web.security.access" namespace="/security/access" extends="basic">
+	
+		<action name="processRole" class="processRole">
+			<result name="success">/jsp/base/security/role.jsp</result>
+			<result name="onLoad" type="chain">
+				<param name="actionName">processRole</param>
+				<param name="method">onLoad</param>
+			</result>
+			<result name="redirect_onLoad" type="redirect">processRole!onLoad.action</result>
+		</action>
+		
+		<action name="processAuthenticate" class="processAuthenticate">
+			<result name="success">/jsp/base/security/authenticate.jsp</result>
+			<result name="onLoad" type="chain">
+				<param name="actionName">processAuthenticate</param>
+				<param name="method">onLoad</param>
+			</result>
+			<result name="redirect_onLoad" type="redirect">processAuthenticate!onLoad.action</result>
+		</action>
+		
+		<action name="processFunction" class="processFunction">
+			<result name="success">/jsp/base/security/function.jsp</result>
+			<result name="onLoad" type="chain">
+				<param name="actionName">processFunction</param>
+				<param name="method">onLoad</param>
+			</result>
+			<result name="redirect_onLoad" type="redirect">processFunction!onLoad.action</result>
+		</action>
+		
+		<action name="processModule" class="processModule">
+			<result name="success">/jsp/base/security/module.jsp</result>
+			<result name="onLoad" type="chain">
+				<param name="actionName">processModule</param>
+				<param name="method">onLoad</param>
+			</result>
+			<result name="redirect_onLoad" type="redirect">processModule!onLoad.action</result>
+		</action>	
+		
+		<action name="processLogger" class="processLogger">
+			<result name="success">/jsp/base/security/logger.jsp</result>
+			<result name="onLoad" type="chain">
+				<param name="actionName">processLogger</param>
+				<param name="method">onLoad</param>
+			</result>
+			<result name="redirect_onLoad" type="redirect">processLogger!onLoad.action</result>
+		</action>		
+	</package>
+</struts>

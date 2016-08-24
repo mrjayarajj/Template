@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sws="http://www.springframework.org/schema/web-services" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/web-services http://www.springframework.org/schema/web-services/web-services-2.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- There are two concrete implementations of WebServiceMessageFactory; one is based on SAAJ, the SOAP with Attachments API for Java, the other based on Axis 2's AXIOM, the AXis Object Model. See: http://static.springsource.org/spring-ws/sites/2.0/reference/html/client.html#client-web-service-template -->
+	<bean id="messageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory">
+		<!-- Even though both versions of SOAP are quite similar in format, the 1.2 version is not backwards compatible with 1.1 because it uses a different XML namespace. Other major differences between SOAP 
+			1.1 and 1.2 include the different structure of a Fault, and the fact that SOAPAction HTTP headers are effectively deprecated, thought they still work. One important thing to note with SOAP version numbers, 
+			or WS-* specification version numbers in general, is that the latest version of a specification is generally not the most popular version. For SOAP, this means that currently, the best version to use is 
+			1.1. Version 1.2 might become more popular in the future, but currently 1.1 is the safest bet. -->
+		<!-- <property name="soapVersion"> <util:constant static-field="org.springframework.ws.soap.SoapVersion.SOAP_12"/> </property> -->
+	</bean>
+
+	<bean id="logSOAPEnvelope" class="org.springframework.ws.soap.server.endpoint.interceptor.SoapEnvelopeLoggingInterceptor" />
+
+	<bean id="logSOAPBody" class="org.springframework.ws.server.endpoint.interceptor.PayloadLoggingInterceptor" />
+
+	<bean id="exceptionResolver" class="org.springframework.ws.soap.server.endpoint.SoapFaultMappingExceptionResolver">
+		<property name="defaultFault" value="SERVER" />
+		<property name="exceptionMappings">
+			<value>org.springframework.oxm.ValidationFailureException=CLIENT,Invalid request</value>
+		</property>
+	</bean>
+
+	<context:component-scan base-package="com.baseframework.ws" />
+	<sws:annotation-driven />
+
+</beans>

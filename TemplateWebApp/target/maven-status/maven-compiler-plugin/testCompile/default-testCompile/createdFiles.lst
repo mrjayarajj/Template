@@ -1,0 +1,15 @@
+com\baseframework\config\spring\TestSpringSecurityConfig.class
+com\baseframework\dao\security\core\userdetails\UserDAOTest.class
+cache\ehcache\CacheWapper.class
+com\baseframework\TestPath.class
+cache\ehcache\HelloEhcache.class
+com\baseframework\dao\security\access\ModuleDAOTest.class
+cache\ehcache\MockUserDAOImpl.class
+com\baseframework\web\security\core\userdetails\UserActionTest.class
+cache\ehcache\CacheKeyFinder.class
+cache\ehcache\ArgumentCacheableInterceptor.class
+cache\ehcache\CacheDetails.class
+cache\ehcache\ReturnTypeCacheableInterceptor.class
+cache\ehcache\ArgumentTriggersRemoveInteceptorName.class
+cache\ehcache\UserCache.class
+com\baseframework\rws\security\core\userdetails\UserRestControllerTest.class

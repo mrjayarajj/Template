@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:sec="http://www.springframework.org/schema/security" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd"
+>
+	<sec:http pattern="/jsp/base/security/logout.jsp" security="none" />
+	<!-- Since we are using the custom FORM_LOGIN_FILTER, we need to set auto-config="false" -->
+	<sec:http use-expressions="true" auto-config="false" entry-point-ref="loginUrlAuthenticationEntryPoint"   >
+		<!--
+			- use-expressions="true" = permilAll will work 
+		-->
+		<!-- 
+			- isAnonymous() = only anonymous has access,even user has supervisor can not have access			
+		 -->
+		<!-- 
+		 	- isAnonymous() ,IS_AUTHENTICATED_ANONYMOUSLY and hasRole('ROLE_ANONYMOUS') are same
+		-->
+		<!-- 
+		 	- isAuthenticated() , user must be Authenticated
+		-->
+		<!-- 
+			- IS_AUTHENTICATED_FULLY
+		-->
+		<sec:intercept-url pattern="/jsp/base/language.jsp" access="permitAll" requires-channel="http"   />
+		<sec:intercept-url pattern="/action/processForward!forward.action" access="permitAll" requires-channel="http" />
+		<sec:intercept-url pattern="/jsp/base/server.jsp" access="permitAll" requires-channel="http" />
+		<sec:intercept-url pattern="/jsp/base/webservice.jsp" access="permitAll" requires-channel="http"  />
+		
+		<!-- 
+		https://www.mulesoft.com/tcat/tomcat-ssl
+		1. GENERATE PRIVATE KEY
+		   keytool -genkey -alias baseframework.com -keyalg RSA -keystore C:\GitHubWorkspace\TemplateWebApp\src\main\resources\baseframework.keystore
+		   keystore password : changeit
+		   truststore password : changeit
+		2. GENERATE CSR 
+		   keytool -certreq -alias baseframework.com -keyalg RSA -file c:\baseframework.csr -keystore C:\GitHubWorkspace\TemplateWebApp\src\main\resources\baseframework.keystore
+		3. UPLOAD THE CSR content and get authorized
+		4. configure the auth certificate in app or web server
+		-->
+		<sec:intercept-url pattern="/jsp/base/security/login.jsp" access="permitAll" requires-channel="http" />
+		<sec:intercept-url pattern="/login" access="permitAll" requires-channel="http"  />
+		<sec:intercept-url pattern="/media/**" access="permitAll" requires-channel="http"  />
+		
+		<sec:intercept-url pattern="/rws/**" access="permitAll" requires-channel="http"  />
+		<sec:intercept-url pattern="/ws/**" access="permitAll" requires-channel="https"  />
+		
+		<sec:intercept-url pattern="/**" access="isAuthenticated()" requires-channel="http" />
+		
+		<sec:anonymous />
+		<!-- Uncomment to limit the number of sessions a user can have -->
+		<sec:session-management invalid-session-url="/jsp/base/security/timeout.jsp">
+			<sec:concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
+		</sec:session-management>
+		
+		<sec:port-mappings>
+			<!-- Default ports
+	        <sec:port-mapping http="80" https="443"/>
+	         -->
+	        <!-- Websphere default ports 
+	        <sec:port-mapping http="9080" https="9443"/>
+	        -->
+	        <!-- Tomcat default ports 
+	        <sec:port-mapping http="8080" https="8443"/>
+	        -->
+	        <!-- Jetty custom ports -->
+	        <sec:port-mapping http="8080" https="7443"/>
+	        
+		</sec:port-mappings>
+		
+		<sec:custom-filter position="FORM_LOGIN_FILTER" ref="customUsernamePasswordAuthenticationFilter" />
+		<sec:custom-filter position="REMEMBER_ME_FILTER" ref="customRememberMeFilter" />
+		<sec:custom-filter position="LOGOUT_FILTER" ref="logoutFilter" />	
+		
+		<sec:csrf disabled="false" />	
+	</sec:http>
+	
+	<bean id="customUsernamePasswordAuthenticationFilter" class="com.baseframework.web.security.authentication.AuthenticationFilter">
+		<property name="rememberMeServices" ref="rememberMeServices" />
+		<!--  
+		<property name="filterProcessesUrl" value="j_spring_security_check" />
+		-->
+		<!--  
+		<property name="sessionAuthenticationStrategy" ref="sessionAuthenticationStrategy" />
+		-->
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="authenticationFailureHandler" ref="failureHandler" />
+		<property name="authenticationSuccessHandler" ref="successHandler" />
+	</bean>
+	<bean id="successHandler" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+		<property name="defaultTargetUrl" value="/jsp/base/welcome.jsp" />
+	</bean>
+	<bean id="failureHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+		<property name="defaultFailureUrl" value="/jsp/base/security/login.jsp?login_error=true" />
+	</bean>
+
+
+
+	<bean id="loginUrlAuthenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+		<constructor-arg index="0"  value="/jsp/base/security/login.jsp" />
+	</bean>
+	
+	
+	
+	
+	
+	
+	
+	 
+	<sec:authentication-manager alias="authenticationManager">
+		<sec:authentication-provider ref="authenticationProvider" />
+		<sec:authentication-provider ref="rememberMeAuthenticationProvider" />
+		<!--  
+		<sec:authentication-provider>
+			<sec:user-service>
+				<sec:user name="jimi" password="jimispassword" authorities="ROLE_USER, ROLE_ADMIN" />
+				<sec:user name="bob" password="bobspassword" authorities="ROLE_USER" />
+			</sec:user-service>
+		</sec:authentication-provider>
+		-->
+	</sec:authentication-manager>		
+	<bean id="authenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		<property name="passwordEncoder" ref="md5PasswordEncoder" />
+		<property name="saltSource" ref="saltSource" />
+		<property name="userDetailsService" ref="userService" />
+	</bean>	
+	<bean id="md5PasswordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
+	<bean id="saltSource" class="org.springframework.security.authentication.dao.ReflectionSaltSource">
+		<property name="userPropertyToUse" value="userId" />
+	</bean>	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!--  
+	<bean id="sessionAuthenticationStrategy" class="org.springframework.security.web.authentication.session.ConcurrentSessionControlStrategy">
+		<constructor-arg name="sessionRegistry" ref="sessionRegistry" />
+		<property name="maximumSessions" value="1" />
+	</bean>	
+	<bean id="sessionRegistry" class="org.springframework.security.core.session.SessionRegistryImpl" />
+	-->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<bean id="customRememberMeFilter" class="org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter">
+		<constructor-arg index="0" ref="authenticationManager" />
+		<constructor-arg index="1" ref="rememberMeServices" />		
+	</bean>
+	<bean id="rememberMeServices" class="org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices">
+		<constructor-arg index="0" value="springRocks" />
+		<constructor-arg index="1" ref="userService" />
+	</bean>
+	<bean id="rememberMeAuthenticationProvider" class="org.springframework.security.authentication.RememberMeAuthenticationProvider">
+		<constructor-arg index="0" value="springRocks" />
+	</bean>
+	
+	
+	
+	
+	
+	<bean id="logoutFilter" class="org.springframework.security.web.authentication.logout.LogoutFilter">
+		<!-- if logout succeed then this is the URL -->
+		<constructor-arg index="0" value="/jsp/base/security/logout.jsp" />
+		<constructor-arg index="1" >
+			<list>
+				<ref bean="rememberMeServices" />
+				<ref bean="levi9LogoutHandler" />
+			</list>
+		</constructor-arg>
+		<!-- Logout filter will be called when detected /logout.jsp call 
+		<property name="filterProcessesUrl" value="/j_spring_security_logout" />
+		-->
+	</bean>
+	<bean id="levi9LogoutHandler" class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler">
+		<property name="invalidateHttpSession" value="true" />
+	</bean>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<sec:global-method-security secured-annotations="enabled" proxy-target-class="true" access-decision-manager-ref="accessDecisionManager">
+		<!-- 	
+		<sec:protect-pointcut access="isAuthenticated()" expression="execution(* com.baseframework.* (..) )" />
+		 -->
+	</sec:global-method-security>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<bean id="accessDecisionManager" class="org.springframework.security.access.vote.UnanimousBased">
+		<constructor-arg index="0" >
+			<list>
+				<ref bean="businessVoter" />
+				<ref bean="roleVoter" />
+				<ref bean="authenticatedVoter" />
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="businessVoter" class="com.baseframework.web.security.access.vote.BusinessVoter" />
+	<bean id="roleVoter" class="org.springframework.security.access.vote.RoleVoter" />
+	<bean id="authenticatedVoter" class="org.springframework.security.access.vote.AuthenticatedVoter" />
+	
+	
+
+</beans>

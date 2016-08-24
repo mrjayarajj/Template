@@ -1,0 +1,1 @@
+1. my DAO is duplicating session factory setter. i hate but i don't believe advantage of inheritance here

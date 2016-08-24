@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "/tld/spring-beans-2.0.dtd">
+<beans>
+
+	<bean id="roleDAO" class="com.baseframework.dao.security.access.RoleDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="roleService" class="com.baseframework.biz.security.access.RoleServiceImpl">
+		<property name="roleDAO" ref="roleDAO" />
+	</bean>
+
+	<bean id="processRole" class="com.baseframework.web.security.access.RoleAction" scope="prototype">
+		<property name="roleService" ref="roleService" />
+	</bean>
+
+	<bean id="authenticateDAO" class="com.baseframework.dao.security.access.AuthenticateDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="authenticateService" class="com.baseframework.biz.security.access.AuthenticateServiceImpl">
+		<property name="authenticateDAO" ref="authenticateDAO" />
+	</bean>
+
+	<bean id="processAuthenticate" class="com.baseframework.web.security.access.AuthenticateAction" scope="prototype">
+		<property name="authenticateService" ref="authenticateService" />
+		<property name="moduleService" ref="moduleService" />
+		<property name="roleService" ref="roleService" />
+		<property name="functionService" ref="functionService" />
+	</bean>
+
+	<bean id="functionDAO" class="com.baseframework.dao.security.access.FunctionDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="functionService" class="com.baseframework.biz.security.access.FunctionServiceImpl">
+		<property name="functionDAO" ref="functionDAO" />
+		<property name="moduleDAO" ref="moduleDAO" />
+	</bean>
+
+	<bean id="processFunction" class="com.baseframework.web.security.access.FunctionAction" scope="prototype">
+		<property name="functionService" ref="functionService" />
+	</bean>
+
+	<bean id="moduleDAO" class="com.baseframework.dao.security.access.ModuleDAOImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="moduleService" class="com.baseframework.biz.security.access.ModuleServiceImpl">
+		<property name="moduleDAO" ref="moduleDAO" />
+	</bean>
+
+	<bean id="processModule" class="com.baseframework.web.security.access.ModuleAction" scope="prototype">
+		<property name="moduleService" ref="moduleService" />
+	</bean>
+	
+	<bean id="processLogger" class="com.baseframework.log.LoggerAction" scope="prototype">
+	</bean>
+	
+	 <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="testDS" />
+		<property name="resourceRef" value="true"/>
+		<property name="lookupOnStartup" value="false"/>
+		<property name="proxyInterface" value="javax.sql.DataSource"/>
+		<property name="cache" value="false"/>
+	</bean>
+
+</beans>

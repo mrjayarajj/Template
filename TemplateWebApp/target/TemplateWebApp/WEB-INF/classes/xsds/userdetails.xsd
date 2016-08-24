@@ -1,0 +1,33 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.baseframework.com/ws/security/core/userdetails"
+	elementFormDefault="qualified">
+	<xs:element name="GetUserDetailsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="xs:string" name="username" />
+				<xs:element type="xs:string" name="password" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GetUserDetailsResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="xs:int" name="userId" />
+				<xs:element name="authorities">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="xs:string" name="authority"
+								maxOccurs="unbounded" minOccurs="1" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element type="xs:string" name="username" />
+				<xs:element type="xs:string" name="password" />
+				<xs:element type="xs:boolean" name="enabled" />
+				<xs:element type="xs:boolean" name="account-locked" />
+				<xs:element type="xs:boolean" name="account-expired" />
+				<xs:element type="xs:boolean" name="credentials-expired" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

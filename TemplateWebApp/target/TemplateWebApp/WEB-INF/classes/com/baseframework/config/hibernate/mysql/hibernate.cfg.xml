@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+  <!--    
+    ISSUE:
+    Caused by: org.hibernate.QueryException: ClassNotFoundException: 
+    org.hibernate.hql.ast.HqlToken [select u from dto.User u where u.email='mrjayarajj@gmail.com'] 	
+    at org.hibernate.hql.ast.HqlLexer.panic(HqlLexer.java:57)  
+    when it is weblogic server
+    REASON:
+    it seems that there isn't another antln.jar library in my weblogic server.
+    SOLUTION:
+    <property name="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>
+    
+    JTA
+    <property name="connection.datasource">java:/comp/env/jdbc/MyDB</property>
+    <property name="transaction.factory_class">org.hibernate.transaction.JTATransactionFactory</property>
+    <property name="jta.UserTransaction">java:comp/UserTransaction</property>
+    JDBC
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.password">root</property>
+    <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/base</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+    OR
+    <property name="hibernate.connection.datasource">jdbc/OrderProcessWSOnline</property>
+    <property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+    
+    SESSION CLOSE
+    <property name="hibernate.connection.release_mode">auto</property>
+    after_statement   = JTA and CMT
+    after_transaction = JDBC
+    on_close          = release the connection only after session.close();
+  -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.password">root</property>
+		<property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/base</property>
+		<property name="hibernate.connection.username">root</property>
+
+		<property name="connection.shutdown">true</property>
+		<property name="show_sql">false</property>
+		<property name="format_sql">true</property>
+		<property name="hibernate.jdbc.batch_size">0</property>
+		<property name="hibernate.max_fetch_depth">2</property>
+		<property name="transaction.flush_before_completion">true</property>
+		<property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+
+		<mapping resource="com/baseframework/config/hibernate/User.hbm.xml" />
+		<mapping resource="com/baseframework/config/hibernate/Role.hbm.xml" />
+		<mapping resource="com/baseframework/config/hibernate/Module.hbm.xml" />
+		<mapping resource="com/baseframework/config/hibernate/Function.hbm.xml" />
+		<mapping resource="com/baseframework/config/hibernate/Authenticate.hbm.xml" />
+
+	</session-factory>
+</hibernate-configuration>
+

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 2, 2010 12:14:17 AM by Hibernate Tools 3.2.2.GA -->
+<hibernate-mapping>
+    <class name="com.baseframework.domain.security.core.userdetails.User" table="USER">
+        <id name="userId" type="int">
+            <column name="USER_ID" />
+            <generator class="identity" />
+        </id>         
+        <many-to-one name="role" class="com.baseframework.domain.security.access.Role" lazy="no-proxy"  >
+            <column name="ROLE_ID" not-null="true" />
+        </many-to-one>                            
+        <property name="userName" type="string">
+            <column name="USER_NAME" length="45" not-null="true" unique="true" />
+        </property>
+        <property name="userPassword" type="string"  >
+            <column name="USER_PASSWORD" length="45" not-null="true" />
+        </property>
+        <property name="gender" type="char">
+            <column name="GENDER" length="1" not-null="true" />
+        </property>
+        <property name="status" type="boolean">
+            <column name="STATUS" not-null="true" />
+        </property>
+        <property name="locked" type="boolean">
+            <column name="LOCKED" not-null="false" />
+        </property>
+        <property name="expireDate" type="date">
+            <column name="EXPIRE_DATE" not-null="false" />
+        </property>
+    </class>
+</hibernate-mapping>
