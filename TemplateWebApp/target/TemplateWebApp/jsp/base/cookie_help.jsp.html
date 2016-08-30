@@ -1,1 +1,86 @@
-<HTML> <HEAD> <TITLE> CWB Help (Cookie Error) </TITLE> <SCRIPT LANGUAGE="JavaScript">function toggle(b){var a=document.getElementById(b);if(a.style.display=="none"){a.style.display=""}else{if(a.style.display==""){a.style.display="none"}}};</SCRIPT> </HEAD> <BODY> <TABLE border="0"> <TR> <TD> <H2>Error Messages: Browser's cookie functionality is turned off</H2> <BR> If you're seeing a message that your browser's cookie functionality is turned off, it's possible that you don't have cookies enabled in your browser. Click the links below to see browser-specific instructions on how to enable your cookies. </TD> </TR> <TR> <TD> <A HREF="#" onclick="toggle('ie7')"><b>Microsoft Internet Explorer (IE 7)</b></A> </TD> </TR> <TR> <TD> <div style="display:none" id="ie7"> <p>To enable cookies in IE 7: </p> <ol> <li>Click <strong>Start</strong> &gt; <strong>Control Panel</strong>. (Note: with Windows XP Classic View, click the Windows <strong>Start</strong> button &gt; <strong>Settings &gt; Control Panel</strong>).</li> <li>Double-click the <strong>Internet Options</strong> icon.</li> <li>Click the <strong>Privacy</strong> tab.</li> <li>Click the <strong>Advanced</strong> button. </li> <li>Select the option 'Override automatic cookie handling' under the Cookies section in the Advanced Privacy Settings window.</li> <li>Select the 'Accept' or 'Prompt' option under 'First-party Cookies.'</li> <li>Select the 'Accept' or 'Prompt' option under 'Third-party Cookies.' (Note: if you select the 'Prompt' option, you'll be prompted to click <strong>OK</strong> every time a website attempts to send you a cookie.) </li> <li>In the Internet Options window, click <strong>OK</strong> to exit.</li> </ol> </div> <TD> </TR> <TR> <TD> <A HREF="#" onclick="toggle('ie6')"><b>Microsoft Internet Explorer (IE 6)</b></A> </TD> </TR> <TR> <TD> <div style="display:none" id="ie6"> <p>To enable cookies in IE 6: </p><ol><li>Click <strong>Start</strong> &gt; <strong>Control Panel</strong>. (Note: with Windows XP Classic View, click the Windows <strong>Start</strong> button &gt; <strong>Settings &gt; Control Panel</strong>).</li> <li>Click the <strong>Advanced</strong> button. </li> <li>Select the option 'Override Automatic Cookie Handling.' </li> <li>Select the 'Accept' or 'Prompt' option under 'First-party Cookies.'</li> <li>Select the 'Accept' or 'Prompt' option under 'Third-party Cookies.' (Note: if you select the 'Prompt' option, you'll be prompted to click <strong>OK</strong> every time a website attempts to send you a cookie.) </li> <li>In the Internet Options window, click <strong>OK</strong> to exit.</li> </ol> </div> </TD> </TR> <TR> <TD> <p> If you've already checked that your cookies are enabled and you're still seeing an error message that your browser's cookie functionality is turned off, try opening a new window in your browser. Sometimes using tabs in a single browser instance can cause your cookies to stick. </p> </TD> </TR> <TR> <TD></TD> </TR> </TABLE> </BODY> </HTML>
+<HTML>
+<HEAD>
+<TITLE> CWB Help  (Cookie Error) </TITLE>
+<SCRIPT LANGUAGE="JavaScript">
+function toggle(id){
+	var element = document.getElementById(id);
+	
+	if(element.style.display=="none")
+		element.style.display = "";
+	else if(element.style.display=="")
+		element.style.display="none";	
+}
+</SCRIPT>
+</HEAD>
+
+<BODY>
+<TABLE border="0">
+<TR>
+	<TD>
+			
+		<H2>Error Messages: Browser's cookie functionality is turned off</H2> <BR>
+
+		If you're seeing a message that your browser's cookie functionality is turned off, it's possible that you don't have cookies enabled in your browser. Click the links below to see browser-specific instructions on how to enable your cookies.
+
+	</TD>
+</TR>
+<TR>
+	<TD>
+		<A HREF="#" onclick="toggle('ie7')"  ><b >Microsoft Internet Explorer (IE 7)</b></A>
+	</TD>
+</TR>
+<TR>
+	<TD>
+		<div style="display:none" id="ie7">
+			<p >To enable cookies in IE 7: </p>
+			<ol>
+			  <li>Click <strong>Start</strong> &gt; <strong>Control Panel</strong>.
+			  (Note: with Windows XP Classic View, click the Windows <strong>Start</strong> button &gt; <strong>Settings &gt; Control Panel</strong>).</li>
+
+			  <li>Double-click the <strong>Internet Options</strong> icon.</li>
+			  <li>Click the <strong>Privacy</strong> tab.</li>
+			  <li>Click the <strong>Advanced</strong> button. </li>
+
+			  <li>Select the option 'Override automatic cookie handling' under the Cookies section in the Advanced Privacy Settings window.</li>
+			  <li>Select the 'Accept' or 'Prompt' option under 'First-party Cookies.'</li>
+			  <li>Select the 'Accept' or 'Prompt' option under 'Third-party Cookies.' (Note: if you select the 'Prompt' option, you'll be prompted to click <strong>OK</strong> every time a website attempts to send you a cookie.) </li>
+			  <li>In the Internet Options window, click <strong>OK</strong> to exit.</li>
+			</ol>
+		</div>
+	<TD>
+</TR>
+<TR>
+	<TD>
+		<A HREF="#" onclick="toggle('ie6')"  ><b >Microsoft Internet Explorer (IE 6)</b></A>
+	</TD>
+</TR>
+<TR>
+	<TD>
+		<div style="display:none" id="ie6">
+			<p>To enable cookies in IE 6:
+			</p><ol><li>Click <strong>Start</strong> &gt; <strong>Control Panel</strong>.
+			  (Note: with Windows XP Classic View, click the Windows <strong>Start</strong> button &gt; <strong>Settings &gt; Control Panel</strong>).</li>
+
+			  <li>Click the <strong>Advanced</strong> button. </li>
+			  <li>Select the option 'Override Automatic Cookie Handling.' </li>
+			  <li>Select the 'Accept' or 'Prompt' option under 'First-party Cookies.'</li>
+			  <li>Select the 'Accept' or 'Prompt' option under 'Third-party Cookies.' (Note: if you select the 'Prompt' option, you'll be prompted to click <strong>OK</strong> every time a website attempts to send you a cookie.) </li>
+
+			  <li>In the Internet Options window, click <strong>OK</strong> to exit.</li>
+			  </ol>
+		</div>
+	</TD>
+</TR>
+<TR>
+	<TD>
+		<p>
+		If you've already checked that your cookies are enabled and you're still seeing an error message that your browser's cookie functionality is turned off, try opening a new window in your browser. Sometimes using tabs in a single browser instance can cause your cookies to stick.
+		</p>
+	</TD>
+</TR>
+<TR>
+	<TD></TD>
+</TR>
+</TABLE>
+</BODY>
+</HTML>

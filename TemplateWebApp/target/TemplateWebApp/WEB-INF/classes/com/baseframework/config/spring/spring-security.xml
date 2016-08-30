@@ -43,7 +43,7 @@
 		<sec:intercept-url pattern="/login" access="permitAll" requires-channel="http"  />
 		<sec:intercept-url pattern="/media/**" access="permitAll" requires-channel="http"  />
 		
-		<sec:intercept-url pattern="/rws/**" access="permitAll" requires-channel="https"  />
+		<sec:intercept-url pattern="/rws/**" access="permitAll" requires-channel="http"  />
 		<sec:intercept-url pattern="/ws/**" access="permitAll" requires-channel="https"  />
 		
 		<sec:intercept-url pattern="/**" access="isAuthenticated()" requires-channel="http" />

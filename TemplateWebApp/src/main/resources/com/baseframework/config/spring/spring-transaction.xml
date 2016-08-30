@@ -9,6 +9,37 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>		
 
+	<!-- 
+	A	-	All are committed or none are committed
+	C	-	Maintain consistent data , Leave the system in good state
+	I	-	Even in a multi-thread application , it maintain a lock so that "parallel" transaction knows that an record is in-progress and wait
+	D  	-  	Even when DB is recovered from a crash , the committed transaction during the crash should be saved
+	
+
+	ISOLATION LEVEL ("what issue happening in parallel ? ")
+	
+	------------------------------------------------------------------------------------------------
+						|	Dirty Read	| 	Repeatable Read (Update)	|	Phantom Read (Insert)		
+	-------------------------------------------------------------------------------------------------
+	Read Uncommitted	|		-		|			-					|			-				|	=	Read data even if other transaction is in-progress
+	Read   committed	|		+		|			-					|			-				|	=	There is "NO" lock on a single/multiple record when u r reading "multiple" time
+	Repeatable Read		|		+		|			+					|			-				|	=	There is "NO" lock on a 	   multiple record when u r reading "multiple" time
+	Serializable		|		+		|			+					|			+				|	=	There is lock for multiple records when other transaction is in-progress
+	
+	
+	
+	Dirty Read
+	----------
+	system will process for a non exist data if it read a uncommitted data
+	eg) system will fail to send a alert mail if the total order for 1 hr is less than 1000 order. 
+	because data may get be roll back if there is a communication failure to a payment gateway
+	
+	Repeatable Read
+	---------------
+	system will fail if it get different value for the same query if it read multiple time in a same transaction.
+	
+
+	 -->
 	<bean id="transactionInterceptor"
 		class="org.springframework.transaction.interceptor.TransactionInterceptor">
 		<property name="transactionManager" ref="txManager" />

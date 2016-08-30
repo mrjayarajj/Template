@@ -6,7 +6,8 @@
 	version="3.1">
 
 	<display-name>TemplateWebApp</display-name>
-	<!-- ################################################### LISTENER START HERE ################################################### -->
+
+	<!-- ##### LISTENER START HERE ##### -->
 	<listener>
 		<description>Loads the root application context of this web app at startup. -
 			The application context is then available via - WebApplicationContextUtils.getWebApplicationContext(servletContext).
@@ -39,10 +40,8 @@
 		<param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
 		<param-value>/WEB-INF/tiles.xml</param-value>
 	</context-param>
-	<!-- 
-	<listener> 
-		<listener-class>net.sf.ehcache.constructs.web.ShutdownListener</listener-class> 
-	</listener> -->
+	<!-- <listener> <listener-class>net.sf.ehcache.constructs.web.ShutdownListener</listener-class> 
+		</listener> -->
 	<!-- Publishes events for session creation and destruction through the application 
 		- context. Optional unless concurrent session control is being used. -->
 	<listener>
@@ -59,8 +58,8 @@
 	<listener>
 		<listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
 	</listener>
-	<!-- ################################################### LISTENER END HERE 	################################################### -->
-	<!-- ################################################### FILTER STARTS HERE	################################################### -->
+	<!-- ##### LISTENER END HERE ##### -->
+	<!-- ##### FILTER STARTS HERE ##### -->
 	<filter>
 		<description>This must be first filter to log any request. IMPORTANT: This should not be moved from here</description>
 		<filter-name>log4jServletFilter</filter-name>
@@ -74,7 +73,8 @@
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>INCLUDE</dispatcher>
 		<dispatcher>ERROR</dispatcher>
-		<dispatcher>ASYNC</dispatcher><!-- Servlet 3.0 w/ disabled auto-initialization only; not supported in 2.5 -->
+		<dispatcher>ASYNC</dispatcher><!-- Servlet 3.0 w/ disabled auto-initialization 
+			only; not supported in 2.5 -->
 	</filter-mapping>
 	<filter>
 		<filter-name>RequestLoggerFilter</filter-name>
@@ -102,7 +102,6 @@
 		<dispatcher>INCLUDE</dispatcher>
 		<dispatcher>ERROR</dispatcher>
 	</filter-mapping>
-	<!-- 
 	<filter>
 		<filter-name>CompressionFilter</filter-name>
 		<filter-class>net.sf.ehcache.constructs.web.filter.GzipFilter</filter-class>
@@ -121,9 +120,8 @@
 	</filter-mapping>
 	<filter-mapping>
 		<filter-name>CompressionFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>	
-	-->
+		<url-pattern>*.ico</url-pattern>
+	</filter-mapping>
 	<filter>
 		<filter-name>struts2</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
@@ -132,7 +130,7 @@
 	<filter-mapping>
 		<filter-name>struts2</filter-name>
 		<url-pattern>/*</url-pattern>
-		<dispatcher>REQUEST</dispatcher>		
+		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>ERROR</dispatcher>
 	</filter-mapping>
 	<filter>
@@ -147,8 +145,8 @@
 		<dispatcher>INCLUDE</dispatcher>
 		<dispatcher>ERROR</dispatcher>
 	</filter-mapping>
-	<!-- ################################################### FILTER ENDS HERE ################################################### -->
-	<!-- ################################################### SERVLET STARTS HERE ################################################### -->
+	<!-- ##### FILTER ENDS HERE ##### -->
+	<!-- ##### SERVLET STARTS HERE ##### -->
 	<servlet>
 		<servlet-name>spring-ws</servlet-name>
 		<servlet-class>org.springframework.ws.transport.http.MessageDispatcherServlet</servlet-class>
@@ -172,7 +170,7 @@
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>spring-mvc</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>		
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<description>
 				The Servlet DispatcherServlet
@@ -180,14 +178,12 @@
 			</description>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath:\com\baseframework\config\spring\mvc\spring-mvc-servlet.xml</param-value>
-		</init-param>		
+		</init-param>
 		<load-on-startup>1</load-on-startup>
 		<!-- java.lang.IllegalStateException: Async support must be enabled on 
-		a servlet and for all filters involved in async
-		 request processing. This is done in Java code using
-		  the Servlet API or by adding "<async-supported>true</async-supported>" 
-		  to servlet and filter declarations in web.xml.
-		 -->
+			a servlet and for all filters involved in async request processing. This 
+			is done in Java code using the Servlet API or by adding "<async-supported>true</async-supported>" 
+			to servlet and filter declarations in web.xml. -->
 		<async-supported>true</async-supported>
 	</servlet>
 	<servlet-mapping>
@@ -196,20 +192,20 @@
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>spring-mvc</servlet-name>
-		<url-pattern>*.htm</url-pattern>
+		<url-pattern>/wst/*</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>spring-mvc</servlet-name>
-		<url-pattern>/wst/*</url-pattern>		
+		<url-pattern>/media/*</url-pattern>
 	</servlet-mapping>
-	<!-- ################################################### SERVLET ENDS HERE 	################################################### -->
+	<!-- ##### SERVLET ENDS HERE ##### -->
 	<error-page>
- 		<error-code>404</error-code>
- 		<location>/jsp/base/error/404.jsp</location>
+		<error-code>404</error-code>
+		<location>/jsp/base/error/404.jsp</location>
 	</error-page>
 	<error-page>
- 		<error-code>500</error-code>
- 		<location>/jsp/base/error/500.jsp</location>
+		<error-code>500</error-code>
+		<location>/jsp/base/error/500.jsp</location>
 	</error-page>
 	<session-config>
 		<session-timeout>60</session-timeout>

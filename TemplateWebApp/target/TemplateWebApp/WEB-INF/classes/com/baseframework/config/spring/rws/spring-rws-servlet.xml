@@ -9,6 +9,9 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
+	<!-- if your war is just contains REST controller then go for spring-web 
+		with jercy , no need to spring mvc -->
+
 	<!-- Configure to plugin JSON as request and response in method handler -->
 	<beans:bean
 		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
