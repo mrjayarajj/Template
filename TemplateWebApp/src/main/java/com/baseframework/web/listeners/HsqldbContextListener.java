@@ -38,7 +38,7 @@ public class HsqldbContextListener implements ServletContextListener {
 		}	
 		*/
 		
-		String dbPath = "C:/Users/jjayaraj/Google Drive/Code/db/BASE";
+		String dbPath = "/Users/admin/Downloads/hsqldb/BASE";
 		
 		StartServer.main(new String[] { HsqldbContextListener.class.getName() , dbPath });
 	

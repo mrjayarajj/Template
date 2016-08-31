@@ -1,0 +1,784 @@
+log4j1 : 2016-08-31 10:29:51 HSQLDB Server @64356199 |  |  |  | INFO  | hsqldb.db.HSQLDB56E1A65B9D.ENGINE:? | - Checkpoint start
+log4j1 : 2016-08-31 10:29:51 HSQLDB Server @64356199 |  |  |  | INFO  | hsqldb.db.HSQLDB56E1A65B9D.ENGINE:? | - checkpointClose start
+log4j1 : 2016-08-31 10:29:51 HSQLDB Server @64356199 |  |  |  | INFO  | hsqldb.db.HSQLDB56E1A65B9D.ENGINE:? | - checkpointClose end
+log4j1 : 2016-08-31 10:29:51 HSQLDB Server @64356199 |  |  |  | INFO  | hsqldb.db.HSQLDB56E1A65B9D.ENGINE:? | - Checkpoint end - txts: 1
+log4j1 : 2016-08-31 10:30:29 HSQLDB Server @3a193ab0 |  |  |  | INFO  | hsqldb.db.HSQLDB56E1A65B9D.ENGINE:? | - checkpointClose start
+log4j1 : 2016-08-31 10:30:29 HSQLDB Server @3a193ab0 |  |  |  | INFO  | hsqldb.db.HSQLDB56E1A65B9D.ENGINE:? | - checkpointClose end
+log4j1 : 2016-08-31 10:32:31 qtp979071947-35 | 4dd53f16-8326-4a6f-bed9-9d66ded31d3a-1472664751124 | 14ekvtpdrocz9bhp52ptqp17v |  | ERROR | com.baseframework.web.security.authentication.AuthenticationFilter:227 | - An internal error occurred while trying to authenticate the user.
+org.springframework.security.authentication.InternalAuthenticationServiceException: Could not open Hibernate Session for transaction; nested exception is org.hibernate.exception.GenericJDBCException: Cannot open connection
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:127)
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:144)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:174)
+	at org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.attemptAuthentication(UsernamePasswordAuthenticationFilter.java:94)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:218)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:121)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:124)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:66)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:134)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:106)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.access.channel.ChannelProcessingFilter.doFilter(ChannelProcessingFilter.java:157)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:214)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:177)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:346)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:262)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at com.baseframework.web.filters.RequestLoggerFilter.doFilter(RequestLoggerFilter.java:93)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at org.apache.logging.log4j.web.Log4jServletFilter.doFilter(Log4jServletFilter.java:71)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:583)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:577)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:223)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1125)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1059)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:215)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:110)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97)
+	at org.eclipse.jetty.server.Server.handle(Server.java:497)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:311)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:248)
+	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:610)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:539)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.springframework.transaction.CannotCreateTransactionException: Could not open Hibernate Session for transaction; nested exception is org.hibernate.exception.GenericJDBCException: Cannot open connection
+	at org.springframework.orm.hibernate3.HibernateTransactionManager.doBegin(HibernateTransactionManager.java:602)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.getTransaction(AbstractPlatformTransactionManager.java:373)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.createTransactionIfNecessary(TransactionAspectSupport.java:427)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:276)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:208)
+	at com.sun.proxy.$Proxy55.selectUserByUserName(Unknown Source)
+	at com.baseframework.biz.security.core.userdetails.UserServiceImpl.loadUserByUsername(UserServiceImpl.java:86)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:302)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at com.baseframework.log.BaseLoggerInterceptor.invoke(BaseLoggerInterceptor.java:23)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:208)
+	at com.sun.proxy.$Proxy58.loadUserByUsername(Unknown Source)
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:115)
+	... 50 more
+Caused by: org.hibernate.exception.GenericJDBCException: Cannot open connection
+	at org.hibernate.exception.SQLStateConverter.handledNonSpecificException(SQLStateConverter.java:126)
+	at org.hibernate.exception.SQLStateConverter.convert(SQLStateConverter.java:114)
+	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:66)
+	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:52)
+	at org.hibernate.jdbc.ConnectionManager.openConnection(ConnectionManager.java:449)
+	at org.hibernate.jdbc.ConnectionManager.getConnection(ConnectionManager.java:167)
+	at org.hibernate.jdbc.JDBCContext.connection(JDBCContext.java:142)
+	at org.hibernate.transaction.JDBCTransaction.begin(JDBCTransaction.java:85)
+	at org.hibernate.impl.SessionImpl.beginTransaction(SessionImpl.java:1354)
+	at org.springframework.orm.hibernate3.HibernateTransactionManager.doBegin(HibernateTransactionManager.java:560)
+	... 70 more
+Caused by: java.sql.SQLInvalidAuthorizationSpecException: invalid authorization specification
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.JDBCConnection.<init>(Unknown Source)
+	at org.hsqldb.jdbc.JDBCDriver.getConnection(Unknown Source)
+	at org.hsqldb.jdbc.JDBCDataSource.getConnection(Unknown Source)
+	at org.hsqldb.jdbc.JDBCDataSource.getConnection(Unknown Source)
+	at org.hibernate.connection.DatasourceConnectionProvider.getConnection(DatasourceConnectionProvider.java:92)
+	at org.hibernate.jdbc.ConnectionManager.openConnection(ConnectionManager.java:446)
+	... 75 more
+Caused by: org.hsqldb.HsqlException: invalid authorization specification
+	at org.hsqldb.error.Error.error(Unknown Source)
+	at org.hsqldb.ClientConnection.<init>(Unknown Source)
+	... 81 more
+log4j1 : 2016-08-31 10:32:33 qtp979071947-35 | 4f48810a-af1d-4c6e-bb65-90d3bcb74a8a-1472664752956 | 14ekvtpdrocz9bhp52ptqp17v |  | ERROR | com.baseframework.web.security.authentication.AuthenticationFilter:227 | - An internal error occurred while trying to authenticate the user.
+org.springframework.security.authentication.InternalAuthenticationServiceException: Could not open Hibernate Session for transaction; nested exception is org.hibernate.exception.GenericJDBCException: Cannot open connection
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:127)
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:144)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:174)
+	at org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.attemptAuthentication(UsernamePasswordAuthenticationFilter.java:94)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:218)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:121)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:124)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:66)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:134)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:106)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.access.channel.ChannelProcessingFilter.doFilter(ChannelProcessingFilter.java:157)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:214)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:177)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:346)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:262)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at com.baseframework.web.filters.RequestLoggerFilter.doFilter(RequestLoggerFilter.java:93)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at org.apache.logging.log4j.web.Log4jServletFilter.doFilter(Log4jServletFilter.java:71)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:583)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:577)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:223)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1125)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1059)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:215)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:110)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97)
+	at org.eclipse.jetty.server.Server.handle(Server.java:497)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:311)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:248)
+	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:610)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:539)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.springframework.transaction.CannotCreateTransactionException: Could not open Hibernate Session for transaction; nested exception is org.hibernate.exception.GenericJDBCException: Cannot open connection
+	at org.springframework.orm.hibernate3.HibernateTransactionManager.doBegin(HibernateTransactionManager.java:602)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.getTransaction(AbstractPlatformTransactionManager.java:373)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.createTransactionIfNecessary(TransactionAspectSupport.java:427)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:276)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:208)
+	at com.sun.proxy.$Proxy55.selectUserByUserName(Unknown Source)
+	at com.baseframework.biz.security.core.userdetails.UserServiceImpl.loadUserByUsername(UserServiceImpl.java:86)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:302)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at com.baseframework.log.BaseLoggerInterceptor.invoke(BaseLoggerInterceptor.java:23)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:208)
+	at com.sun.proxy.$Proxy58.loadUserByUsername(Unknown Source)
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:115)
+	... 50 more
+Caused by: org.hibernate.exception.GenericJDBCException: Cannot open connection
+	at org.hibernate.exception.SQLStateConverter.handledNonSpecificException(SQLStateConverter.java:126)
+	at org.hibernate.exception.SQLStateConverter.convert(SQLStateConverter.java:114)
+	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:66)
+	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:52)
+	at org.hibernate.jdbc.ConnectionManager.openConnection(ConnectionManager.java:449)
+	at org.hibernate.jdbc.ConnectionManager.getConnection(ConnectionManager.java:167)
+	at org.hibernate.jdbc.JDBCContext.connection(JDBCContext.java:142)
+	at org.hibernate.transaction.JDBCTransaction.begin(JDBCTransaction.java:85)
+	at org.hibernate.impl.SessionImpl.beginTransaction(SessionImpl.java:1354)
+	at org.springframework.orm.hibernate3.HibernateTransactionManager.doBegin(HibernateTransactionManager.java:560)
+	... 70 more
+Caused by: java.sql.SQLInvalidAuthorizationSpecException: invalid authorization specification
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.JDBCConnection.<init>(Unknown Source)
+	at org.hsqldb.jdbc.JDBCDriver.getConnection(Unknown Source)
+	at org.hsqldb.jdbc.JDBCDataSource.getConnection(Unknown Source)
+	at org.hsqldb.jdbc.JDBCDataSource.getConnection(Unknown Source)
+	at org.hibernate.connection.DatasourceConnectionProvider.getConnection(DatasourceConnectionProvider.java:92)
+	at org.hibernate.jdbc.ConnectionManager.openConnection(ConnectionManager.java:446)
+	... 75 more
+Caused by: org.hsqldb.HsqlException: invalid authorization specification
+	at org.hsqldb.error.Error.error(Unknown Source)
+	at org.hsqldb.ClientConnection.<init>(Unknown Source)
+	... 81 more
+log4j1 : 2016-08-31 10:36:18 HSQLDB Server @234642fa |  |  |  | INFO  | hsqldb.db.HSQLDB56E1AC4268.ENGINE:? | - Checkpoint start
+log4j1 : 2016-08-31 10:36:18 HSQLDB Server @234642fa |  |  |  | INFO  | hsqldb.db.HSQLDB56E1AC4268.ENGINE:? | - checkpointClose start
+log4j1 : 2016-08-31 10:36:18 HSQLDB Server @234642fa |  |  |  | INFO  | hsqldb.db.HSQLDB56E1AC4268.ENGINE:? | - checkpointClose end
+log4j1 : 2016-08-31 10:36:18 HSQLDB Server @234642fa |  |  |  | INFO  | hsqldb.db.HSQLDB56E1AC4268.ENGINE:? | - Checkpoint end - txts: 1
+log4j1 : 2016-08-31 10:36:32 qtp979071947-30 | 627f0d82-1a8e-432d-9862-b2b3bd6e963f-1472664992349 | 1dqn067rzbud119tmibdemywkx |  | ERROR | com.baseframework.web.security.authentication.AuthenticationFilter:227 | - An internal error occurred while trying to authenticate the user.
+org.springframework.security.authentication.InternalAuthenticationServiceException: Could not open Hibernate Session for transaction; nested exception is org.hibernate.exception.GenericJDBCException: Cannot open connection
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:127)
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:144)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:174)
+	at org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.attemptAuthentication(UsernamePasswordAuthenticationFilter.java:94)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:218)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:121)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:124)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:66)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:134)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:106)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.access.channel.ChannelProcessingFilter.doFilter(ChannelProcessingFilter.java:157)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:214)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:177)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:346)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:262)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at com.baseframework.web.filters.RequestLoggerFilter.doFilter(RequestLoggerFilter.java:93)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at org.apache.logging.log4j.web.Log4jServletFilter.doFilter(Log4jServletFilter.java:71)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:583)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:577)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:223)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1125)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1059)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:215)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:110)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97)
+	at org.eclipse.jetty.server.Server.handle(Server.java:497)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:311)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:248)
+	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:610)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:539)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.springframework.transaction.CannotCreateTransactionException: Could not open Hibernate Session for transaction; nested exception is org.hibernate.exception.GenericJDBCException: Cannot open connection
+	at org.springframework.orm.hibernate3.HibernateTransactionManager.doBegin(HibernateTransactionManager.java:602)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.getTransaction(AbstractPlatformTransactionManager.java:373)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.createTransactionIfNecessary(TransactionAspectSupport.java:427)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:276)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:96)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:208)
+	at com.sun.proxy.$Proxy55.selectUserByUserName(Unknown Source)
+	at com.baseframework.biz.security.core.userdetails.UserServiceImpl.loadUserByUsername(UserServiceImpl.java:86)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:302)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at com.baseframework.log.BaseLoggerInterceptor.invoke(BaseLoggerInterceptor.java:23)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:208)
+	at com.sun.proxy.$Proxy58.loadUserByUsername(Unknown Source)
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:115)
+	... 50 more
+Caused by: org.hibernate.exception.GenericJDBCException: Cannot open connection
+	at org.hibernate.exception.SQLStateConverter.handledNonSpecificException(SQLStateConverter.java:126)
+	at org.hibernate.exception.SQLStateConverter.convert(SQLStateConverter.java:114)
+	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:66)
+	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:52)
+	at org.hibernate.jdbc.ConnectionManager.openConnection(ConnectionManager.java:449)
+	at org.hibernate.jdbc.ConnectionManager.getConnection(ConnectionManager.java:167)
+	at org.hibernate.jdbc.JDBCContext.connection(JDBCContext.java:142)
+	at org.hibernate.transaction.JDBCTransaction.begin(JDBCTransaction.java:85)
+	at org.hibernate.impl.SessionImpl.beginTransaction(SessionImpl.java:1354)
+	at org.springframework.orm.hibernate3.HibernateTransactionManager.doBegin(HibernateTransactionManager.java:560)
+	... 70 more
+Caused by: java.sql.SQLInvalidAuthorizationSpecException: invalid authorization specification
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.JDBCUtil.sqlException(Unknown Source)
+	at org.hsqldb.jdbc.JDBCConnection.<init>(Unknown Source)
+	at org.hsqldb.jdbc.JDBCDriver.getConnection(Unknown Source)
+	at org.hsqldb.jdbc.JDBCDataSource.getConnection(Unknown Source)
+	at org.hsqldb.jdbc.JDBCDataSource.getConnection(Unknown Source)
+	at org.hibernate.connection.DatasourceConnectionProvider.getConnection(DatasourceConnectionProvider.java:92)
+	at org.hibernate.jdbc.ConnectionManager.openConnection(ConnectionManager.java:446)
+	... 75 more
+Caused by: org.hsqldb.HsqlException: invalid authorization specification
+	at org.hsqldb.error.Error.error(Unknown Source)
+	at org.hsqldb.ClientConnection.<init>(Unknown Source)
+	... 81 more
+log4j1 : 2016-08-31 10:39:22 HSQLDB Server @5cebefc6 |  |  |  | INFO  | hsqldb.db.HSQLDB5557CCCD10.ENGINE:? | - checkpointClose start
+log4j1 : 2016-08-31 10:39:22 HSQLDB Server @5cebefc6 |  |  |  | INFO  | hsqldb.db.HSQLDB5557CCCD10.ENGINE:? | - checkpointClose end
+log4j1 : 2016-08-31 10:41:56 qtp979071947-28 | 7269c047-6213-4eba-89f0-512a0c2118da-1472665316172 | 1krv9qpmwszek43kwbzw9hva0 | 226475-mrjayarajj | ERROR | org.apache.struts2.dispatcher.Dispatcher:512 | - Could not find action or result
+There is no Action mapped for action name processForward. - [unknown location]
+	at com.opensymphony.xwork2.DefaultActionProxy.prepare(DefaultActionProxy.java:186)
+	at org.apache.struts2.impl.StrutsActionProxyFactory.createActionProxy(StrutsActionProxyFactory.java:41)
+	at org.apache.struts2.dispatcher.Dispatcher.serviceAction(Dispatcher.java:494)
+	at org.apache.struts2.dispatcher.FilterDispatcher.doFilter(FilterDispatcher.java:419)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:317)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:127)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:91)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:115)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:112)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter.doFilter(RememberMeAuthenticationFilter.java:158)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:169)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:206)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:121)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:124)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:66)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:134)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:106)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.access.channel.ChannelProcessingFilter.doFilter(ChannelProcessingFilter.java:157)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:214)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:177)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:346)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:262)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at com.baseframework.web.filters.RequestLoggerFilter.doFilter(RequestLoggerFilter.java:93)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at org.apache.logging.log4j.web.Log4jServletFilter.doFilter(Log4jServletFilter.java:71)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:583)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:577)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:223)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1125)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1059)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:215)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:110)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97)
+	at org.eclipse.jetty.server.Server.handle(Server.java:497)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:311)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:248)
+	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:610)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:539)
+	at java.lang.Thread.run(Thread.java:745)
+log4j1 : 2016-08-31 10:42:09 qtp979071947-27 | 1ba8f27a-5446-4902-b4ab-db67790fe6ae-1472665329743 | 1krv9qpmwszek43kwbzw9hva0 | 226475-mrjayarajj | ERROR | org.apache.struts2.dispatcher.Dispatcher:512 | - Could not find action or result
+There is no Action mapped for action name processForward. - [unknown location]
+	at com.opensymphony.xwork2.DefaultActionProxy.prepare(DefaultActionProxy.java:186)
+	at org.apache.struts2.impl.StrutsActionProxyFactory.createActionProxy(StrutsActionProxyFactory.java:41)
+	at org.apache.struts2.dispatcher.Dispatcher.serviceAction(Dispatcher.java:494)
+	at org.apache.struts2.dispatcher.FilterDispatcher.doFilter(FilterDispatcher.java:419)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:317)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:127)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:91)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:115)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:112)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter.doFilter(RememberMeAuthenticationFilter.java:158)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:169)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:206)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:121)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:124)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:66)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:134)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:106)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.access.channel.ChannelProcessingFilter.doFilter(ChannelProcessingFilter.java:157)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:214)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:177)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:346)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:262)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at com.baseframework.web.filters.RequestLoggerFilter.doFilter(RequestLoggerFilter.java:93)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at org.apache.logging.log4j.web.Log4jServletFilter.doFilter(Log4jServletFilter.java:71)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:583)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:577)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:223)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1125)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1059)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:215)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:110)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97)
+	at org.eclipse.jetty.server.Server.handle(Server.java:497)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:311)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:248)
+	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:610)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:539)
+	at java.lang.Thread.run(Thread.java:745)
+log4j1 : 2016-08-31 10:42:17 qtp979071947-32 | fa703c8e-6337-436f-bc12-29d8c3086011-1472665337039 | 10wcor4q7ldub1avngar5mcm2r |  | ERROR | org.apache.struts2.dispatcher.Dispatcher:512 | - Could not find action or result
+There is no Action mapped for action name processForward. - [unknown location]
+	at com.opensymphony.xwork2.DefaultActionProxy.prepare(DefaultActionProxy.java:186)
+	at org.apache.struts2.impl.StrutsActionProxyFactory.createActionProxy(StrutsActionProxyFactory.java:41)
+	at org.apache.struts2.dispatcher.Dispatcher.serviceAction(Dispatcher.java:494)
+	at org.apache.struts2.dispatcher.FilterDispatcher.doFilter(FilterDispatcher.java:419)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:317)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:127)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:91)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:115)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:112)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter.doFilter(RememberMeAuthenticationFilter.java:150)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:169)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:206)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:121)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:124)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:66)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:134)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:106)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.access.channel.ChannelProcessingFilter.doFilter(ChannelProcessingFilter.java:157)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:214)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:177)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:346)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:262)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at com.baseframework.web.filters.RequestLoggerFilter.doFilter(RequestLoggerFilter.java:93)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at org.apache.logging.log4j.web.Log4jServletFilter.doFilter(Log4jServletFilter.java:71)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:583)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:577)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:223)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1125)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1059)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:215)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:110)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97)
+	at org.eclipse.jetty.server.Server.handle(Server.java:497)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:311)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:248)
+	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:610)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:539)
+	at java.lang.Thread.run(Thread.java:745)
+log4j1 : 2016-08-31 10:42:30 qtp979071947-32 | b3589d3d-7dc8-4547-a543-c7b35da4a6f1-1472665350006 | 10wcor4q7ldub1avngar5mcm2r |  | ERROR | org.apache.struts2.dispatcher.Dispatcher:512 | - Could not find action or result
+There is no Action mapped for action name processForward. - [unknown location]
+	at com.opensymphony.xwork2.DefaultActionProxy.prepare(DefaultActionProxy.java:186)
+	at org.apache.struts2.impl.StrutsActionProxyFactory.createActionProxy(StrutsActionProxyFactory.java:41)
+	at org.apache.struts2.dispatcher.Dispatcher.serviceAction(Dispatcher.java:494)
+	at org.apache.struts2.dispatcher.FilterDispatcher.doFilter(FilterDispatcher.java:419)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:317)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:127)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:91)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:115)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:112)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter.doFilter(RememberMeAuthenticationFilter.java:150)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:169)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:206)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:121)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:124)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:66)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:134)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:106)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.access.channel.ChannelProcessingFilter.doFilter(ChannelProcessingFilter.java:157)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:331)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:214)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:177)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:346)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:262)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at com.baseframework.web.filters.RequestLoggerFilter.doFilter(RequestLoggerFilter.java:93)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at org.apache.logging.log4j.web.Log4jServletFilter.doFilter(Log4jServletFilter.java:71)
+	at org.eclipse.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1650)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:583)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:143)
+	at org.eclipse.jetty.security.SecurityHandler.handle(SecurityHandler.java:577)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:223)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1125)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:515)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:185)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1059)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:215)
+	at org.eclipse.jetty.server.handler.HandlerCollection.handle(HandlerCollection.java:110)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:97)
+	at org.eclipse.jetty.server.Server.handle(Server.java:497)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:311)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:248)
+	at org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:540)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:610)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:539)
+	at java.lang.Thread.run(Thread.java:745)
+log4j1 : 2016-08-31 10:44:13 HSQLDB Server @5b8a4788 |  |  |  | INFO  | hsqldb.db.HSQLDB5557CCCD10.ENGINE:? | - checkpointClose start
+log4j1 : 2016-08-31 10:44:13 HSQLDB Server @5b8a4788 |  |  |  | INFO  | hsqldb.db.HSQLDB5557CCCD10.ENGINE:? | - checkpointClose end
+log4j1 : 2016-08-31 10:50:30 main |  |  |  | DEBUG | org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource:96 | - Adding transactional method [insert*] with attribute [PROPAGATION_REQUIRED,ISOLATION_DEFAULT]
+log4j1 : 2016-08-31 10:50:30 main |  |  |  | DEBUG | org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource:96 | - Adding transactional method [select*] with attribute [PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly]
+log4j1 : 2016-08-31 10:50:30 main |  |  |  | DEBUG | org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource:96 | - Adding transactional method [delete*] with attribute [PROPAGATION_REQUIRED,ISOLATION_DEFAULT]
+log4j1 : 2016-08-31 10:50:30 main |  |  |  | DEBUG | org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource:96 | - Adding transactional method [update*] with attribute [PROPAGATION_REQUIRED,ISOLATION_DEFAULT]
+log4j1 : 2016-08-31 10:50:31 HSQLDB Server @54ff1659 |  |  |  | INFO  | hsqldb.db.HSQLDB5557CCCD10.ENGINE:? | - checkpointClose start
+log4j1 : 2016-08-31 10:50:31 HSQLDB Server @54ff1659 |  |  |  | INFO  | hsqldb.db.HSQLDB5557CCCD10.ENGINE:? | - checkpointClose end
+log4j1 : 2016-08-31 10:50:58 qtp979071947-35 | a8bfa215-3c2c-40d9-9505-5baa65d6671c-1472665857924 | 1bavd5n0fs00kk509ub4w7fxo |  | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@1530a45] for key [org.hibernate.impl.SessionFactoryImpl@33a323fd] to thread [qtp979071947-35]
+log4j1 : 2016-08-31 10:50:58 qtp979071947-35 | a8bfa215-3c2c-40d9-9505-5baa65d6671c-1472665857924 | 1bavd5n0fs00kk509ub4w7fxo |  | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 10:50:58 qtp979071947-35 | a8bfa215-3c2c-40d9-9505-5baa65d6671c-1472665857924 | 1bavd5n0fs00kk509ub4w7fxo |  | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectUserByUserName]
+log4j1 : 2016-08-31 10:50:58 qtp979071947-35 | a8bfa215-3c2c-40d9-9505-5baa65d6671c-1472665857924 | 1bavd5n0fs00kk509ub4w7fxo |  | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@1530a45] for key [org.hibernate.impl.SessionFactoryImpl@33a323fd] bound to thread [qtp979071947-35]
+log4j1 : 2016-08-31 10:50:58 qtp979071947-35 | a8bfa215-3c2c-40d9-9505-5baa65d6671c-1472665857924 | 1bavd5n0fs00kk509ub4w7fxo |  | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:483 | - Completing transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectUserByUserName]
+log4j1 : 2016-08-31 10:50:58 qtp979071947-35 | a8bfa215-3c2c-40d9-9505-5baa65d6671c-1472665857924 | 1bavd5n0fs00kk509ub4w7fxo |  | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 10:50:58 qtp979071947-35 | a8bfa215-3c2c-40d9-9505-5baa65d6671c-1472665857924 | 1bavd5n0fs00kk509ub4w7fxo |  | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@1530a45] for key [org.hibernate.impl.SessionFactoryImpl@33a323fd] from thread [qtp979071947-35]
+log4j1 : 2016-08-31 10:52:06 qtp979071947-31 | 9066c3f3-6963-4bbb-b913-b9cbcdacc5d5-1472665926340 | 1bavd5n0fs00kk509ub4w7fxo | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@5daf884a] for key [org.hibernate.impl.SessionFactoryImpl@33a323fd] to thread [qtp979071947-31]
+log4j1 : 2016-08-31 10:52:06 qtp979071947-31 | 9066c3f3-6963-4bbb-b913-b9cbcdacc5d5-1472665926340 | 1bavd5n0fs00kk509ub4w7fxo | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 10:52:06 qtp979071947-31 | 9066c3f3-6963-4bbb-b913-b9cbcdacc5d5-1472665926340 | 1bavd5n0fs00kk509ub4w7fxo | 226475-mrjayarajj | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.access.RoleDAOImpl.selectAllRole]
+log4j1 : 2016-08-31 10:52:06 qtp979071947-31 | 9066c3f3-6963-4bbb-b913-b9cbcdacc5d5-1472665926340 | 1bavd5n0fs00kk509ub4w7fxo | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@5daf884a] for key [org.hibernate.impl.SessionFactoryImpl@33a323fd] bound to thread [qtp979071947-31]
+log4j1 : 2016-08-31 10:52:06 qtp979071947-31 | 9066c3f3-6963-4bbb-b913-b9cbcdacc5d5-1472665926340 | 1bavd5n0fs00kk509ub4w7fxo | 226475-mrjayarajj | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:483 | - Completing transaction for [com.baseframework.dao.security.access.RoleDAOImpl.selectAllRole]
+log4j1 : 2016-08-31 10:52:06 qtp979071947-31 | 9066c3f3-6963-4bbb-b913-b9cbcdacc5d5-1472665926340 | 1bavd5n0fs00kk509ub4w7fxo | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 10:52:06 qtp979071947-31 | 9066c3f3-6963-4bbb-b913-b9cbcdacc5d5-1472665926340 | 1bavd5n0fs00kk509ub4w7fxo | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@5daf884a] for key [org.hibernate.impl.SessionFactoryImpl@33a323fd] from thread [qtp979071947-31]
+log4j1 : 2016-08-31 10:52:06 qtp979071947-31 | 9066c3f3-6963-4bbb-b913-b9cbcdacc5d5-1472665926340 | 1bavd5n0fs00kk509ub4w7fxo | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@744abf] for key [org.hibernate.impl.SessionFactoryImpl@33a323fd] to thread [qtp979071947-31]
+log4j1 : 2016-08-31 10:52:06 qtp979071947-31 | 9066c3f3-6963-4bbb-b913-b9cbcdacc5d5-1472665926340 | 1bavd5n0fs00kk509ub4w7fxo | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 10:52:06 qtp979071947-31 | 9066c3f3-6963-4bbb-b913-b9cbcdacc5d5-1472665926340 | 1bavd5n0fs00kk509ub4w7fxo | 226475-mrjayarajj | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectAllUser]
+log4j1 : 2016-08-31 10:52:06 qtp979071947-31 | 9066c3f3-6963-4bbb-b913-b9cbcdacc5d5-1472665926340 | 1bavd5n0fs00kk509ub4w7fxo | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@744abf] for key [org.hibernate.impl.SessionFactoryImpl@33a323fd] bound to thread [qtp979071947-31]
+log4j1 : 2016-08-31 10:52:06 qtp979071947-31 | 9066c3f3-6963-4bbb-b913-b9cbcdacc5d5-1472665926340 | 1bavd5n0fs00kk509ub4w7fxo | 226475-mrjayarajj | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:483 | - Completing transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectAllUser]
+log4j1 : 2016-08-31 10:52:06 qtp979071947-31 | 9066c3f3-6963-4bbb-b913-b9cbcdacc5d5-1472665926340 | 1bavd5n0fs00kk509ub4w7fxo | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 10:52:06 qtp979071947-31 | 9066c3f3-6963-4bbb-b913-b9cbcdacc5d5-1472665926340 | 1bavd5n0fs00kk509ub4w7fxo | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@744abf] for key [org.hibernate.impl.SessionFactoryImpl@33a323fd] from thread [qtp979071947-31]
+log4j1 : 2016-08-31 10:54:30 main |  |  |  | DEBUG | org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource:96 | - Adding transactional method [insert*] with attribute [PROPAGATION_REQUIRED,ISOLATION_DEFAULT]
+log4j1 : 2016-08-31 10:54:30 main |  |  |  | DEBUG | org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource:96 | - Adding transactional method [select*] with attribute [PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly]
+log4j1 : 2016-08-31 10:54:30 main |  |  |  | DEBUG | org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource:96 | - Adding transactional method [delete*] with attribute [PROPAGATION_REQUIRED,ISOLATION_DEFAULT]
+log4j1 : 2016-08-31 10:54:30 main |  |  |  | DEBUG | org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource:96 | - Adding transactional method [update*] with attribute [PROPAGATION_REQUIRED,ISOLATION_DEFAULT]
+log4j1 : 2016-08-31 10:54:32 HSQLDB Server @b8087c2 |  |  |  | INFO  | hsqldb.db.HSQLDB5557CCCD10.ENGINE:? | - checkpointClose start
+log4j1 : 2016-08-31 10:54:32 HSQLDB Server @b8087c2 |  |  |  | INFO  | hsqldb.db.HSQLDB5557CCCD10.ENGINE:? | - checkpointClose end
+log4j1 : 2016-08-31 10:55:09 qtp341552838-35 | ddaedc69-e04c-4c29-b1cb-8d625eabfebd-1472666109261 | 8m4laaupozc7c903e0eag40g |  | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@6d4bdf2b] for key [org.hibernate.impl.SessionFactoryImpl@2e259448] to thread [qtp341552838-35]
+log4j1 : 2016-08-31 10:55:09 qtp341552838-35 | ddaedc69-e04c-4c29-b1cb-8d625eabfebd-1472666109261 | 8m4laaupozc7c903e0eag40g |  | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 10:55:09 qtp341552838-35 | ddaedc69-e04c-4c29-b1cb-8d625eabfebd-1472666109261 | 8m4laaupozc7c903e0eag40g |  | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectUserByUserName]
+log4j1 : 2016-08-31 10:55:09 qtp341552838-35 | ddaedc69-e04c-4c29-b1cb-8d625eabfebd-1472666109261 | 8m4laaupozc7c903e0eag40g |  | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@6d4bdf2b] for key [org.hibernate.impl.SessionFactoryImpl@2e259448] bound to thread [qtp341552838-35]
+log4j1 : 2016-08-31 10:55:09 qtp341552838-35 | ddaedc69-e04c-4c29-b1cb-8d625eabfebd-1472666109261 | 8m4laaupozc7c903e0eag40g |  | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:483 | - Completing transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectUserByUserName]
+log4j1 : 2016-08-31 10:55:09 qtp341552838-35 | ddaedc69-e04c-4c29-b1cb-8d625eabfebd-1472666109261 | 8m4laaupozc7c903e0eag40g |  | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 10:55:09 qtp341552838-35 | ddaedc69-e04c-4c29-b1cb-8d625eabfebd-1472666109261 | 8m4laaupozc7c903e0eag40g |  | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@6d4bdf2b] for key [org.hibernate.impl.SessionFactoryImpl@2e259448] from thread [qtp341552838-35]
+log4j1 : 2016-08-31 10:55:11 qtp341552838-31 | 9e2d25ee-f7ea-415f-817f-a0e85a336d56-1472666111319 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@46d653be] for key [org.hibernate.impl.SessionFactoryImpl@2e259448] to thread [qtp341552838-31]
+log4j1 : 2016-08-31 10:55:11 qtp341552838-31 | 9e2d25ee-f7ea-415f-817f-a0e85a336d56-1472666111319 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 10:55:11 qtp341552838-31 | 9e2d25ee-f7ea-415f-817f-a0e85a336d56-1472666111319 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.access.RoleDAOImpl.selectAllRole]
+log4j1 : 2016-08-31 10:55:11 qtp341552838-31 | 9e2d25ee-f7ea-415f-817f-a0e85a336d56-1472666111319 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@46d653be] for key [org.hibernate.impl.SessionFactoryImpl@2e259448] bound to thread [qtp341552838-31]
+log4j1 : 2016-08-31 10:55:11 qtp341552838-31 | 9e2d25ee-f7ea-415f-817f-a0e85a336d56-1472666111319 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:483 | - Completing transaction for [com.baseframework.dao.security.access.RoleDAOImpl.selectAllRole]
+log4j1 : 2016-08-31 10:55:11 qtp341552838-31 | 9e2d25ee-f7ea-415f-817f-a0e85a336d56-1472666111319 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 10:55:11 qtp341552838-31 | 9e2d25ee-f7ea-415f-817f-a0e85a336d56-1472666111319 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@46d653be] for key [org.hibernate.impl.SessionFactoryImpl@2e259448] from thread [qtp341552838-31]
+log4j1 : 2016-08-31 10:55:11 qtp341552838-31 | 9e2d25ee-f7ea-415f-817f-a0e85a336d56-1472666111319 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@2f2f133a] for key [org.hibernate.impl.SessionFactoryImpl@2e259448] to thread [qtp341552838-31]
+log4j1 : 2016-08-31 10:55:11 qtp341552838-31 | 9e2d25ee-f7ea-415f-817f-a0e85a336d56-1472666111319 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 10:55:11 qtp341552838-31 | 9e2d25ee-f7ea-415f-817f-a0e85a336d56-1472666111319 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectAllUser]
+log4j1 : 2016-08-31 10:55:11 qtp341552838-31 | 9e2d25ee-f7ea-415f-817f-a0e85a336d56-1472666111319 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@2f2f133a] for key [org.hibernate.impl.SessionFactoryImpl@2e259448] bound to thread [qtp341552838-31]
+log4j1 : 2016-08-31 10:55:11 qtp341552838-31 | 9e2d25ee-f7ea-415f-817f-a0e85a336d56-1472666111319 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:483 | - Completing transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectAllUser]
+log4j1 : 2016-08-31 10:55:11 qtp341552838-31 | 9e2d25ee-f7ea-415f-817f-a0e85a336d56-1472666111319 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 10:55:11 qtp341552838-31 | 9e2d25ee-f7ea-415f-817f-a0e85a336d56-1472666111319 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@2f2f133a] for key [org.hibernate.impl.SessionFactoryImpl@2e259448] from thread [qtp341552838-31]
+log4j1 : 2016-08-31 10:55:18 qtp341552838-33 | 62aff01d-eaa7-4562-b7fc-5b3d96935441-1472666118701 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@384b5660] for key [org.hibernate.impl.SessionFactoryImpl@2e259448] to thread [qtp341552838-33]
+log4j1 : 2016-08-31 10:55:18 qtp341552838-33 | 62aff01d-eaa7-4562-b7fc-5b3d96935441-1472666118701 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 10:55:18 qtp341552838-33 | 62aff01d-eaa7-4562-b7fc-5b3d96935441-1472666118701 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.access.RoleDAOImpl.selectAllRole]
+log4j1 : 2016-08-31 10:55:18 qtp341552838-33 | 62aff01d-eaa7-4562-b7fc-5b3d96935441-1472666118701 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@384b5660] for key [org.hibernate.impl.SessionFactoryImpl@2e259448] bound to thread [qtp341552838-33]
+log4j1 : 2016-08-31 10:55:18 qtp341552838-33 | 62aff01d-eaa7-4562-b7fc-5b3d96935441-1472666118701 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:483 | - Completing transaction for [com.baseframework.dao.security.access.RoleDAOImpl.selectAllRole]
+log4j1 : 2016-08-31 10:55:18 qtp341552838-33 | 62aff01d-eaa7-4562-b7fc-5b3d96935441-1472666118701 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 10:55:18 qtp341552838-33 | 62aff01d-eaa7-4562-b7fc-5b3d96935441-1472666118701 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@384b5660] for key [org.hibernate.impl.SessionFactoryImpl@2e259448] from thread [qtp341552838-33]
+log4j1 : 2016-08-31 10:55:18 qtp341552838-33 | 62aff01d-eaa7-4562-b7fc-5b3d96935441-1472666118701 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@6a58cb43] for key [org.hibernate.impl.SessionFactoryImpl@2e259448] to thread [qtp341552838-33]
+log4j1 : 2016-08-31 10:55:18 qtp341552838-33 | 62aff01d-eaa7-4562-b7fc-5b3d96935441-1472666118701 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 10:55:18 qtp341552838-33 | 62aff01d-eaa7-4562-b7fc-5b3d96935441-1472666118701 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectAllUser]
+log4j1 : 2016-08-31 10:55:18 qtp341552838-33 | 62aff01d-eaa7-4562-b7fc-5b3d96935441-1472666118701 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@6a58cb43] for key [org.hibernate.impl.SessionFactoryImpl@2e259448] bound to thread [qtp341552838-33]
+log4j1 : 2016-08-31 10:55:18 qtp341552838-33 | 62aff01d-eaa7-4562-b7fc-5b3d96935441-1472666118701 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:483 | - Completing transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectAllUser]
+log4j1 : 2016-08-31 10:55:18 qtp341552838-33 | 62aff01d-eaa7-4562-b7fc-5b3d96935441-1472666118701 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 10:55:18 qtp341552838-33 | 62aff01d-eaa7-4562-b7fc-5b3d96935441-1472666118701 | 8m4laaupozc7c903e0eag40g | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@6a58cb43] for key [org.hibernate.impl.SessionFactoryImpl@2e259448] from thread [qtp341552838-33]
+log4j1 : 2016-08-31 10:59:23 main |  |  |  | DEBUG | org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource:96 | - Adding transactional method [insert*] with attribute [PROPAGATION_REQUIRED,ISOLATION_DEFAULT]
+log4j1 : 2016-08-31 10:59:23 main |  |  |  | DEBUG | org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource:96 | - Adding transactional method [select*] with attribute [PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly]
+log4j1 : 2016-08-31 10:59:23 main |  |  |  | DEBUG | org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource:96 | - Adding transactional method [delete*] with attribute [PROPAGATION_REQUIRED,ISOLATION_DEFAULT]
+log4j1 : 2016-08-31 10:59:23 main |  |  |  | DEBUG | org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource:96 | - Adding transactional method [update*] with attribute [PROPAGATION_REQUIRED,ISOLATION_DEFAULT]
+log4j1 : 2016-08-31 10:59:24 HSQLDB Server @c32ba6a |  |  |  | INFO  | hsqldb.db.HSQLDB5557CCCD10.ENGINE:? | - checkpointClose start
+log4j1 : 2016-08-31 10:59:24 HSQLDB Server @c32ba6a |  |  |  | INFO  | hsqldb.db.HSQLDB5557CCCD10.ENGINE:? | - checkpointClose end
+log4j1 : 2016-08-31 10:59:42 qtp278465074-32 | 1747d688-a45e-42b2-8643-68c0b4bcfee4-1472666382740 | cs35966htzy0o8jf3otwregj |  | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@306c53] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] to thread [qtp278465074-32]
+log4j1 : 2016-08-31 10:59:42 qtp278465074-32 | 1747d688-a45e-42b2-8643-68c0b4bcfee4-1472666382740 | cs35966htzy0o8jf3otwregj |  | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 10:59:42 qtp278465074-32 | 1747d688-a45e-42b2-8643-68c0b4bcfee4-1472666382740 | cs35966htzy0o8jf3otwregj |  | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectUserByUserName]
+log4j1 : 2016-08-31 10:59:42 qtp278465074-32 | 1747d688-a45e-42b2-8643-68c0b4bcfee4-1472666382740 | cs35966htzy0o8jf3otwregj |  | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@306c53] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] bound to thread [qtp278465074-32]
+log4j1 : 2016-08-31 10:59:43 qtp278465074-32 | 1747d688-a45e-42b2-8643-68c0b4bcfee4-1472666382740 | cs35966htzy0o8jf3otwregj |  | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:483 | - Completing transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectUserByUserName]
+log4j1 : 2016-08-31 10:59:43 qtp278465074-32 | 1747d688-a45e-42b2-8643-68c0b4bcfee4-1472666382740 | cs35966htzy0o8jf3otwregj |  | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 10:59:43 qtp278465074-32 | 1747d688-a45e-42b2-8643-68c0b4bcfee4-1472666382740 | cs35966htzy0o8jf3otwregj |  | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@306c53] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] from thread [qtp278465074-32]
+log4j1 : 2016-08-31 10:59:54 qtp278465074-30 | c970d6eb-6774-4144-8cfe-beedbd8b3eab-1472666394136 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@1c15adc0] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] to thread [qtp278465074-30]
+log4j1 : 2016-08-31 10:59:54 qtp278465074-30 | c970d6eb-6774-4144-8cfe-beedbd8b3eab-1472666394136 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 10:59:54 qtp278465074-30 | c970d6eb-6774-4144-8cfe-beedbd8b3eab-1472666394136 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.access.RoleDAOImpl.selectAllRole]
+log4j1 : 2016-08-31 10:59:54 qtp278465074-30 | c970d6eb-6774-4144-8cfe-beedbd8b3eab-1472666394136 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@1c15adc0] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] bound to thread [qtp278465074-30]
+log4j1 : 2016-08-31 10:59:54 qtp278465074-30 | c970d6eb-6774-4144-8cfe-beedbd8b3eab-1472666394136 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:483 | - Completing transaction for [com.baseframework.dao.security.access.RoleDAOImpl.selectAllRole]
+log4j1 : 2016-08-31 10:59:54 qtp278465074-30 | c970d6eb-6774-4144-8cfe-beedbd8b3eab-1472666394136 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 10:59:54 qtp278465074-30 | c970d6eb-6774-4144-8cfe-beedbd8b3eab-1472666394136 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@1c15adc0] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] from thread [qtp278465074-30]
+log4j1 : 2016-08-31 10:59:54 qtp278465074-30 | c970d6eb-6774-4144-8cfe-beedbd8b3eab-1472666394136 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@7ae920c] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] to thread [qtp278465074-30]
+log4j1 : 2016-08-31 10:59:54 qtp278465074-30 | c970d6eb-6774-4144-8cfe-beedbd8b3eab-1472666394136 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 10:59:54 qtp278465074-30 | c970d6eb-6774-4144-8cfe-beedbd8b3eab-1472666394136 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectAllUser]
+log4j1 : 2016-08-31 10:59:54 qtp278465074-30 | c970d6eb-6774-4144-8cfe-beedbd8b3eab-1472666394136 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@7ae920c] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] bound to thread [qtp278465074-30]
+log4j1 : 2016-08-31 10:59:54 qtp278465074-30 | c970d6eb-6774-4144-8cfe-beedbd8b3eab-1472666394136 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:483 | - Completing transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectAllUser]
+log4j1 : 2016-08-31 10:59:54 qtp278465074-30 | c970d6eb-6774-4144-8cfe-beedbd8b3eab-1472666394136 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 10:59:54 qtp278465074-30 | c970d6eb-6774-4144-8cfe-beedbd8b3eab-1472666394136 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@7ae920c] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] from thread [qtp278465074-30]
+log4j1 : 2016-08-31 10:59:59 qtp278465074-27 | e177042a-fae1-4a7b-a889-ea9c748f3890-1472666399779 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@b7694bc] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] to thread [qtp278465074-27]
+log4j1 : 2016-08-31 10:59:59 qtp278465074-27 | e177042a-fae1-4a7b-a889-ea9c748f3890-1472666399779 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 10:59:59 qtp278465074-27 | e177042a-fae1-4a7b-a889-ea9c748f3890-1472666399779 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.access.RoleDAOImpl.selectAllRole]
+log4j1 : 2016-08-31 10:59:59 qtp278465074-27 | e177042a-fae1-4a7b-a889-ea9c748f3890-1472666399779 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@b7694bc] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] bound to thread [qtp278465074-27]
+log4j1 : 2016-08-31 10:59:59 qtp278465074-27 | e177042a-fae1-4a7b-a889-ea9c748f3890-1472666399779 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:483 | - Completing transaction for [com.baseframework.dao.security.access.RoleDAOImpl.selectAllRole]
+log4j1 : 2016-08-31 10:59:59 qtp278465074-27 | e177042a-fae1-4a7b-a889-ea9c748f3890-1472666399779 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 10:59:59 qtp278465074-27 | e177042a-fae1-4a7b-a889-ea9c748f3890-1472666399779 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@b7694bc] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] from thread [qtp278465074-27]
+log4j1 : 2016-08-31 11:00:00 qtp278465074-27 | e177042a-fae1-4a7b-a889-ea9c748f3890-1472666399779 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@62e83125] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] to thread [qtp278465074-27]
+log4j1 : 2016-08-31 11:00:00 qtp278465074-27 | e177042a-fae1-4a7b-a889-ea9c748f3890-1472666399779 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 11:00:00 qtp278465074-27 | e177042a-fae1-4a7b-a889-ea9c748f3890-1472666399779 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectAllUser]
+log4j1 : 2016-08-31 11:00:00 qtp278465074-27 | e177042a-fae1-4a7b-a889-ea9c748f3890-1472666399779 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@62e83125] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] bound to thread [qtp278465074-27]
+log4j1 : 2016-08-31 11:00:00 qtp278465074-27 | e177042a-fae1-4a7b-a889-ea9c748f3890-1472666399779 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:483 | - Completing transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectAllUser]
+log4j1 : 2016-08-31 11:00:00 qtp278465074-27 | e177042a-fae1-4a7b-a889-ea9c748f3890-1472666399779 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 11:00:00 qtp278465074-27 | e177042a-fae1-4a7b-a889-ea9c748f3890-1472666399779 | cs35966htzy0o8jf3otwregj | 226475-mrjayarajj | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@62e83125] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] from thread [qtp278465074-27]
+log4j1 : 2016-08-31 11:01:53 qtp278465074-35 | 84376b40-1817-4d48-a61f-4ce93012d0c4-1472666513280 | 1s3c0zfj87qs51av5ln24w1yn8 |  | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@71ed7524] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] to thread [qtp278465074-35]
+log4j1 : 2016-08-31 11:01:53 qtp278465074-35 | 84376b40-1817-4d48-a61f-4ce93012d0c4-1472666513280 | 1s3c0zfj87qs51av5ln24w1yn8 |  | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 11:01:53 qtp278465074-35 | 84376b40-1817-4d48-a61f-4ce93012d0c4-1472666513280 | 1s3c0zfj87qs51av5ln24w1yn8 |  | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectUserByUserName]
+log4j1 : 2016-08-31 11:01:53 qtp278465074-35 | 84376b40-1817-4d48-a61f-4ce93012d0c4-1472666513280 | 1s3c0zfj87qs51av5ln24w1yn8 |  | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@71ed7524] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] bound to thread [qtp278465074-35]
+log4j1 : 2016-08-31 11:01:53 qtp278465074-35 | 84376b40-1817-4d48-a61f-4ce93012d0c4-1472666513280 | 1s3c0zfj87qs51av5ln24w1yn8 |  | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:483 | - Completing transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectUserByUserName]
+log4j1 : 2016-08-31 11:01:53 qtp278465074-35 | 84376b40-1817-4d48-a61f-4ce93012d0c4-1472666513280 | 1s3c0zfj87qs51av5ln24w1yn8 |  | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 11:01:53 qtp278465074-35 | 84376b40-1817-4d48-a61f-4ce93012d0c4-1472666513280 | 1s3c0zfj87qs51av5ln24w1yn8 |  | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@71ed7524] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] from thread [qtp278465074-35]
+log4j1 : 2016-08-31 11:01:57 qtp278465074-27 | f2b1c37f-f2a2-4225-b954-505985596a02-1472666517160 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@24312155] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] to thread [qtp278465074-27]
+log4j1 : 2016-08-31 11:01:57 qtp278465074-27 | f2b1c37f-f2a2-4225-b954-505985596a02-1472666517160 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 11:01:57 qtp278465074-27 | f2b1c37f-f2a2-4225-b954-505985596a02-1472666517160 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.access.RoleDAOImpl.selectAllRole]
+log4j1 : 2016-08-31 11:01:57 qtp278465074-27 | f2b1c37f-f2a2-4225-b954-505985596a02-1472666517160 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@24312155] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] bound to thread [qtp278465074-27]
+log4j1 : 2016-08-31 11:01:57 qtp278465074-27 | f2b1c37f-f2a2-4225-b954-505985596a02-1472666517160 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:483 | - Completing transaction for [com.baseframework.dao.security.access.RoleDAOImpl.selectAllRole]
+log4j1 : 2016-08-31 11:01:57 qtp278465074-27 | f2b1c37f-f2a2-4225-b954-505985596a02-1472666517160 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 11:01:57 qtp278465074-27 | f2b1c37f-f2a2-4225-b954-505985596a02-1472666517160 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@24312155] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] from thread [qtp278465074-27]
+log4j1 : 2016-08-31 11:01:57 qtp278465074-27 | f2b1c37f-f2a2-4225-b954-505985596a02-1472666517160 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@1dfd816f] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] to thread [qtp278465074-27]
+log4j1 : 2016-08-31 11:01:57 qtp278465074-27 | f2b1c37f-f2a2-4225-b954-505985596a02-1472666517160 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 11:01:57 qtp278465074-27 | f2b1c37f-f2a2-4225-b954-505985596a02-1472666517160 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectAllUser]
+log4j1 : 2016-08-31 11:01:57 qtp278465074-27 | f2b1c37f-f2a2-4225-b954-505985596a02-1472666517160 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@1dfd816f] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] bound to thread [qtp278465074-27]
+log4j1 : 2016-08-31 11:01:57 qtp278465074-27 | f2b1c37f-f2a2-4225-b954-505985596a02-1472666517160 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:483 | - Completing transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectAllUser]
+log4j1 : 2016-08-31 11:01:57 qtp278465074-27 | f2b1c37f-f2a2-4225-b954-505985596a02-1472666517160 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 11:01:57 qtp278465074-27 | f2b1c37f-f2a2-4225-b954-505985596a02-1472666517160 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@1dfd816f] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] from thread [qtp278465074-27]
+log4j1 : 2016-08-31 11:02:34 qtp278465074-35 | 4bf409ca-29f0-412f-a0a0-f296543a9fbe-1472666554123 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@38341cd6] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] to thread [qtp278465074-35]
+log4j1 : 2016-08-31 11:02:34 qtp278465074-35 | 4bf409ca-29f0-412f-a0a0-f296543a9fbe-1472666554123 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 11:02:34 qtp278465074-35 | 4bf409ca-29f0-412f-a0a0-f296543a9fbe-1472666554123 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.insertUser]
+log4j1 : 2016-08-31 11:02:34 qtp278465074-35 | 4bf409ca-29f0-412f-a0a0-f296543a9fbe-1472666554123 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@38341cd6] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] bound to thread [qtp278465074-35]
+log4j1 : 2016-08-31 11:02:34 qtp278465074-35 | 4bf409ca-29f0-412f-a0a0-f296543a9fbe-1472666554123 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:498 | - Completing transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.insertUser] after exception: org.hibernate.exception.ConstraintViolationException: could not insert: [com.baseframework.domain.security.core.userdetails.User]
+log4j1 : 2016-08-31 11:02:34 qtp278465074-35 | 4bf409ca-29f0-412f-a0a0-f296543a9fbe-1472666554123 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.RuleBasedTransactionAttribute:131 | - Applying rules to determine whether transaction should rollback on org.hibernate.exception.ConstraintViolationException: could not insert: [com.baseframework.domain.security.core.userdetails.User]
+log4j1 : 2016-08-31 11:02:34 qtp278465074-35 | 4bf409ca-29f0-412f-a0a0-f296543a9fbe-1472666554123 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.RuleBasedTransactionAttribute:148 | - Winning rollback rule is: null
+log4j1 : 2016-08-31 11:02:34 qtp278465074-35 | 4bf409ca-29f0-412f-a0a0-f296543a9fbe-1472666554123 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.RuleBasedTransactionAttribute:153 | - No relevant rollback rule found: applying default rules
+log4j1 : 2016-08-31 11:02:34 qtp278465074-35 | 4bf409ca-29f0-412f-a0a0-f296543a9fbe-1472666554123 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 11:02:34 qtp278465074-35 | 4bf409ca-29f0-412f-a0a0-f296543a9fbe-1472666554123 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@38341cd6] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] from thread [qtp278465074-35]
+log4j1 : 2016-08-31 11:03:13 qtp278465074-30 | 043f1003-12ad-4007-98d9-84cc65a2e87f-1472666593322 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@2b0eaaee] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] to thread [qtp278465074-30]
+log4j1 : 2016-08-31 11:03:13 qtp278465074-30 | 043f1003-12ad-4007-98d9-84cc65a2e87f-1472666593322 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 11:03:13 qtp278465074-30 | 043f1003-12ad-4007-98d9-84cc65a2e87f-1472666593322 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.insertUser]
+log4j1 : 2016-08-31 11:03:13 qtp278465074-30 | 043f1003-12ad-4007-98d9-84cc65a2e87f-1472666593322 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@2b0eaaee] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] bound to thread [qtp278465074-30]
+log4j1 : 2016-08-31 11:03:13 qtp278465074-30 | 043f1003-12ad-4007-98d9-84cc65a2e87f-1472666593322 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:498 | - Completing transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.insertUser] after exception: org.hibernate.exception.ConstraintViolationException: could not insert: [com.baseframework.domain.security.core.userdetails.User]
+log4j1 : 2016-08-31 11:03:13 qtp278465074-30 | 043f1003-12ad-4007-98d9-84cc65a2e87f-1472666593322 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.RuleBasedTransactionAttribute:131 | - Applying rules to determine whether transaction should rollback on org.hibernate.exception.ConstraintViolationException: could not insert: [com.baseframework.domain.security.core.userdetails.User]
+log4j1 : 2016-08-31 11:03:13 qtp278465074-30 | 043f1003-12ad-4007-98d9-84cc65a2e87f-1472666593322 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.RuleBasedTransactionAttribute:148 | - Winning rollback rule is: null
+log4j1 : 2016-08-31 11:03:13 qtp278465074-30 | 043f1003-12ad-4007-98d9-84cc65a2e87f-1472666593322 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.RuleBasedTransactionAttribute:153 | - No relevant rollback rule found: applying default rules
+log4j1 : 2016-08-31 11:03:13 qtp278465074-30 | 043f1003-12ad-4007-98d9-84cc65a2e87f-1472666593322 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 11:03:13 qtp278465074-30 | 043f1003-12ad-4007-98d9-84cc65a2e87f-1472666593322 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@2b0eaaee] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] from thread [qtp278465074-30]
+log4j1 : 2016-08-31 11:07:57 qtp278465074-30 | 639645b3-c526-430c-82ce-45669bcd60b4-1472666877708 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@14b5704a] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] to thread [qtp278465074-30]
+log4j1 : 2016-08-31 11:07:57 qtp278465074-30 | 639645b3-c526-430c-82ce-45669bcd60b4-1472666877708 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 11:07:57 qtp278465074-30 | 639645b3-c526-430c-82ce-45669bcd60b4-1472666877708 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.access.RoleDAOImpl.selectAllRole]
+log4j1 : 2016-08-31 11:07:57 qtp278465074-30 | 639645b3-c526-430c-82ce-45669bcd60b4-1472666877708 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@14b5704a] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] bound to thread [qtp278465074-30]
+log4j1 : 2016-08-31 11:07:57 qtp278465074-30 | 639645b3-c526-430c-82ce-45669bcd60b4-1472666877708 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:483 | - Completing transaction for [com.baseframework.dao.security.access.RoleDAOImpl.selectAllRole]
+log4j1 : 2016-08-31 11:07:57 qtp278465074-30 | 639645b3-c526-430c-82ce-45669bcd60b4-1472666877708 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 11:07:57 qtp278465074-30 | 639645b3-c526-430c-82ce-45669bcd60b4-1472666877708 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@14b5704a] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] from thread [qtp278465074-30]
+log4j1 : 2016-08-31 11:07:57 qtp278465074-30 | 639645b3-c526-430c-82ce-45669bcd60b4-1472666877708 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@531f19f6] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] to thread [qtp278465074-30]
+log4j1 : 2016-08-31 11:07:57 qtp278465074-30 | 639645b3-c526-430c-82ce-45669bcd60b4-1472666877708 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 11:07:57 qtp278465074-30 | 639645b3-c526-430c-82ce-45669bcd60b4-1472666877708 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectAllUser]
+log4j1 : 2016-08-31 11:07:57 qtp278465074-30 | 639645b3-c526-430c-82ce-45669bcd60b4-1472666877708 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@531f19f6] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] bound to thread [qtp278465074-30]
+log4j1 : 2016-08-31 11:07:57 qtp278465074-30 | 639645b3-c526-430c-82ce-45669bcd60b4-1472666877708 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:483 | - Completing transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectAllUser]
+log4j1 : 2016-08-31 11:07:57 qtp278465074-30 | 639645b3-c526-430c-82ce-45669bcd60b4-1472666877708 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 11:07:57 qtp278465074-30 | 639645b3-c526-430c-82ce-45669bcd60b4-1472666877708 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@531f19f6] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] from thread [qtp278465074-30]
+log4j1 : 2016-08-31 11:08:02 qtp278465074-35 | 761bbc65-2368-47ac-94b1-2c3ac86c06ec-1472666882200 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@66ea1484] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] to thread [qtp278465074-35]
+log4j1 : 2016-08-31 11:08:02 qtp278465074-35 | 761bbc65-2368-47ac-94b1-2c3ac86c06ec-1472666882200 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 11:08:02 qtp278465074-35 | 761bbc65-2368-47ac-94b1-2c3ac86c06ec-1472666882200 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectUserProfileByUserId]
+log4j1 : 2016-08-31 11:08:02 qtp278465074-35 | 761bbc65-2368-47ac-94b1-2c3ac86c06ec-1472666882200 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@66ea1484] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] bound to thread [qtp278465074-35]
+log4j1 : 2016-08-31 11:08:02 qtp278465074-35 | 761bbc65-2368-47ac-94b1-2c3ac86c06ec-1472666882200 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:498 | - Completing transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.selectUserProfileByUserId] after exception: org.hibernate.ObjectNotFoundException: No row with the given identifier exists: [class com.baseframework.domain.security.core.userdetails.User#<null>]
+log4j1 : 2016-08-31 11:08:02 qtp278465074-35 | 761bbc65-2368-47ac-94b1-2c3ac86c06ec-1472666882200 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.RuleBasedTransactionAttribute:131 | - Applying rules to determine whether transaction should rollback on org.hibernate.ObjectNotFoundException: No row with the given identifier exists: [class com.baseframework.domain.security.core.userdetails.User#<null>]
+log4j1 : 2016-08-31 11:08:02 qtp278465074-35 | 761bbc65-2368-47ac-94b1-2c3ac86c06ec-1472666882200 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.RuleBasedTransactionAttribute:148 | - Winning rollback rule is: null
+log4j1 : 2016-08-31 11:08:02 qtp278465074-35 | 761bbc65-2368-47ac-94b1-2c3ac86c06ec-1472666882200 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.RuleBasedTransactionAttribute:153 | - No relevant rollback rule found: applying default rules
+log4j1 : 2016-08-31 11:08:02 qtp278465074-35 | 761bbc65-2368-47ac-94b1-2c3ac86c06ec-1472666882200 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 11:08:02 qtp278465074-35 | 761bbc65-2368-47ac-94b1-2c3ac86c06ec-1472666882200 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@66ea1484] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] from thread [qtp278465074-35]
+log4j1 : 2016-08-31 11:25:19 qtp278465074-30 | 99606025-755b-4737-b879-b37071585a7d-1472667919019 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:193 | - Bound value [org.springframework.orm.hibernate3.SessionHolder@b20237d] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] to thread [qtp278465074-30]
+log4j1 : 2016-08-31 11:25:19 qtp278465074-30 | 99606025-755b-4737-b879-b37071585a7d-1472667919019 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:272 | - Initializing transaction synchronization
+log4j1 : 2016-08-31 11:25:19 qtp278465074-30 | 99606025-755b-4737-b879-b37071585a7d-1472667919019 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:454 | - Getting transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.insertUser]
+log4j1 : 2016-08-31 11:25:19 qtp278465074-30 | 99606025-755b-4737-b879-b37071585a7d-1472667919019 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:140 | - Retrieved value [org.springframework.orm.hibernate3.SessionHolder@b20237d] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] bound to thread [qtp278465074-30]
+log4j1 : 2016-08-31 11:25:19 qtp278465074-30 | 99606025-755b-4737-b879-b37071585a7d-1472667919019 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.TransactionInterceptor:498 | - Completing transaction for [com.baseframework.dao.security.core.userdetails.UserDAOImpl.insertUser] after exception: org.hibernate.exception.ConstraintViolationException: could not insert: [com.baseframework.domain.security.core.userdetails.User]
+log4j1 : 2016-08-31 11:25:19 qtp278465074-30 | 99606025-755b-4737-b879-b37071585a7d-1472667919019 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.RuleBasedTransactionAttribute:131 | - Applying rules to determine whether transaction should rollback on org.hibernate.exception.ConstraintViolationException: could not insert: [com.baseframework.domain.security.core.userdetails.User]
+log4j1 : 2016-08-31 11:25:19 qtp278465074-30 | 99606025-755b-4737-b879-b37071585a7d-1472667919019 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.RuleBasedTransactionAttribute:148 | - Winning rollback rule is: null
+log4j1 : 2016-08-31 11:25:19 qtp278465074-30 | 99606025-755b-4737-b879-b37071585a7d-1472667919019 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.interceptor.RuleBasedTransactionAttribute:153 | - No relevant rollback rule found: applying default rules
+log4j1 : 2016-08-31 11:25:19 qtp278465074-30 | 99606025-755b-4737-b879-b37071585a7d-1472667919019 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:331 | - Clearing transaction synchronization
+log4j1 : 2016-08-31 11:25:19 qtp278465074-30 | 99606025-755b-4737-b879-b37071585a7d-1472667919019 | 1s3c0zfj87qs51av5ln24w1yn8 | 1-admin | DEBUG | org.springframework.transaction.support.TransactionSynchronizationManager:243 | - Removed value [org.springframework.orm.hibernate3.SessionHolder@b20237d] for key [org.hibernate.impl.SessionFactoryImpl@4d4042bf] from thread [qtp278465074-30]

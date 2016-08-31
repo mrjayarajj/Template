@@ -18,9 +18,9 @@
 
 	ISOLATION LEVEL ("what issue happening in parallel ? ")
 	
-	------------------------------------------------------------------------------------------------
+	=================================================================================================
 						|	Dirty Read	| 	Repeatable Read (Update)	|	Phantom Read (Insert)		
-	-------------------------------------------------------------------------------------------------
+	=================================================================================================
 	Read Uncommitted	|		-		|			-					|			-				|	=	Read data even if other transaction is in-progress
 	Read   committed	|		+		|			-					|			-				|	=	There is "NO" lock on a single/multiple record when u r reading "multiple" time
 	Repeatable Read		|		+		|			+					|			-				|	=	There is "NO" lock on a 	   multiple record when u r reading "multiple" time
@@ -29,13 +29,13 @@
 	
 	
 	Dirty Read
-	----------
+	==========
 	system will process for a non exist data if it read a uncommitted data
 	eg) system will fail to send a alert mail if the total order for 1 hr is less than 1000 order. 
 	because data may get be roll back if there is a communication failure to a payment gateway
 	
 	Repeatable Read
-	---------------
+	===============
 	system will fail if it get different value for the same query if it read multiple time in a same transaction.
 	
 
