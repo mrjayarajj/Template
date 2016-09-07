@@ -1,6 +1,8 @@
 package java_oo.node;
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 public class TestNode {
@@ -59,8 +61,8 @@ public class TestNode {
 	public static void testRemovingDuplicateNode(Node head) {
 		// new Node("a", new Node("1", new Node("2", new Node("a", new Node("3",
 		// new Node("1"))))));
-		// new Node("c", new Node("a", new Node("a", new Node("a", new
-		// Node("c")))));
+		head = new Node("c", new Node("a", new Node("a", new Node("a", new
+		 Node("c")))));
 		NodeExecutor nodeExecutor = new NodeExecutor(head);
 		System.out.println(head.printHierarchy());
 		nodeExecutor.removeDuplicateNode();
@@ -80,8 +82,8 @@ public class TestNode {
 
 	public static void testNode() throws CloneNotSupportedException {
 		Node head = generateRandomNode();
-		testExtractingUniueNode(head);
-		System.out.println("---------------");
+		//testExtractingUniueNode(head);
+		//System.out.println("---------------");
 		testRemovingDuplicateNode(head);
 	}
 

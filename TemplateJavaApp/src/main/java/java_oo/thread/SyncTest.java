@@ -1,7 +1,27 @@
 package java_oo.thread;
 
+import java.awt.Color;
 import java.util.Random;
 import java.util.Scanner;
+
+import java_oo.swing.Console;
+
+class MyThreadLocal {
+
+	public static final ThreadLocal<Console> userThreadLocal = new ThreadLocal<Console>();
+
+	public static void set(Console user) {
+		userThreadLocal.set(user);
+	}
+
+	public static void unset() {
+		userThreadLocal.remove();
+	}
+
+	public static Console get() {
+		return userThreadLocal.get();
+	}
+}
 
 public class SyncTest {
 
@@ -15,7 +35,7 @@ public class SyncTest {
 		 */
 		Runnable objectLevelLockTask = () -> {
 			new PrinterPrintThread(p);
-			//new PrinterDisplayThread(p);
+			new PrinterDisplayThread(p);
 		};
 
 		/*
@@ -28,10 +48,11 @@ public class SyncTest {
 		};
 
 		while (true) {
-			Thread thread = new Thread(objectLevelLockTask);
+			Thread thread = new Thread(classLevelLockTask);
 			thread.start();
 
 			new Scanner(System.in).nextLine();
+			System.exit(0);
 		}
 
 	}
@@ -44,14 +65,16 @@ class PrinterDisplayThread implements Runnable {
 	private int userId;
 
 	PrinterDisplayThread() {
-		for (int userId = 10; userId <= 20; userId++) {
-			new Thread(new PrinterDisplayThread(new Printer(RandomUtil.random(1, 1453)), userId)).start();
+		for (int userId = 6; userId <= 10; userId++) {
+			Thread t = new Thread(new PrinterDisplayThread(new Printer(RandomUtil.random(1, 1453)), userId));
+			t.start();
 		}
 	}
 
 	PrinterDisplayThread(Printer p) {
-		for (int userId = 10; userId <= 20; userId++) {
-			new Thread(new PrinterDisplayThread(p, userId)).start();
+		for (int userId = 6; userId <= 10; userId++) {
+			Thread t = new Thread(new PrinterDisplayThread(p, userId));
+			t.start();
 		}
 	}
 
@@ -62,6 +85,7 @@ class PrinterDisplayThread implements Runnable {
 
 	public void run() {
 		try {
+			MyThreadLocal.set(new Console());
 			p.getPrinterInfo(userId);
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
@@ -77,25 +101,29 @@ class PrinterPrintThread implements Runnable {
 	private int userId;
 
 	PrinterPrintThread() {
-		for (int userId = 1; userId <= 10; userId++) {
+		for (int userId = 1; userId <= 5; userId++) {
 			/* any printer range from 1 to 1453 in an organization */
-			new Thread(new PrinterPrintThread(new Printer(RandomUtil.random(1, 1453)), userId)).start();
+			Thread t = new Thread(new PrinterPrintThread(new Printer(RandomUtil.random(1, 1453)), userId));
+			t.start();
 		}
 	}
 
 	PrinterPrintThread(Printer p) {
-		for (int userId = 1; userId <= 10; userId++) {
-			new Thread(new PrinterPrintThread(p, userId)).start();
+		for (int userId = 1; userId <= 5; userId++) {
+			Thread t = new Thread(new PrinterPrintThread(p, userId));
+			t.start();
 		}
 	}
 
 	PrinterPrintThread(Printer p, int userId) {
 		this.p = p;
 		this.userId = userId;
+
 	}
 
 	public void run() {
 		try {
+			MyThreadLocal.set(new Console());
 			p.print(userId);
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
@@ -124,21 +152,26 @@ class Printer {
 		 * synchronized (Printer.class)
 		 */
 
+		// synchronized (Printer.class) {
+
 		for (int i = 0; i < 5; i++) {
-			System.out.println("Printing for user " + userId + " page " + i);
+			MyThreadLocal.get().log("Printing for user " + userId + " page " + i, Color.red);
 			Thread.currentThread().sleep(1000 * RandomUtil.random(1, 3));
 		}
+		// }
 
 	}
 
 	public synchronized int getPrinterInfo(int userId) throws InterruptedException {
 
+		// synchronized (Printer.class) {
+
 		for (int i = 0; i < 5; i++) {
 			Thread.currentThread().sleep(1000 * RandomUtil.random(1, 3));
-			System.out.println("Printer is little busy while sending printer into to user " + userId);
+			MyThreadLocal.get().log("Printer is little busy while sending printer into to user " + userId);
 		}
 		System.out.println("returned printer info to " + userId);
-
+		// }
 		return printerId;
 	}
 }

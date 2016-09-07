@@ -1,7 +1,6 @@
 package java_oo.thread;
 
 import java.util.HashSet;
-import java.util.Scanner;
 import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -10,28 +9,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 
-import javax.swing.JFrame;
-import javax.swing.JTextArea;
+import java_oo.swing.Console;
 
-class Console {
 
-	private JTextArea jTextArea = null;
-
-	private static int position = 0;
-
-	public Console() {
-		JFrame jFrame = new JFrame();
-		jTextArea = new JTextArea();
-		jFrame.setSize(100, 700);
-		jFrame.setLocation(position = (position + 100), 0);
-		jFrame.add(jTextArea);
-		jFrame.setVisible(true);
-	}
-
-	void log(String message) {
-		jTextArea.append(message + "\n");
-	}
-}
 
 public class CallableExample {
 
