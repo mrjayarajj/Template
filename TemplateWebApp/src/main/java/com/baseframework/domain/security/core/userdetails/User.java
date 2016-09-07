@@ -24,11 +24,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @XmlRootElement
 public class User implements java.io.Serializable, UserDetails, /* CacheDetails, */ Cloneable {
 
-	private int userId;
+	private Integer userId;
 	private Role role;
 	private String userName;
 	/**
-	 * do not serialize password during thread dump
+	 * do not serialize password during thread dump or have it as char[] because char[] are stored in 
 	 */
 	private transient String userPassword;
 	private char gender;
@@ -41,14 +41,14 @@ public class User implements java.io.Serializable, UserDetails, /* CacheDetails,
 	public User() {
 	}
 
-	public User(int userId, String userName, String userPassword) {
+	public User(Integer userId, String userName, String userPassword) {
 		this.userId = userId;
 		this.userName = userName;
 		this.userPassword = userPassword;
 		this.status = true;
 	}
 
-	public int getUserId() {
+	public Integer getUserId() {
 		return this.userId;
 	}
 
@@ -62,7 +62,7 @@ public class User implements java.io.Serializable, UserDetails, /* CacheDetails,
 		return this;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 

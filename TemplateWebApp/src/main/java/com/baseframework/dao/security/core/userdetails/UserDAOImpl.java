@@ -41,6 +41,7 @@ public class UserDAOImpl implements UserDAO {
 
 	public void insertUser(User e) {
 		Session session = getSession();
+		System.out.println(e.getUserId());
 		session.save(e);
 		session.flush();
 	}

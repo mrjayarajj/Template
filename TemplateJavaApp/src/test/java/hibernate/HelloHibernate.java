@@ -5,7 +5,13 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
@@ -31,7 +37,10 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.exception.SQLGrammarException;
 import org.hibernate.hql.ast.QuerySyntaxException;
+import org.hsqldb.jdbc.JDBCDataSource;
 
+import com.baseframework.domain.security.access.Role;
+import com.baseframework.domain.security.core.userdetails.User;
 import com.thoughtworks.xstream.XStream;
 
 import dto.Department;
@@ -40,6 +49,36 @@ import dto.Employee;
 public class HelloHibernate {
 
 	private static final XStream xstream = new XStream();
+
+	static {
+		try {
+			Context initialContext = new InitialContext(null);
+			initialContext.bind("testDS", getDataSource());
+		} catch (NamingException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	/*
+	 * static{
+	 * 
+	 * try { Connection c = getDataSource().getConnection();
+	 * c.setAutoCommit(false); Statement s = c.createStatement(); s.
+	 * execute("insert into BASE.USER (ROLE_ID, USER_NAME, USER_PASSWORD, GENDER, STATUS, LOCKED, EXPIRE_DATE, USER_ID) values "
+	 * + "(1, 'dum', 'pwd', 'M', 'TRUE', 'TRUE', NULL, 4487)"); c.commit();
+	 * 
+	 * } catch (SQLException e) { e.printStackTrace(); }
+	 * 
+	 * }
+	 */
+
+	public static DataSource getDataSource() {
+		JDBCDataSource jdbc = new org.hsqldb.jdbc.JDBCDataSource();
+		jdbc.setUrl("jdbc:hsqldb:hsql://127.0.0.1:9001/BASE");
+		jdbc.setUser("SA");
+		jdbc.setPassword("SA");
+		return jdbc;
+	}
 
 	public static void main(String[] args) throws Exception {
 
@@ -74,21 +113,24 @@ public class HelloHibernate {
 
 	public void processHibernate() throws Exception {
 		Configuration config = new Configuration();
-		//config.configure(new File("C:\\git\\mrjayarajj\\Template\\JavaSource\\com\\baseframework\\config\\hibernate\\hsqldb\\hibernate.cfg.xml"));
-		config.configure(new File("C:\\git\\mrjayarajj\\Template\\resource-examples\\hibernate.cfg.xml"));
+		config.configure(new File(
+				"/Users/admin/git/Template/TemplateWebApp/src/main/resources/com/baseframework/config/hibernate/hsqldb/hibernate.cfg.xml"));
+		// config.configure(new
+		// File("C:\\git\\mrjayarajj\\Template\\resource-examples\\hibernate.cfg.xml"));
 		SessionFactory sessionFactory = config.buildSessionFactory();
 		Session session = (Session) sessionFactory.openSession();
 		Transaction tx = session.getTransaction();
 
 		try {
 			tx = session.beginTransaction();
-			learnHibernate(session);			
+
+			learnHibernate(session);
 			session.flush();
 			/**
 			 * flush happen's automatically, even if u have not written
 			 * session.flush()
 			 */
-			tx.commit();			
+			tx.commit();
 
 		} catch (Exception e) {
 			/*
@@ -118,7 +160,7 @@ public class HelloHibernate {
 
 	public void learnHibernate(Session session) {
 
-		hql(session);
+		// hql(session);
 
 		// selectAllEmployee(session);
 
@@ -130,7 +172,7 @@ public class HelloHibernate {
 
 		// diffGetAndLoad(session);
 
-		// insert(session);
+		insertUser(session);
 		// insertEmployee(session);
 
 		// selectAllUpdateAndselectAll(session);
@@ -147,20 +189,26 @@ public class HelloHibernate {
 	 * 
 	 * @param session
 	 */
-	private void diffGetAndLoad(Session session) {		
+	private void diffGetAndLoad(Session session) {
 
-		//It should be used if you are not sure about the existence of instance.	
-		//User u = (User) session.get(User.class, 118);//get() method always hit the database.
-		//System.out.println(u);//Returns null if object is not found.	
-		
-		//User jayaraj = (User) session.get(User.class, 226475);//It returns real object not proxy.	
-		
-		try{
-			//It should be used if you are sure that instance exists.
-			//User u_ = (User) session.load(User.class, 118);//load() method doesn't hit the database.
-			//just returns the reference of an object that might not actually exists, it loads the data from database or cache only when you access other properties of the object.
-			//System.out.println(u_);//It returns proxy object.
-		}catch(ObjectNotFoundException e){
+		// It should be used if you are not sure about the existence of
+		// instance.
+		// User u = (User) session.get(User.class, 118);//get() method always
+		// hit the database.
+		// System.out.println(u);//Returns null if object is not found.
+
+		// User jayaraj = (User) session.get(User.class, 226475);//It returns
+		// real object not proxy.
+
+		try {
+			// It should be used if you are sure that instance exists.
+			// User u_ = (User) session.load(User.class, 118);//load() method
+			// doesn't hit the database.
+			// just returns the reference of an object that might not actually
+			// exists, it loads the data from database or cache only when you
+			// access other properties of the object.
+			// System.out.println(u_);//It returns proxy object.
+		} catch (ObjectNotFoundException e) {
 			System.err.println("Throws ObjectNotFoundException if object is not found.");
 		}
 	}
@@ -233,7 +281,7 @@ public class HelloHibernate {
 	 * @param session
 	 */
 	private void selectOneAndUpdate(Session session) {
-		Employee e = (Employee)session.load(Employee.class, 118);
+		Employee e = (Employee) session.load(Employee.class, 118);
 		e.setName("Himuro 1");
 		selectAllEmployee(session);
 	}
@@ -385,6 +433,25 @@ public class HelloHibernate {
 		session.save(e);
 	}
 
+	public void insertUser(Session session) {
+
+		User u = new User(new Integer((int) (Math.random() * 1000)).intValue(), "mrj" + Math.random() * 1000,
+				"Aug@2016");
+		Role r = new Role();
+		r.setRoleId(5);
+		r.setRoleName("ROLE_ADMIN");
+		u.setRole(r);
+		session.save(u);
+
+		session.flush();
+
+		Scanner sc = new Scanner(System.in);
+		sc.nextLine();
+
+		throw new RuntimeException("validate uncomitted read");
+
+	}
+
 	public Employee insert(Session session) {
 
 		Department d = new Department();
@@ -421,26 +488,41 @@ public class HelloHibernate {
 		// session.save(d);
 		return e;
 	}
-	
+
 	private void hql(Session session) {
 
-		 //Query query = session.createQuery("select emp from Employee emp left outer join fetch emp.department ");
-		 Query query = session.createQuery("select emp from Employee emp");
-		 // Query query =	 session.createQuery(" from Employee emp inner join fetch emp.department");
+		// Query query = session.createQuery("select emp from Employee emp left
+		// outer join fetch emp.department ");
+		Query query = session.createQuery("select emp from Employee emp");
+		// Query query = session.createQuery(" from Employee emp inner join
+		// fetch emp.department");
 		// Query query = session.createQuery("select dep from Department dep");
 		// Query query = session.getNamedQuery("hql_update_department");
 		// Query query = session.createQuery("select p from Payment p");
-		// Query query = session.createQuery("from Department dept left outer join fetch dept.employee e where 'Whalen' in elements(e.name) order by dept.id  ");
-		// Query query = session.createQuery("select dept from Department dept ,Employee e where e in elements (dept.employee) and e.name='Whalen'" );
-		//Query query = session.createQuery("select u from User u inner join fetch u.role");
-		//Query query = session.createQuery("select m from Module m order by m.moduleName asc " );
+		// Query query = session.createQuery("from Department dept left outer
+		// join fetch dept.employee e where 'Whalen' in elements(e.name) order
+		// by dept.id ");
+		// Query query = session.createQuery("select dept from Department dept
+		// ,Employee e where e in elements (dept.employee) and e.name='Whalen'"
+		// );
+		// Query query = session.createQuery("select u from User u inner join
+		// fetch u.role");
+		// Query query = session.createQuery("select m from Module m order by
+		// m.moduleName asc " );
 		/* the count(o.orderId) give a value of 3 but expected in 2 */
 		// Query query =
-		// session.createQuery("select count(o.orderId) from Order o left outer join o.orderPayments op left outer join o.orderDetails od left outer join od.orderDetailPayments odp ");
-		// Query query = session.createQuery("select count(o.orderId) from Order o left outer join o.orderPayments op ");
-		// Query query = session.createQuery("select o from Order o left outer join fetch o.orderPayments op left outer join fetch o.orderDetails od left outer join fetch od.orderDetailPayments odp ");
-		// Query query = session.createQuery("select od.orderId,count(od.orderDetailId) from OrderDetail od group by od.orderId having count(od.orderDetailId)>1");
-		//Collection l = new LinkedHashSet(query.list());
+		// session.createQuery("select count(o.orderId) from Order o left outer
+		// join o.orderPayments op left outer join o.orderDetails od left outer
+		// join od.orderDetailPayments odp ");
+		// Query query = session.createQuery("select count(o.orderId) from Order
+		// o left outer join o.orderPayments op ");
+		// Query query = session.createQuery("select o from Order o left outer
+		// join fetch o.orderPayments op left outer join fetch o.orderDetails od
+		// left outer join fetch od.orderDetailPayments odp ");
+		// Query query = session.createQuery("select
+		// od.orderId,count(od.orderDetailId) from OrderDetail od group by
+		// od.orderId having count(od.orderDetailId)>1");
+		// Collection l = new LinkedHashSet(query.list());
 		show(query.list());
 		// show(query.list());
 		// System.out.println(xstream.toXML(query.list()));
@@ -474,19 +556,17 @@ public class HelloHibernate {
 		show(l);
 	}
 
-	
-
 	private void show(Collection l) {
 		System.out.println();
 		System.out.println("======================================================");
 		for (Object o : l) {
-			//System.out.println(xstream.toXML(o));
+			// System.out.println(xstream.toXML(o));
 
 			ObjectMapper om = new ObjectMapper();
 			om.setSerializationInclusion(JsonSerialize.Inclusion.NON_NULL);
 			om.setSerializationInclusion(JsonSerialize.Inclusion.NON_EMPTY);
-			om.disable(Feature.FAIL_ON_EMPTY_BEANS);			
-			try {				
+			om.disable(Feature.FAIL_ON_EMPTY_BEANS);
+			try {
 				String json = om.writerWithDefaultPrettyPrinter().writeValueAsString(o);
 				System.out.println(json);
 			} catch (JsonGenerationException e) {

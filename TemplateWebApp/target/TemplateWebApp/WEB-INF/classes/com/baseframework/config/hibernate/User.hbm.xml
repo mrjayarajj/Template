@@ -3,11 +3,11 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated Jan 2, 2010 12:14:17 AM by Hibernate Tools 3.2.2.GA -->
 <hibernate-mapping>
-    <class name="com.baseframework.domain.security.core.userdetails.User" table="USER">
-        <id name="userId" type="int">
-            <column name="USER_ID" />
-            <generator class="identity" />
-        </id>         
+    <class name="com.baseframework.domain.security.core.userdetails.User" table="USER">      
+        <id name="userId"  type="java.lang.Integer">
+			<column name="USER_ID" />
+			<generator class="assigned" />
+		</id>
         <many-to-one name="role" class="com.baseframework.domain.security.access.Role" lazy="no-proxy"  >
             <column name="ROLE_ID" not-null="true" />
         </many-to-one>                            

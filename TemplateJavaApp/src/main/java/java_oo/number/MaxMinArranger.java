@@ -14,7 +14,21 @@ class RandomUtil {
 
 public class MaxMinArranger {
 
+	
 	public static void main(String[] args) {
+		List<Number> inputs = new ArrayList<Number>();
+		inputs.add(new Number());
+		inputs.add(new Number());
+		System.out.println(inputs);
+		//inputs.subList(0,1).clear();
+		inputs.remove(0);
+		System.out.println(inputs);
+		
+	}
+	
+	
+	
+	public static void main_(String[] args) {
 		List<Number> inputs = getRandomInput();
 		List<Number> outputs = new ArrayList<Number>();
 		System.out.println(inputs);

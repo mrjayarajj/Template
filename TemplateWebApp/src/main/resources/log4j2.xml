@@ -28,7 +28,7 @@
 
 		<Logger name="org.hibernate" level="off" />
 		<Logger name="org.hibernate.connection" level="off" />
-		<Logger name="org.hibernate.SQL" level="off" />
+		<Logger name="org.hibernate.SQL" level="DEBUG" />
 		<Logger name="org.hibernate.Type" level="off" />
 		<Logger name="org.hibernate.hql.ast.QueryTranslatorImpl" level="off" />
 
@@ -37,7 +37,7 @@
 		<Logger name="com.baseframework" level="off" />
 		<Logger name="com.baseframework.rws" level="off" />
 		<Logger name="com.baseframework.log.BaseLoggerInterceptor"
-			level="off" />
+			level="DEBUG" />
 		<Logger name="com.baseframework.web.filters.JSPIncludeFilter"
 			level="debug" />
 		<Logger name="com.baseframework.web.filters.RequestLoggerFilter"
