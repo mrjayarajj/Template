@@ -14,6 +14,15 @@ public class ContextListener implements ServletContextListener {
 
 	public void contextInitialized(ServletContextEvent servletContextEvent) {
 		LOG.debug("Template Started>>>");
+		LOG.debug("");
+		LOG.debug("");
+		LOG.debug("");
+		LOG.debug("");
+		LOG.debug("");
+		LOG.debug("");
+		LOG.debug("");
+		LOG.debug("");
+		LOG.debug("");
 		hsqldbContextListener.contextInitialized(servletContextEvent);
 	}
 

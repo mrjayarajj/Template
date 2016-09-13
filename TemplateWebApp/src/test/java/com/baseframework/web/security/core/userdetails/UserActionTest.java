@@ -1,12 +1,16 @@
 package com.baseframework.web.security.core.userdetails;
 
+import static org.mockito.Mockito.*;
+
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
+import org.hamcrest.Description;
+import org.hamcrest.Matcher;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import com.baseframework.biz.security.core.userdetails.UserService;
 import com.baseframework.domain.security.access.Role;
@@ -48,11 +52,46 @@ public class UserActionTest {
 		Assert.assertEquals("redirect_onLoad", resultName);
 	}
 
+	public static void main(String args[]) {
+		// You can mock concrete classes, not just interfaces
+		LinkedList mockedList = mock(LinkedList.class);
+
+		// stubbing
+		when(mockedList.get(0)).thenReturn("first");
+		when(mockedList.get(1)).thenThrow(new RuntimeException());
+
+		
+		System.out.println(mockedList.get(0));
+		System.out.println(verify(mockedList).get(0));// Exception in thread
+														// "main" Wanted but not
+														// invoked:
+														// linkedList.get(0);
+
+		
+		reset(mockedList);
+		
+		// stubbing using built-in anyInt() argument matcher
+		when(mockedList.get(anyInt())).thenReturn("element");
+
+		for (int i = 0; i < 3; i++) {
+			System.out.println(mockedList.get(i));
+		}
+
+		// stubbing using custom matcher (let's say isValid() returns your own
+		// matcher implementation):
+		 //when(mockedList.contains(argThat(isValid()))).thenReturn("element");
+
+	}
+
+	public static Matcher<Boolean> isValid() {
+		return null;
+	}
+
 	@Test
 	public void testOnLoad() {
-		UserService us = Mockito.mock(UserService.class);
-		Mockito.when(us.selectAllRole()).thenReturn(getRoles());
-		Mockito.when(us.selectAllUser()).thenReturn(getUsers());
+		UserService us = mock(UserService.class);
+		when(us.selectAllRole()).thenReturn(getRoles());
+		when(us.selectAllUser()).thenReturn(getUsers());
 		ua.setUserService(us);
 		String resultName = ua.onLoad();
 		Assert.assertEquals(5, ua.getUserForm().getRoles().size());
@@ -63,8 +102,8 @@ public class UserActionTest {
 	@Test
 	public void testAddUser() {
 		User u = new User(5, "super", "super");
-		UserService us = Mockito.mock(UserService.class);
-		Mockito.doNothing().when(us).insertUser(u);
+		UserService us = mock(UserService.class);
+		doNothing().when(us).insertUser(u);
 		UserForm uf = new UserForm();
 		uf.setUser(u);
 		ua.setUserForm(uf);

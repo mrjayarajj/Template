@@ -1,15 +1,20 @@
+
+
 package java_oo.node;
 
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
+
 import java.util.Set;
 
 public class TestNode {
 
 	public static void main(String args[]) throws CloneNotSupportedException {
-		testNode();
+		
+		System.out.println(new String("babu").hashCode()==new String("babu").hashCode());
+		
+		// testNode();
 		// System.out.println(testSring("Jayaraj Jaganthan"));
+
 
 	}
 
@@ -38,7 +43,7 @@ public class TestNode {
 		Node head = null;
 		Node currentNode = null;
 
-		for (int i = 0; i < (int) (Math.random() * 100); i++) {
+		for (int i = 0; i < (int) (Math.random() * 5); i++) {
 
 			String value = apla[(int) (Math.random() * apla.length)];
 			Node newNode = new Node(value);
@@ -61,8 +66,7 @@ public class TestNode {
 	public static void testRemovingDuplicateNode(Node head) {
 		// new Node("a", new Node("1", new Node("2", new Node("a", new Node("3",
 		// new Node("1"))))));
-		head = new Node("c", new Node("a", new Node("a", new Node("a", new
-		 Node("c")))));
+		head = new Node("c", new Node("a", new Node("a", new Node("a", new Node("c")))));
 		NodeExecutor nodeExecutor = new NodeExecutor(head);
 		System.out.println(head.printHierarchy());
 		nodeExecutor.removeDuplicateNode();
@@ -81,10 +85,24 @@ public class TestNode {
 	}
 
 	public static void testNode() throws CloneNotSupportedException {
+
 		Node head = generateRandomNode();
-		//testExtractingUniueNode(head);
-		//System.out.println("---------------");
-		testRemovingDuplicateNode(head);
+		System.out.println(head.printHierarchy());
+
+		System.out.println();
+		Node current = head;
+
+		while (current.hasNext()) {
+			System.out.print(current + " ");
+			current = current.getNext();
+		}
+		System.out.print(current + " ");
+		System.out.print(current.getNext());
+		System.out.println();
+
+		// testExtractingUniueNode(head);
+		// System.out.println("---------------");
+		// testRemovingDuplicateNode(head);
 	}
 
 }

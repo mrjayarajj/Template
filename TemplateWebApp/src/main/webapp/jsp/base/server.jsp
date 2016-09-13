@@ -112,3 +112,13 @@ table tr td {
 		</div>
 	</tiles:putAttribute>
 </tiles:insertDefinition>
+
+<%
+ClassLoader cl = ClassLoader.getSystemClassLoader();
+
+URL[] urls = ((URLClassLoader)cl).getURLs();
+
+for(URL url: urls){
+	System.out.println(url.getFile());
+}
+%>

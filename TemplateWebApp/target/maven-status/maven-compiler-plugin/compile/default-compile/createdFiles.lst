@@ -1,4 +1,3 @@
-com/baseframework/dao/hsqldb/StartServer.class
 com/baseframework/web/listeners/HsqldbContextListener.class
 com/baseframework/web/filters/RequestLoggerFilter.class
 com/baseframework/log/BaseLoggerInterceptor.class
@@ -38,7 +37,6 @@ com/baseframework/dao/security/access/RoleDAO.class
 com/baseframework/domain/security/access/Function.class
 org/springframework/samples/Greeting.class
 com/baseframework/biz/security/access/FunctionService.class
-com/baseframework/dao/hsqldb/StopServer.class
 org/springframework/samples/EchoHandler.class
 com/baseframework/ws/security/core/userdetails/UserDetailsEndpoint.class
 com/baseframework/web/security/access/AuthenticateAction.class

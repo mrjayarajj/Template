@@ -9,10 +9,11 @@ import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.orm.hibernate3.SessionFactoryUtils;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.baseframework.domain.security.core.userdetails.User;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class UserDAOImpl implements UserDAO {
 
@@ -51,26 +52,27 @@ public class UserDAOImpl implements UserDAO {
 		Query query = session.createQuery("select u from User u where u.userId = :userId");
 		query.setInteger("userId", id);
 		List<User> list = query.list();
-		User user =  list != null && list.size() > 0 ? list.get(0) : null;
-		
-		if(user==null){
-			throw new ObjectNotFoundException(user,User.class.toString());
+		User user = list != null && list.size() > 0 ? list.get(0) : null;
+
+		if (user == null) {
+			throw new ObjectNotFoundException(user, User.class.toString());
 		}
-		
+
 		return user;
 	}
-	
+
 	public User selectUserProfileByUserId(int id) {
 		Session session = getSession();
-		Query query = session.createQuery("select u from User u inner join fetch u.role r inner join fetch r.functions where u.userId = :userId " );
+		Query query = session.createQuery(
+				"select u from User u inner join fetch u.role r inner join fetch r.functions where u.userId = :userId ");
 		query.setInteger("userId", id);
 		List<User> list = query.list();
-		User user =  list != null && list.size() > 0 ? list.get(0) : null;
-		
-		if(user==null){
-			throw new ObjectNotFoundException(user,User.class.toString());
+		User user = list != null && list.size() > 0 ? list.get(0) : null;
+
+		if (user == null) {
+			throw new ObjectNotFoundException(user, User.class.toString());
 		}
-		
+
 		return user;
 	}
 
@@ -83,10 +85,10 @@ public class UserDAOImpl implements UserDAO {
 		}
 		session.saveOrUpdate(sourceUser);
 		session.flush();
-		
+
 	}
 
-	public void deleteUser(List<User> userList) {		
+	public void deleteUser(List<User> userList) {
 		Session session = getSession();
 		Query query = session.createQuery("delete from User u where u.userId in (:ids)");
 		query.setParameterList("ids", User.getSelectedUserId(userList));
@@ -95,16 +97,16 @@ public class UserDAOImpl implements UserDAO {
 
 	public User selectUserByUserName(String userName) {
 		Session session = getSession();
-		Query query = session
-				.createQuery("select u from User u left outer join fetch u.role r left outer join fetch r.functions where u.userName = :userName ");
+		Query query = session.createQuery(
+				"select u from User u left outer join fetch u.role r left outer join fetch r.functions where u.userName = :userName ");
 		query.setString("userName", userName);
 		List<User> list = query.list();
 		User user = list != null && list.size() > 0 ? list.get(0) : null;
-		
-		if(user==null){
-			throw new ObjectNotFoundException(user,User.class.toString());
+
+		if (user == null) {
+			throw new ObjectNotFoundException(user, User.class.toString());
 		}
-		
+
 		return user;
 	}
 

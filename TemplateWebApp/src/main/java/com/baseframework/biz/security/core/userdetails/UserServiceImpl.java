@@ -9,6 +9,9 @@ import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.baseframework.dao.security.access.RoleDAO;
 import com.baseframework.dao.security.core.userdetails.UserDAO;
@@ -22,10 +25,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	private UserDAO userDAO;
 
 	private RoleDAO roleDAO;
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger("LC_USER");
-	
-	public UserServiceImpl(){
+
+	public UserServiceImpl() {
 		LOG.info("UserServiceImpl constructor is called");
 	}
 
@@ -37,11 +40,13 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		this.userDAO = userDAO;
 	}
 
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = true)
 	public void insertUser(User u) {
 		u.setUserPassword(md5PasswordEncoder.encodePassword(u.getUserPassword(), u.getUserId()));
 		getUserDAO().insertUser(u);
 	}
 
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = true)
 	public List<User> selectAllUser() {
 		LOG.debug("going to select all users from database");
 		return getUserDAO().selectAllUser();
@@ -56,7 +61,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		user.setUserPassword(null);
 		return user;
 	}
-	
+
 	public User selectUserProfile(int id) {
 		User user = getUserDAO().selectUserProfileByUserId(id);
 		user.setUserPassword(null);

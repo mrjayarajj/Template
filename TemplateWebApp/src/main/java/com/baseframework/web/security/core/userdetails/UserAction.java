@@ -46,6 +46,7 @@ public class UserAction implements JSONDetails,SessionAware {
 		return getUserForm().getRedirectName();
 	}
 
+	
 	@Secured({ "BF_UPDATE_USER" })
 	public String selectUser() {
 		User u = getUserForm().getUser();

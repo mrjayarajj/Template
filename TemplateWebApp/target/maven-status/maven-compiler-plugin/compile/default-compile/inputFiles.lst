@@ -34,7 +34,6 @@
 /Users/admin/git/Template/TemplateWebApp/target/generated-sources/jaxb/com/baseframework/ws/security/core/userdetails/package-info.java
 /Users/admin/git/Template/TemplateWebApp/src/main/java/com/baseframework/biz/security/oauth2/provider/AAAGuestServiceImpl.java
 /Users/admin/git/Template/TemplateWebApp/src/main/java/org/springframework/samples/EchoHandler.java
-/Users/admin/git/Template/TemplateWebApp/src/main/java/com/baseframework/dao/hsqldb/StartServer.java
 /Users/admin/git/Template/TemplateWebApp/src/main/java/com/baseframework/log/DynamicThresholdUserFilter.java
 /Users/admin/git/Template/TemplateWebApp/src/main/java/com/baseframework/web/listeners/SessionListener.java
 /Users/admin/git/Template/TemplateWebApp/src/main/java/com/baseframework/web/filters/RequestLoggerFilter.java
@@ -67,7 +66,6 @@
 /Users/admin/git/Template/TemplateWebApp/src/main/java/com/baseframework/web/security/core/userdetails/UserAction.java
 /Users/admin/git/Template/TemplateWebApp/target/generated-sources/jaxb/com/baseframework/ws/security/core/userdetails/GetUserDetailsResponse.java
 /Users/admin/git/Template/TemplateWebApp/src/main/java/com/baseframework/biz/security/access/ModuleService.java
-/Users/admin/git/Template/TemplateWebApp/src/main/java/com/baseframework/dao/hsqldb/StopServer.java
 /Users/admin/git/Template/TemplateWebApp/src/main/java/com/baseframework/dao/security/core/userdetails/UserDAOImpl.java
 /Users/admin/git/Template/TemplateWebApp/src/main/java/com/baseframework/web/filters/CacheFilter.java
 /Users/admin/git/Template/TemplateWebApp/src/main/java/com/baseframework/dao/security/access/AuthenticateDAOImpl.java

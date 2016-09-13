@@ -21,6 +21,7 @@
 		<!-- SettingsFactory:117 - Could not obtain connection metadata -->
 		<property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
 		<property name="hibernate.max_fetch_depth">2</property>
+		<!-- the session will be automatically flushed during the before completion phase of the transaction -->
 		<property name="transaction.flush_before_completion">true</property>
 		
 		<!--  

@@ -163,6 +163,11 @@
 			<version>2.3.1</version>
 		</dependency>
 		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.6</version>
+		</dependency>
+		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
 			<version>1.7.0</version>
@@ -195,7 +200,7 @@
 		<dependency>
 			<groupId>com.efsavage.jquery</groupId>
 			<artifactId>jquery-maven</artifactId>
-			<version>1.8.2</version>			
+			<version>1.8.2</version>
 		</dependency>
 		<dependency>
 			<!-- SLF4J is basically an abstraction layer. It is not a logging implementation. -->
@@ -232,6 +237,11 @@
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-web</artifactId>
 			<version>2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-iostreams</artifactId>
+			<version>2.6.2</version>
 		</dependency>
 		<dependency>
 			<groupId>javassist</groupId>
@@ -366,7 +376,7 @@
 				<configuration>
 					<warSourceExcludes>media/**/*-squeeze.js</warSourceExcludes>
 					<warSourceIncludes>**</warSourceIncludes>
-					<failOnMissingWebXml>false</failOnMissingWebXml> 
+					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
 			<plugin>

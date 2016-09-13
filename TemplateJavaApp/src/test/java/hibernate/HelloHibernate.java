@@ -432,6 +432,25 @@ public class HelloHibernate {
 		e.setDepartment(new Department());
 		session.save(e);
 	}
+	
+	public void updateUser(Session session) {
+
+		User u = new User(new Integer((int) (Math.random() * 1000)).intValue(), "mrj" + Math.random() * 1000,
+				"Aug@2016");
+		Role r = new Role();
+		r.setRoleId(5);
+		r.setRoleName("ROLE_ADMIN");
+		u.setRole(r);
+		session.update(u);
+
+		session.flush();
+
+		new Scanner(System.in).nextLine();
+
+		throw new RuntimeException("validate uncomitted read");
+
+	}
+
 
 	public void insertUser(Session session) {
 
@@ -445,8 +464,7 @@ public class HelloHibernate {
 
 		session.flush();
 
-		Scanner sc = new Scanner(System.in);
-		sc.nextLine();
+		new Scanner(System.in).nextLine();
 
 		throw new RuntimeException("validate uncomitted read");
 

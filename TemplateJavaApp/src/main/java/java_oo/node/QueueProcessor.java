@@ -44,7 +44,7 @@ class Sender implements Runnable {
 				throw new RuntimeException(e);
 			}
 
-			log.log("Putting message..");
+			log.logln("Putting message..");
 			q.putMessage(new Message("" + new Date()));
 		}
 
@@ -54,7 +54,7 @@ class Sender implements Runnable {
 class Receiver implements Runnable {
 
 	private Console log = new Console();
-	
+
 	private Queue q;
 
 	Receiver(Queue q) {
@@ -70,7 +70,7 @@ class Receiver implements Runnable {
 				throw new RuntimeException(e);
 			}
 
-			log.log("Retriving messgae.. " + q.getMessages(1));
+			log.logln("Retriving messgae.. " + q.getMessages(1));
 		}
 	}
 }
@@ -81,30 +81,33 @@ class Queue {
 
 	public void putMessage(Message message) {
 
-		if (this.messages == null) {
-			this.messages = new LinkedList<Message>();
+		synchronized (Queue.class) {
+			if (this.messages == null) {
+				this.messages = new LinkedList<Message>();
+			}
+
+			this.messages.addLast(message);
 		}
-
-		this.messages.addLast(message);
-
 	}
 
 	public List<Message> getMessages(int noOfMsg) {
 
-		List<Message> removedMessages = null;
+		synchronized (Queue.class) {
 
-		if (this.messages == null || this.messages.size() < noOfMsg) {
-			return null;
+			List<Message> removedMessages = null;
+
+			if (this.messages == null || this.messages.size() < noOfMsg) {
+				return null;
+			}
+
+			removedMessages = new ArrayList<Message>();
+
+			for (int i = 0; i < noOfMsg; i++) {
+				removedMessages.add(this.messages.removeFirst());
+			}
+
+			return removedMessages;
 		}
-
-		removedMessages = new ArrayList<Message>();
-
-		for (int i = 0; i < noOfMsg; i++) {
-			removedMessages.add(this.messages.removeFirst());
-		}
-
-		return removedMessages;
-
 	}
 
 }
