@@ -114,7 +114,7 @@ public class HelloHibernate {
 	public void processHibernate() throws Exception {
 		Configuration config = new Configuration();
 		config.configure(new File(
-				"/Users/admin/git/Template/TemplateWebApp/src/main/resources/com/baseframework/config/hibernate/hsqldb/hibernate.cfg.xml"));
+				"/Users/admin/git/Template/TemplateWebApp/src/main/resources/com/baseframework/config/hibernate/mysql/hibernate.cfg.xml"));
 		// config.configure(new
 		// File("C:\\git\\mrjayarajj\\Template\\resource-examples\\hibernate.cfg.xml"));
 		SessionFactory sessionFactory = config.buildSessionFactory();

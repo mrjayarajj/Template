@@ -11,7 +11,7 @@ public class TestSync {
 
 	public static void main(String[] args) throws InterruptedException {
 
-		Printer p = new Printer(1453);
+		AllInOnePrinter p = new AllInOnePrinter("HP-143");
 
 		/*
 		 * synchronized (this) or synchronized or synchronized(any non static
@@ -19,7 +19,7 @@ public class TestSync {
 		 */
 		Runnable objectLevelLockTask = () -> {
 			new PrinterPrintThread(p);
-			new PrinterDisplayThread(p);
+			new PrinterFaxThread(p);
 		};
 
 		/*
@@ -28,41 +28,39 @@ public class TestSync {
 		 */
 		Runnable classLevelLockTask = () -> {
 			new PrinterPrintThread();
-			new PrinterDisplayThread();
+			new PrinterFaxThread();
 		};
 
-		while (true) {
-			Thread thread = new Thread(classLevelLockTask);
-			thread.start();
+		Thread thread = new Thread(classLevelLockTask);
+		thread.start();
 
-			new Scanner(System.in).nextLine();
-			System.exit(0);
-		}
+		new Scanner(System.in).nextLine();
+		System.exit(0);
 
 	}
 
 }
 
-class PrinterDisplayThread implements Runnable {
+class PrinterFaxThread implements Runnable {
 
-	private Printer p;
+	private AllInOnePrinter p;
 	private int userId;
 
-	PrinterDisplayThread() {
-		for (int userId = 6; userId <= 10; userId++) {
-			Thread t = new Thread(new PrinterDisplayThread(new Printer(RandomUtil.random(1, 1453)), userId));
+	PrinterFaxThread() {
+		for (int userId = 1; userId <= 5; userId++) {
+			Thread t = new Thread(new PrinterFaxThread(new AllInOnePrinter("HP-143"), userId));
 			t.start();
 		}
 	}
 
-	PrinterDisplayThread(Printer p) {
-		for (int userId = 6; userId <= 10; userId++) {
-			Thread t = new Thread(new PrinterDisplayThread(p, userId));
+	PrinterFaxThread(AllInOnePrinter p) {
+		for (int userId = 1; userId <= 5; userId++) {
+			Thread t = new Thread(new PrinterFaxThread(p, userId));
 			t.start();
 		}
 	}
 
-	PrinterDisplayThread(Printer p, int userId) {
+	PrinterFaxThread(AllInOnePrinter p, int userId) {
 		this.p = p;
 		this.userId = userId;
 
@@ -71,7 +69,7 @@ class PrinterDisplayThread implements Runnable {
 	public void run() {
 		try {
 			ConsoleThreadLocal.set(new Console());
-			p.getPrinterInfo(userId);
+			p.fax(userId);
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}
@@ -81,26 +79,25 @@ class PrinterDisplayThread implements Runnable {
 
 class PrinterPrintThread implements Runnable {
 
-	private Printer p;
+	private AllInOnePrinter p;
 
 	private int userId;
 
 	PrinterPrintThread() {
 		for (int userId = 1; userId <= 5; userId++) {
-			/* any printer range from 1 to 1453 in an organization */
-			Thread t = new Thread(new PrinterPrintThread(new Printer(RandomUtil.random(1, 1453)), userId));
+			Thread t = new Thread(new PrinterPrintThread(new AllInOnePrinter("HP-143"), userId));
 			t.start();
 		}
 	}
 
-	PrinterPrintThread(Printer p) {
+	PrinterPrintThread(AllInOnePrinter p) {
 		for (int userId = 1; userId <= 5; userId++) {
 			Thread t = new Thread(new PrinterPrintThread(p, userId));
 			t.start();
 		}
 	}
 
-	PrinterPrintThread(Printer p, int userId) {
+	PrinterPrintThread(AllInOnePrinter p, int userId) {
 		this.p = p;
 		this.userId = userId;
 
@@ -117,20 +114,16 @@ class PrinterPrintThread implements Runnable {
 
 }
 
-/**
- * IMPORTANT : if you need to syn getPrinterInfo for 5 thread and print for
- * another 5 thread, you can not do that you need to move into different class.
- * 
- * @author admin
- *
- */
-class Printer {
+class AllInOnePrinter {
 
-	private int printerId;
+	private String printerName;
 
-	Printer(int printerId) {
-		this.printerId = printerId;
+	AllInOnePrinter(String printerName) {
+		this.printerName = printerName;
 	}
+
+	static Object lockPrint = new Object();
+	static Object lockFax = new Object();
 
 	public void print(int userId) throws InterruptedException {
 		/*
@@ -143,10 +136,8 @@ class Printer {
 		 * 
 		 * synchronized (Printer.class)
 		 */
-		
-		System.out.println("print started..");
 
-		synchronized (String.class) {
+		synchronized (lockPrint) {
 
 			for (int i = 0; i < 5; i++) {
 				ConsoleThreadLocal.get().logln("Printing for user " + userId + " page " + i, Color.red);
@@ -156,19 +147,15 @@ class Printer {
 
 	}
 
-	public int getPrinterInfo(int userId) throws InterruptedException {
+	public void fax(int userId) throws InterruptedException {
 
-		System.out.println("getPrinterInfo started..");
-		
-		synchronized (String.class) {
+		synchronized (lockFax) {
 
 			for (int i = 0; i < 5; i++) {
+				ConsoleThreadLocal.get().logln("Faxing for user " + userId + " page " + i);
 				Thread.currentThread().sleep(1000 * RandomUtil.random(1, 3));
-				ConsoleThreadLocal.get().logln("Printer is little busy while sending printer into to user " + userId);
 			}
-			System.out.println("returned printer info to " + userId);
 		}
-		return printerId;
 	}
 }
 

@@ -3,14 +3,10 @@ package java_oo.thread;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-import java.util.concurrent.FutureTask;
 
 import java_oo.swing.Console;
-import java_oo.swing.ConsoleThreadLocal;
 
 class TestCountDownLatch {
 
@@ -21,12 +17,12 @@ class TestCountDownLatch {
 		CountDownLatch startSignal = new CountDownLatch(1);
 		CountDownLatch doneSignal = new CountDownLatch(N);
 
-		Set<Future<Integer>> set = new HashSet<Future<Integer>>();
+		Set<RandomNumberGenerator> set = new HashSet<RandomNumberGenerator>();
 
 		for (int i = 0; i < N; ++i) {// create and start threads
-			FutureTask ft = new FutureTask<>(new RandomNumberGenerator(startSignal, doneSignal));
-			new Thread(ft).start();
-			set.add(ft);
+			RandomNumberGenerator rng = new RandomNumberGenerator(startSignal, doneSignal);
+			set.add(rng);
+			new Thread(rng).start();
 		}
 
 		System.out.println("All thread are waiting, Hit enter to start the program");
@@ -38,42 +34,50 @@ class TestCountDownLatch {
 		long s = System.currentTimeMillis();
 		doneSignal.await(); // wait for all to finish
 		long e = System.currentTimeMillis();
-		System.out.println(((e - s) / 1000) + " sec");
+		System.out.println("waited for : " + ((e - s) / 1000) + " sec");
 
 		int sum = 0;
-		for (Future<Integer> future : set) {
-			sum += future.get();
+		for (RandomNumberGenerator rng : set) {
+			sum += rng.getRandomNumber();
 		}
-		
+
 		System.out.println("Sum :" + sum);
 
 	}
 
 }
 
-class RandomNumberGenerator implements Callable {
+class RandomNumberGenerator implements Runnable {
 
 	private final CountDownLatch startSignal;
 	private final CountDownLatch doneSignal;
 
 	private final Console LOG = new Console();
 
+	private int ran = 0;
+
+	public int getRandomNumber() {
+		return this.ran;
+	}
+
 	RandomNumberGenerator(CountDownLatch startSignal, CountDownLatch doneSignal) {
 		this.startSignal = startSignal;
 		this.doneSignal = doneSignal;
 	}
 
-	public Integer call() {
-		int randomNumber = 0;
+	public void run() {
 		try {
 			startSignal.await();
-			randomNumber = generateRandomNumber();
+			ran = generateRandomNumber();
 			doneSignal.countDown();
+			for (int i = 0; i < 20; i++) {
+				sleep();
+				LOG.logln("......");
+			}
+
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}
-
-		return randomNumber;
 	}
 
 	private void sleep() {

@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		this.userDAO = userDAO;
 	}
 
-	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = true)
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_UNCOMMITTED, readOnly = true)
 	public void insertUser(User u) {
 		u.setUserPassword(md5PasswordEncoder.encodePassword(u.getUserPassword(), u.getUserId()));
 		getUserDAO().insertUser(u);
