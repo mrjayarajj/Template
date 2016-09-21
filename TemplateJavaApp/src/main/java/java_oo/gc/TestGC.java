@@ -1,9 +1,9 @@
-package java_oo.strings;
+package java_oo.gc;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
-public class TestImmutable {
+public class TestGC {
 
 	static class Country {
 
@@ -45,12 +45,16 @@ public class TestImmutable {
 	}
 
 	public static void main(String args[]) {
-		Map<Country, Integer> gym = new HashMap<Country, Integer>();
-		Country US = new Country("US");
-		gym.put(US, 100);
-		gym.put(new Country("IN"), 10);
-		US.setCode("IN");
-		System.out.println(gym);
-	}
 
+		List<Country> gym = new ArrayList<Country>();
+
+		while (true) {
+			gym.add(new Country("IN"));
+			gym.addAll(gym);
+			System.out.println(gym.size());
+		}
+
+		// 18290928
+		// 26,84,35,454
+	}
 }

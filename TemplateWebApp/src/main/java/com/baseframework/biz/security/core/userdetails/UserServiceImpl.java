@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,10 +19,12 @@ import com.baseframework.dao.security.core.userdetails.UserDAO;
 import com.baseframework.domain.security.access.Role;
 import com.baseframework.domain.security.core.userdetails.User;
 
+
 public class UserServiceImpl implements UserService, UserDetailsService {
 
 	private Md5PasswordEncoder md5PasswordEncoder;
 
+	@Autowired
 	private UserDAO userDAO;
 
 	private RoleDAO roleDAO;
@@ -100,7 +103,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		this.md5PasswordEncoder = md5PasswordEncoder;
 	}
 
-	@Override
 	public void deleteUser(int userID) {
 		userDAO.deleteUser(userID);
 	}

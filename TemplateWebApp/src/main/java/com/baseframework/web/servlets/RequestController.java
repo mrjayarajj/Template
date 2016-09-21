@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/abc")
 public class RequestController {
 
 	@RequestMapping(value = "/js/jquery.js", method = RequestMethod.GET)
@@ -18,3 +18,7 @@ public class RequestController {
 	
 
 }
+
+// www.gymboree.com:8080/abc/js/jquey.js
+//www.gymboree.com:8080/abc/css/jquey.js
+

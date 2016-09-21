@@ -27,6 +27,10 @@ public class Console {
 	private static int position = 0;
 
 	public Console() {
+		this("none");
+	}
+
+	public Console(String name) {
 		JFrame jFrame = new JFrame();
 
 		jTextPlane = new JTextPane();
@@ -45,6 +49,8 @@ public class Console {
 		jFrame.setLocation(position = (position + 100), 0);
 		jFrame.add(sp);
 		jFrame.setVisible(true);
+		jFrame.setTitle(name);
+
 	}
 
 	public void logln(String message) {

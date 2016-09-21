@@ -8,13 +8,19 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.SessionFactoryUtils;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Repository;
 
 import com.baseframework.domain.security.core.userdetails.User;
 
+/**
+ * The @Repository annotation is a specialization of the @Component annotation
+ * with similar use and functionality. In addition to importing the DAOs into
+ * the DI container, it also makes the unchecked exceptions (thrown from DAO
+ * methods) eligible for translation into Spring DataAccessException.
+ */
+@Repository("userDAO")
 public class UserDAOImpl implements UserDAO {
 
 	private static final Logger LOG = LoggerFactory.getLogger("LC_USER");
@@ -29,6 +35,7 @@ public class UserDAOImpl implements UserDAO {
 		return sessionFactory;
 	}
 
+	@Autowired
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}

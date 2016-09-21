@@ -13,14 +13,14 @@ import com.baseframework.domain.security.access.Role;
 import com.baseframework.domain.security.core.userdetails.User;
 import com.baseframework.domain.vo.JSONDetails;
 
-public class UserAction implements JSONDetails,SessionAware {
+public class UserAction implements JSONDetails, SessionAware {
 
 	private UserForm userForm = null;
 
 	private UserService userService = null;
-	
-	private Map<String,Object> session = null;
-	
+
+	private Map<String, Object> session = null;
+
 	private static final Logger LOG = LoggerFactory.getLogger("LC_USER");
 
 	public String cancel() {
@@ -35,7 +35,7 @@ public class UserAction implements JSONDetails,SessionAware {
 		f.setUsers(userList);
 		f.setRoles(roleList);
 		setUserForm(f);
-		LOG.debug("Fetched All User information "+f.getUsers());
+		LOG.debug("Fetched All User information " + f.getUsers());
 		return "success";
 	}
 
@@ -46,12 +46,11 @@ public class UserAction implements JSONDetails,SessionAware {
 		return getUserForm().getRedirectName();
 	}
 
-	
 	@Secured({ "BF_UPDATE_USER" })
 	public String selectUser() {
 		User u = getUserForm().getUser();
 		User loadedUser = getUserService().selectUserProfile(u.getUserId());
-		LOG.debug("selected role for the user:"+loadedUser.getUserId()+" - "+loadedUser.getRole().getRoleId());
+		LOG.debug("selected role for the user:" + loadedUser.getUserId() + " - " + loadedUser.getRole().getRoleId());
 		getUserForm().setUser(loadedUser);
 		getUserForm().setAction("update");
 		return "onLoad";
@@ -74,7 +73,7 @@ public class UserAction implements JSONDetails,SessionAware {
 	public UserForm getUserForm() {
 		return userForm;
 	}
-	
+
 	public Object getJavaValue() {
 		return getUserForm();
 	}

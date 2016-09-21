@@ -10,20 +10,13 @@ import java.util.concurrent.ConcurrentHashMap;
 import java_oo.swing.Console;
 import java_oo.swing.ConsoleThreadLocal;
 
-class Node {
-	
-
-}
-
 public class TestMap {
 
 	public static void main(String args[]) {
+		Map<String, Integer> m = new MyMap<String, Integer>();
+		new Sender(m);
+		new Receiver(m);
 
-		System.out.println(new ConcurrentHashMap().equals(new ConcurrentHashMap()));
-
-		//Map<String, Integer> m = new MyMap<String, Integer>();
-		//new Sender(m);
-		//new Receiver(m);
 	}
 
 }
