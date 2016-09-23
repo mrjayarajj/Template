@@ -7,11 +7,14 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.SessionFactoryUtils;
+import org.springframework.stereotype.Repository;
 
 import com.baseframework.domain.security.access.Function;
 import com.baseframework.domain.security.access.Module;
 
+@Repository("functionDAO")
 public class FunctionDAOImpl implements FunctionDAO {
 
 	public Session getSession() {
@@ -24,15 +27,17 @@ public class FunctionDAOImpl implements FunctionDAO {
 		return sessionFactory;
 	}
 
+	@Autowired
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
 	public List<Function> selectFunctions(Module module) {
 		Session session = getSession();
-		Query query = session.createQuery("select f from Function f where module.moduleId = :moduleId order by f.functionName asc");
+		Query query = session
+				.createQuery("select f from Function f where module.moduleId = :moduleId order by f.functionName asc");
 		query.setInteger("moduleId", module.getModuleId());
-		return (List<Function>)query.list();
+		return (List<Function>) query.list();
 	}
 
 	public void deleteFunction(List<Integer> functionList) {
@@ -69,7 +74,8 @@ public class FunctionDAOImpl implements FunctionDAO {
 	}
 
 	public List<Function> selectFunctionWithRoles(Module module) {
-		Query query = getSession().createQuery("select distinct f from Function f join fetch f.roles where f.module.moduleId = :moduleId ");
+		Query query = getSession().createQuery(
+				"select distinct f from Function f join fetch f.roles where f.module.moduleId = :moduleId ");
 		query.setInteger("moduleId", module.getModuleId());
 		return query.list();
 	}

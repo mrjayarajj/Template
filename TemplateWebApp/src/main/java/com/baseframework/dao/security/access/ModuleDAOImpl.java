@@ -1,18 +1,18 @@
 package com.baseframework.dao.security.access;
 
-import java.sql.SQLException;
 import java.util.List;
-
-import javax.sql.DataSource;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.SessionFactoryUtils;
+import org.springframework.stereotype.Repository;
 
 import com.baseframework.domain.security.access.Module;
 
+@Repository("moduleDAO")
 public class ModuleDAOImpl implements ModuleDAO {
 
 	public Session getSession() {
@@ -20,11 +20,12 @@ public class ModuleDAOImpl implements ModuleDAO {
 	}
 
 	private SessionFactory sessionFactory = null;
-	
+
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
 
+	@Autowired
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
@@ -40,9 +41,9 @@ public class ModuleDAOImpl implements ModuleDAO {
 		Session session = getSession();
 		session.save(m);
 		session.flush();
-	}	
+	}
 
-	public List<Module> selectAllModule() {		
+	public List<Module> selectAllModule() {
 		List<Module> list = getSession().createQuery("select m from Module m order by m.moduleName asc").list();
 		return list;
 	}
@@ -55,7 +56,7 @@ public class ModuleDAOImpl implements ModuleDAO {
 	}
 
 	public void updateModule(Module sourceModule) {
-		System.out.println("@@@"+sourceModule.getModuleId());
+		System.out.println("@@@" + sourceModule.getModuleId());
 		Session session = getSession();
 		Module targetModule = selectModule(sourceModule.getModuleId());
 		BeanUtils.copyProperties(sourceModule, targetModule);

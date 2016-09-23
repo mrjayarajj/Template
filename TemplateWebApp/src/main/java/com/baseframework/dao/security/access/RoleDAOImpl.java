@@ -6,10 +6,13 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.SessionFactoryUtils;
+import org.springframework.stereotype.Repository;
 
 import com.baseframework.domain.security.access.Role;
 
+@Repository("roleDAO")
 public class RoleDAOImpl implements RoleDAO {
 
 	public Session getSession() {
@@ -22,10 +25,11 @@ public class RoleDAOImpl implements RoleDAO {
 		return sessionFactory;
 	}
 
+	@Autowired
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
-	
+
 	public List<Role> selectAllRole() {
 		List<Role> list = getSession().createQuery("select r from Role r order by r.roleName asc").list();
 		return list;

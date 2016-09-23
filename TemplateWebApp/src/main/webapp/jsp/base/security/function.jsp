@@ -9,7 +9,7 @@
 			<sec:csrfInput />
 			<table>
 				<tr>
-					<td><s:text name="function_name" /></td>
+					<td>Function Name</td>
 					<td><s:hidden name="functionForm.function.functionId" /> <s:textfield
 						name="functionForm.function.functionName" /></td>
 				</tr>

@@ -2,11 +2,14 @@ package com.baseframework.biz.security.access;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.baseframework.dao.security.access.RoleDAO;
 import com.baseframework.domain.security.access.Role;
 
 public class RoleServiceImpl implements RoleService {
 	
+	@Autowired
 	private RoleDAO roleDAO = null;
 
 	public void deleteRole(List<Integer> roleList) {
@@ -21,7 +24,7 @@ public class RoleServiceImpl implements RoleService {
 		return getRoleDAO().selectAllRole();
 	}
 
-	public Role selectRole(int id) {		
+	public Role selectRole(int id) {
 		return getRoleDAO().selectRole(id);
 	}
 

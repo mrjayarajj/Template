@@ -45,55 +45,55 @@ class TestCountDownLatch {
 
 	}
 
-}
+	static class RandomNumberGenerator implements Runnable {
 
-class RandomNumberGenerator implements Runnable {
+		private final CountDownLatch startSignal;
+		private final CountDownLatch doneSignal;
 
-	private final CountDownLatch startSignal;
-	private final CountDownLatch doneSignal;
+		private final Console LOG = new Console();
 
-	private final Console LOG = new Console();
+		private int ran = 0;
 
-	private int ran = 0;
+		public int getRandomNumber() {
+			return this.ran;
+		}
 
-	public int getRandomNumber() {
-		return this.ran;
-	}
+		RandomNumberGenerator(CountDownLatch startSignal, CountDownLatch doneSignal) {
+			this.startSignal = startSignal;
+			this.doneSignal = doneSignal;
+		}
 
-	RandomNumberGenerator(CountDownLatch startSignal, CountDownLatch doneSignal) {
-		this.startSignal = startSignal;
-		this.doneSignal = doneSignal;
-	}
+		public void run() {
+			try {
+				startSignal.await();
+				ran = generateRandomNumber();
+				doneSignal.countDown();
+				for (int i = 0; i < 20; i++) {
+					sleep();
+					LOG.logln("......");
+				}
 
-	public void run() {
-		try {
-			startSignal.await();
-			ran = generateRandomNumber();
-			doneSignal.countDown();
-			for (int i = 0; i < 20; i++) {
-				sleep();
-				LOG.logln("......");
+			} catch (InterruptedException e) {
+				throw new RuntimeException(e);
 			}
+		}
 
-		} catch (InterruptedException e) {
-			throw new RuntimeException(e);
+		private void sleep() {
+			try {
+				// wait random between 1 to 5 sec
+				Thread.currentThread().sleep(1000 * RandomUtil.random(1, 10));
+			} catch (InterruptedException e) {
+				throw new RuntimeException(e);
+			}
+		}
+
+		private Integer generateRandomNumber() {
+			LOG.logln("Generating random number...");
+			sleep();
+			int ran = RandomUtil.random(1, 100);
+			LOG.logln("Generated random number : " + ran);
+			return ran;
 		}
 	}
 
-	private void sleep() {
-		try {
-			// wait random between 1 to 5 sec
-			Thread.currentThread().sleep(1000 * RandomUtil.random(1, 10));
-		} catch (InterruptedException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	private Integer generateRandomNumber() {
-		LOG.logln("Generating random number...");
-		sleep();
-		int ran = RandomUtil.random(1, 100);
-		LOG.logln("Generated random number : " + ran);
-		return ran;
-	}
 }

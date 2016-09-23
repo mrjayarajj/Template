@@ -2,11 +2,14 @@ package com.baseframework.biz.security.access;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.baseframework.dao.security.access.ModuleDAO;
 import com.baseframework.domain.security.access.Module;
 
 public class ModuleServiceImpl implements ModuleService {
 	
+	@Autowired
 	private ModuleDAO moduleDAO = null;
 
 	public void deleteModule(List<Integer> moduleList) {

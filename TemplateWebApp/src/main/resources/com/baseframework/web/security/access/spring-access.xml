@@ -2,9 +2,11 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "/tld/spring-beans-2.0.dtd">
 <beans>
 
+	<!--  
 	<bean id="roleDAO" class="com.baseframework.dao.security.access.RoleDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	-->
 
 	<bean id="roleService" class="com.baseframework.biz.security.access.RoleServiceImpl">
 		<property name="roleDAO" ref="roleDAO" />
@@ -14,9 +16,11 @@
 		<property name="roleService" ref="roleService" />
 	</bean>
 
+	<!-- 
 	<bean id="authenticateDAO" class="com.baseframework.dao.security.access.AuthenticateDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	-->
 
 	<bean id="authenticateService" class="com.baseframework.biz.security.access.AuthenticateServiceImpl">
 		<property name="authenticateDAO" ref="authenticateDAO" />
@@ -29,9 +33,11 @@
 		<property name="functionService" ref="functionService" />
 	</bean>
 
+	<!--
 	<bean id="functionDAO" class="com.baseframework.dao.security.access.FunctionDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	-->
 
 	<bean id="functionService" class="com.baseframework.biz.security.access.FunctionServiceImpl">
 		<property name="functionDAO" ref="functionDAO" />
@@ -42,9 +48,11 @@
 		<property name="functionService" ref="functionService" />
 	</bean>
 
+	<!--
 	<bean id="moduleDAO" class="com.baseframework.dao.security.access.ModuleDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	-->
 
 	<bean id="moduleService" class="com.baseframework.biz.security.access.ModuleServiceImpl">
 		<property name="moduleDAO" ref="moduleDAO" />

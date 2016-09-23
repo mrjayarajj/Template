@@ -1,6 +1,9 @@
 package com.baseframework.web.filters;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.HttpURLConnection;
@@ -68,7 +71,7 @@ public class RequestLoggerFilter implements Filter {
 
 			HttpServletRequest wrappedHttpServletRequest = new RequestWrapper((HttpServletRequest) servletRequest);
 			HttpServletResponse wrappedHttpServletResponse = new ResponseWrapper((HttpServletResponse) servletResponse);
-
+			
 			String reqId = configureLogInfo(httpServletRequest);
 			enableLogPerRequest(httpServletRequest);
 
@@ -474,6 +477,43 @@ public class RequestLoggerFilter implements Filter {
 				return new SessionProxy(ses);
 			else
 				return ses;
+		}
+		
+		private String body;
+		
+		/**
+		 * if u used this method then the request can not be read again, since we close the stream
+		 * @return
+		 * @throws IOException
+		 */
+		private String getBody() throws IOException {
+			StringBuilder stringBuilder = new StringBuilder();
+			BufferedReader bufferedReader = null;
+			try {
+				InputStream inputStream = this.getInputStream();
+				if (inputStream != null) {
+					bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+					char[] charBuffer = new char[128];
+					int bytesRead = -1;
+					while ((bytesRead = bufferedReader.read(charBuffer)) > 0) {
+						stringBuilder.append(charBuffer, 0, bytesRead);
+					}
+				} else {
+					stringBuilder.append("");
+				}
+			} catch (IOException ex) {
+				throw ex;
+			} finally {
+				if (bufferedReader != null) {
+					try {
+						bufferedReader.close();
+					} catch (IOException ex) {
+						throw ex;
+					}
+				}
+			}
+			body = stringBuilder.toString();
+			return this.body;
 		}
 
 		public String getCookiesAsString() {
