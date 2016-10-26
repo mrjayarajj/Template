@@ -3,12 +3,14 @@ package com.baseframework.biz.security.access;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.baseframework.dao.security.access.FunctionDAO;
 import com.baseframework.dao.security.access.ModuleDAO;
 import com.baseframework.domain.security.access.Function;
 import com.baseframework.domain.security.access.Module;
 
+@Service("functionService")
 public class FunctionServiceImpl implements FunctionService {
 	
 	@Autowired

@@ -3,12 +3,14 @@ package com.baseframework.biz.security.access;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.baseframework.dao.security.access.AuthenticateDAO;
 import com.baseframework.domain.security.access.Authenticate;
 import com.baseframework.domain.security.access.Function;
 import com.baseframework.domain.security.access.Role;
 
+@Service("authenticateService")
 public class AuthenticateServiceImpl implements AuthenticateService {
 
 	@Autowired
