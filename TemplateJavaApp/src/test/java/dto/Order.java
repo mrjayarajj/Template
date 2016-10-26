@@ -6,7 +6,7 @@ public class Order {
 
 	private Integer orderId = null;
 
-	private Set<Payment> orderPayments = null;
+	private Set<PaymentService> orderPayments = null;
 
 	private Set<OrderDetail> orderDetails = null;
 
@@ -18,11 +18,11 @@ public class Order {
 		this.orderDetails = orderDetails;
 	}
 
-	public void setOrderPayments(Set<Payment> orderPayments) {
+	public void setOrderPayments(Set<PaymentService> orderPayments) {
 		this.orderPayments = orderPayments;
 	}
 
-	public Set<Payment> getOrderPayments() {
+	public Set<PaymentService> getOrderPayments() {
 		return orderPayments;
 	}
 

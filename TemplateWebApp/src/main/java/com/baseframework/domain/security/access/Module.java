@@ -23,6 +23,10 @@ public class Module implements java.io.Serializable {
 	public Module(String moduleName) {
 		this.moduleName = moduleName;
 	}
+	
+	public Module(int moduleId) {
+		this.moduleId = moduleId;
+	}
 
 	public Module(String moduleName, Set<Function> functions) {
 		this.moduleName = moduleName;

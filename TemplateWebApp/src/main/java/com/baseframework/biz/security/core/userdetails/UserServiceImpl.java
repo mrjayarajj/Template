@@ -10,6 +10,7 @@ import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,14 +20,16 @@ import com.baseframework.dao.security.core.userdetails.UserDAO;
 import com.baseframework.domain.security.access.Role;
 import com.baseframework.domain.security.core.userdetails.User;
 
-
+@Service("userService")
 public class UserServiceImpl implements UserService, UserDetailsService {
 
+	@Autowired
 	private Md5PasswordEncoder md5PasswordEncoder;
 
 	@Autowired
 	private UserDAO userDAO;
 
+	@Autowired
 	private RoleDAO roleDAO;
 
 	private static final Logger LOG = LoggerFactory.getLogger("LC_USER");
@@ -43,7 +46,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		this.userDAO = userDAO;
 	}
 
-	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_UNCOMMITTED, readOnly = true)
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void insertUser(User u) {
 		u.setUserPassword(md5PasswordEncoder.encodePassword(u.getUserPassword(), u.getUserId()));
 		getUserDAO().insertUser(u);

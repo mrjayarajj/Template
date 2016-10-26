@@ -31,6 +31,7 @@ import javax.servlet.http.HttpServletResponseWrapper;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionContext;
 
+import static com.baseframework.biz.util.TemplateUtil.getClientIpAddr;
 import org.mockito.Mockito;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,14 +55,17 @@ public class RequestLoggerFilter implements Filter {
 	private static Logger LOG = LoggerFactory.getLogger(RequestLoggerFilter.class);
 
 	private static Logger LOG_LOGPERREQ = LoggerFactory.getLogger(RequestLoggerFilter.class.getName() + "$LogPerReq");
-	private static Logger LOG_INCLUDE = LoggerFactory.getLogger(RequestLoggerFilter.class.getName() + "$DispatcherType.INCLUDE");
-	private static Logger LOG_FORWARD = LoggerFactory.getLogger(RequestLoggerFilter.class.getName() + "$DispatcherType.FORWARD");
+	private static Logger LOG_INCLUDE = LoggerFactory
+			.getLogger(RequestLoggerFilter.class.getName() + "$DispatcherType.INCLUDE");
+	private static Logger LOG_FORWARD = LoggerFactory
+			.getLogger(RequestLoggerFilter.class.getName() + "$DispatcherType.FORWARD");
 
 	public void init(final FilterConfig filterConfig) throws ServletException {
 
 	}
 
-	public void doFilter(final ServletRequest servletRequest, final ServletResponse servletResponse, final FilterChain filterChain) throws IOException, ServletException {
+	public void doFilter(final ServletRequest servletRequest, final ServletResponse servletResponse,
+			final FilterChain filterChain) throws IOException, ServletException {
 
 		final long startTime = System.currentTimeMillis();
 
@@ -71,7 +75,7 @@ public class RequestLoggerFilter implements Filter {
 
 			HttpServletRequest wrappedHttpServletRequest = new RequestWrapper((HttpServletRequest) servletRequest);
 			HttpServletResponse wrappedHttpServletResponse = new ResponseWrapper((HttpServletResponse) servletResponse);
-			
+
 			String reqId = configureLogInfo(httpServletRequest);
 			enableLogPerRequest(httpServletRequest);
 
@@ -154,8 +158,8 @@ public class RequestLoggerFilter implements Filter {
 		org.slf4j.MDC.put("requestId", id + "-" + System.currentTimeMillis());
 		org.apache.log4j.MDC.put("requestId", id + "-" + System.currentTimeMillis());
 
-		org.slf4j.MDC.put("ipAddress", httpServletRequest.getRemoteAddr());
-		org.apache.log4j.MDC.put("ipAddress", httpServletRequest.getRemoteAddr());
+		org.slf4j.MDC.put("ipAddress", getClientIpAddr(httpServletRequest));
+		org.apache.log4j.MDC.put("ipAddress", getClientIpAddr(httpServletRequest));
 		sbf.append("|");
 		sbf.append(httpServletRequest.getRemoteAddr());
 
@@ -259,8 +263,12 @@ public class RequestLoggerFilter implements Filter {
 
 		boolean isGranted =
 
-		Optional.of(httpServletRequest).map(req -> req.getSession()).map(ses -> (SecurityContext) ses.getAttribute("SPRING_SECURITY_CONTEXT")).map(sec -> sec.getAuthentication()).map(auth -> auth.getAuthorities()).map(grants -> grants.stream().filter(gAuth -> gAuth.getAuthority().equals("BF_CONTROL_LOG_PER_REQ")).findFirst())
-				.map(e -> e.isPresent() ? e.get() : null).isPresent();
+				Optional.of(httpServletRequest).map(req -> req.getSession())
+						.map(ses -> (SecurityContext) ses.getAttribute("SPRING_SECURITY_CONTEXT"))
+						.map(sec -> sec.getAuthentication()).map(auth -> auth.getAuthorities())
+						.map(grants -> grants.stream()
+								.filter(gAuth -> gAuth.getAuthority().equals("BF_CONTROL_LOG_PER_REQ")).findFirst())
+						.map(e -> e.isPresent() ? e.get() : null).isPresent();
 
 		if (isGranted == false) {
 			return;
@@ -351,6 +359,7 @@ public class RequestLoggerFilter implements Filter {
 
 	/**
 	 * SessionProxy proxy class
+	 * 
 	 * @author jjaganat
 	 *
 	 */
@@ -429,14 +438,16 @@ public class RequestLoggerFilter implements Filter {
 		}
 
 		public void setAttribute_(String arg0, Object arg1) {
-			WebApplicationContext webApplicationContext = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
+			WebApplicationContext webApplicationContext = WebApplicationContextUtils
+					.getWebApplicationContext(getServletContext());
 			CacheManager cm = (CacheManager) webApplicationContext.getBean("cacheManager");
 			Cache c = cm.getCache("SESSION_CACHE");
 			c.put(new Element(getId() + "#" + arg0, arg1));
 		}
 
 		public Object getAttribute_(String arg0) {
-			WebApplicationContext webApplicationContext = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
+			WebApplicationContext webApplicationContext = WebApplicationContextUtils
+					.getWebApplicationContext(getServletContext());
 			CacheManager cm = (CacheManager) webApplicationContext.getBean("cacheManager");
 			Cache c = cm.getCache("SESSION_CACHE");
 			Element e = (Element) c.get(getId() + "#" + arg0);
@@ -450,7 +461,8 @@ public class RequestLoggerFilter implements Filter {
 	}
 
 	/**
-	 * RequestWrapper adapter pattern 
+	 * RequestWrapper adapter pattern
+	 * 
 	 * @author jjaganat
 	 *
 	 */
@@ -478,11 +490,13 @@ public class RequestLoggerFilter implements Filter {
 			else
 				return ses;
 		}
-		
+
 		private String body;
-		
+
 		/**
-		 * if u used this method then the request can not be read again, since we close the stream
+		 * if u used this method then the request can not be read again, since
+		 * we close the stream
+		 * 
 		 * @return
 		 * @throws IOException
 		 */
@@ -527,7 +541,8 @@ public class RequestLoggerFilter implements Filter {
 			final Cookie[] cookies = getCookies();
 			if (cookies != null) {
 				for (final Cookie cookie : cookies) {
-					cookiesData.append(cookie.getName()).append("=").append(cookie.getValue()).append(",").append(cookie.getDomain());
+					cookiesData.append(cookie.getName()).append("=").append(cookie.getValue()).append(",")
+							.append(cookie.getDomain());
 					cookiesData.append("<br>");
 				}
 			}

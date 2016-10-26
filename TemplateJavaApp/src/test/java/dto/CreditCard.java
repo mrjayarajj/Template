@@ -1,6 +1,6 @@
 package dto;
 
-public class CreditCard extends Payment {
+public class CreditCard extends PaymentService {
 
 	private String creditCardNumber;
 

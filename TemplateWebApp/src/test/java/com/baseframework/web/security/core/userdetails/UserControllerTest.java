@@ -1,12 +1,16 @@
 package com.baseframework.web.security.core.userdetails;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Matchers.anyInt;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.junit.Assert;
 import org.junit.Before;
@@ -16,9 +20,9 @@ import com.baseframework.biz.security.core.userdetails.UserService;
 import com.baseframework.domain.security.access.Role;
 import com.baseframework.domain.security.core.userdetails.User;
 
-public class UserActionTest {
+public class UserControllerTest {
 
-	private UserAction ua = null;
+	private UserController ua = null;
 
 	private List<Role> getRoles() {
 		List<Role> roles = new ArrayList<Role>();
@@ -42,7 +46,7 @@ public class UserActionTest {
 
 	@Before
 	public void setup() {
-		UserAction ua = new UserAction();
+		UserController ua = new UserController();
 		this.ua = ua;
 	}
 
@@ -60,16 +64,14 @@ public class UserActionTest {
 		when(mockedList.get(0)).thenReturn("first");
 		when(mockedList.get(1)).thenThrow(new RuntimeException());
 
-		
 		System.out.println(mockedList.get(0));
 		System.out.println(verify(mockedList).get(0));// Exception in thread
 														// "main" Wanted but not
 														// invoked:
 														// linkedList.get(0);
 
-		
 		reset(mockedList);
-		
+
 		// stubbing using built-in anyInt() argument matcher
 		when(mockedList.get(anyInt())).thenReturn("element");
 
@@ -79,7 +81,7 @@ public class UserActionTest {
 
 		// stubbing using custom matcher (let's say isValid() returns your own
 		// matcher implementation):
-		 //when(mockedList.contains(argThat(isValid()))).thenReturn("element");
+		// when(mockedList.contains(argThat(isValid()))).thenReturn("element");
 
 	}
 
@@ -93,10 +95,9 @@ public class UserActionTest {
 		when(us.selectAllRole()).thenReturn(getRoles());
 		when(us.selectAllUser()).thenReturn(getUsers());
 		ua.setUserService(us);
-		String resultName = ua.onLoad();
+		ua.onLoad();
 		Assert.assertEquals(5, ua.getUserForm().getRoles().size());
 		Assert.assertEquals(5, ua.getUserForm().getUsers().size());
-		Assert.assertEquals("success", resultName);
 	}
 
 	@Test
@@ -108,8 +109,7 @@ public class UserActionTest {
 		uf.setUser(u);
 		ua.setUserForm(uf);
 		ua.setUserService(us);
-		String resultName = ua.addUser();
-		Assert.assertEquals("redirect_showUser", resultName);
+		ua.addUser(uf);
 	}
 
 }

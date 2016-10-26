@@ -1,4 +1,3 @@
-<%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
@@ -34,7 +33,6 @@
 				<tiles:insertAttribute	name="menu" />
 			</td>
 			<td width="90%" align="left" valign="top">
-				<s:actionerror /> 
 				<tiles:insertAttribute name="body" />
 			</td>
 		</tr>

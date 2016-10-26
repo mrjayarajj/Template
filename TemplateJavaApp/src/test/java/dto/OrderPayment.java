@@ -2,17 +2,17 @@ package dto;
 
 public class OrderPayment {
 
-	private Payment payment = null;
+	private PaymentService payment = null;
 
 	private String transationType = null;
 
 	private Integer transationId = null;
 
-	public void setPayment(Payment payment) {
+	public void setPayment(PaymentService payment) {
 		this.payment = payment;
 	}
 
-	public Payment getPayment() {
+	public PaymentService getPayment() {
 		return payment;
 	}
 

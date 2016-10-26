@@ -123,17 +123,6 @@
 		<url-pattern>*.ico</url-pattern>
 	</filter-mapping>
 	<filter>
-		<filter-name>struts2</filter-name>
-		<filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
-		<async-supported>true</async-supported>
-	</filter>
-	<filter-mapping>
-		<filter-name>struts2</filter-name>
-		<url-pattern>/*</url-pattern>
-		<dispatcher>REQUEST</dispatcher>
-		<dispatcher>ERROR</dispatcher>
-	</filter-mapping>
-	<filter>
 		<filter-name>jspIncludeFilter</filter-name>
 		<filter-class>com.baseframework.web.filters.JSPIncludeFilter</filter-class>
 	</filter>
@@ -197,6 +186,10 @@
 	<servlet-mapping>
 		<servlet-name>spring-mvc</servlet-name>
 		<url-pattern>/media/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>spring-mvc</servlet-name>
+		<url-pattern>/mvc/*</url-pattern>
 	</servlet-mapping>
 	<!-- ##### SERVLET ENDS HERE ##### -->
 	<error-page>

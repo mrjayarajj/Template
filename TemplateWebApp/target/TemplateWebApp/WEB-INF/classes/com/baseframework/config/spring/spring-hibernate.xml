@@ -9,7 +9,7 @@
 		
 		<property name="configLocations">
 			<list>
-				<value>classpath:\com\baseframework\config\hibernate\mysql\hibernate.cfg.xml</value>				
+				<value>classpath:\com\baseframework\config\hibernate\hsqldb\hibernate.cfg.xml</value>				
 			</list>
 		</property>
 		

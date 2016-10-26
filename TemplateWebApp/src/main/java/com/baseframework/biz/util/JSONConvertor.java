@@ -23,4 +23,17 @@ public class JSONConvertor {
 			return e.getMessage();
 		}
 	}
+	
+	
+	public String getJSON(Object javaValue) {
+		try {
+			ObjectMapper om = new ObjectMapper();			
+			om.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+			om.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
+			ObjectWriter ow = om.writer().withDefaultPrettyPrinter();
+			return ow.writeValueAsString(javaValue);
+		} catch (Exception e) {
+			return e.getMessage();
+		}
+	}
 }

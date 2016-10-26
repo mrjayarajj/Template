@@ -13,12 +13,30 @@
 	<!--  
 	<import resource="classpath:\com\baseframework\config\spring\spring-oauth2.xml" />	
 	-->
+	
+
+	
 	<import resource="classpath:\com\baseframework\config\spring\spring-security.xml" />
 	
 	<!-- 
 	<import resource="classpath:\com\baseframework\config\spring\spring-ehcache.xml" />
 	 -->
-	<import resource="classpath:\com\baseframework\web\security\access\spring-access.xml" />
-	<import resource="classpath:\com\baseframework\web\security\core\userdetails\spring-user.xml" />
+
+
+	
+	
+	
+	<!--  
+	<bean id="properties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="locations">
+			<list>
+				<value>classpath:templates.properties</value>
+				<value>classpath:sql.properties</value>
+				<value>classpath:common.properties</value>
+			</list>
+		</property>
+	</bean>
+	-->
 	
 </beans>

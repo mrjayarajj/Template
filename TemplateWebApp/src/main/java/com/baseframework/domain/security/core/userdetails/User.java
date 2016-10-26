@@ -2,6 +2,8 @@ package com.baseframework.domain.security.core.userdetails;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -9,9 +11,9 @@ import java.util.List;
 import java.util.Set;
 
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -28,7 +30,8 @@ public class User implements java.io.Serializable, UserDetails, /* CacheDetails,
 	private Role role;
 	private String userName;
 	/**
-	 * do not serialize password during thread dump or have it as char[] because char[] are stored in 
+	 * do not serialize password during thread dump or have it as char[] because
+	 * char[] are stored in
 	 */
 	private transient String userPassword;
 	private char gender;
@@ -36,6 +39,7 @@ public class User implements java.io.Serializable, UserDetails, /* CacheDetails,
 	private boolean selected;
 
 	private boolean locked;
+
 	private Date expireDate;
 
 	public User() {
@@ -66,7 +70,6 @@ public class User implements java.io.Serializable, UserDetails, /* CacheDetails,
 		this.userId = userId;
 	}
 
-	
 	public Role getRole() {
 		return this.role;
 	}
@@ -158,12 +161,28 @@ public class User implements java.io.Serializable, UserDetails, /* CacheDetails,
 		return isStatus();
 	}
 
+	public void setExpireDate(Date expireDate) {
+		this.expireDate = expireDate;
+	}
+
 	public Date getExpireDate() {
 		return expireDate;
 	}
 
-	public void setExpireDate(Date expireDate) {
-		this.expireDate = expireDate;
+	public String getExpireDateAsString() {
+		if (expireDate != null) {
+			return new SimpleDateFormat("MM/dd/yyyy").format(expireDate);
+		} else {
+			return "";
+		}
+	}
+
+	public void setExpireDateAsString(String expireDate) throws ParseException {
+		if (expireDate != null && !expireDate.isEmpty()) {
+			this.expireDate = new SimpleDateFormat("MM/dd/yyyy").parse(expireDate);
+		} else {
+			this.expireDate = null;
+		}
 	}
 
 	public boolean isLocked() {
@@ -216,5 +235,11 @@ public class User implements java.io.Serializable, UserDetails, /* CacheDetails,
 		} catch (CloneNotSupportedException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	private String token;
+
+	public void setToken(String myAcInfoToken) {
+		this.token = token;
 	}
 }

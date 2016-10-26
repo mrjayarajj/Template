@@ -1,50 +1,68 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <tiles:insertDefinition name="baseLayout">
 	<tiles:putAttribute name="title" value="Module" type="String" />
 	<tiles:putAttribute name="body">
-		<s:form namespace="/security/access">
+	
+		<c:if test="${moduleForm.action=='update'}">
+			<c:set var="url"
+				value="/mvc/security/access/module/${moduleForm.module.moduleId}" />
+				<c:set var="submitValue" value="update" />
+		</c:if>
+		<c:if test="${moduleForm.action=='add'}">
+			<c:set var="url" value="/mvc/security/access/modules" />
+			<c:set var="submitValue" value="add" />
+		</c:if>
+	
+		<form action="${url}" method="POST">
 			<sec:csrfInput />
 			<table>
 				<tr>
-					<td><s:text name="module_name" /></td>
-					<td><s:hidden name="moduleForm.module.moduleId" /> <s:textfield
-						name="moduleForm.module.moduleName" /></td>
+					<td>Module Name</td>
+					<td>
+					<c:if test="${submitValue=='update' }" >
+						<input type="hidden" name="module.moduleId" value="${moduleForm.module.moduleId}" />
+					</c:if>
+					
+					 
+					<input type="text" name="module.moduleName"
+						value="${moduleForm.module.moduleName}"  /></td>
 				</tr>
 				<tr>
 					<td>&nbsp;</td>
-					<td><s:if test="%{moduleForm.action=='add'}">
-						<s:submit value="add" action="processModule!addModule" />
-					</s:if> <s:if test="%{moduleForm.action=='update'}">
-						<s:submit value="update" action="processModule!updateModule" />
-					</s:if></td>
+					<td>
+						<input type="submit" value="${submitValue}"/>
+					</td>
 				</tr>
 			</table>
+		</form>
 
+		<form action="/mvc/security/access/modules/delete" method="POST">
+			<sec:csrfInput />
 			<table border="1">
 				<tr>
-					<td><b><s:submit value="delete"
-						action="processModule!deleteModules" /> </b></td>
+					<td><b><input type="submit" value="delete"
+						/> </b></td>
 					<td><b>module Name</b></td>
 				</tr>
 
-				<s:iterator status="s" value="moduleForm.moduleList">
+				<c:forEach varStatus="loopCounter" var="m" items="${moduleForm.moduleList}">
 					<tr>
-						<td><s:checkbox
-							name="moduleForm.selectedModuleList[%{#s.index}]"
-							fieldValue="%{moduleForm.moduleList[#s.index].moduleId}"></s:checkbox>
+						<td><input type="checkbox"
+							name="selectedModuleList[${loopCounter.count-1}]"
+							value="${m.moduleId}"></s:checkbox>
 						</td>
-						<td><s:url id="moduleIDURL" action="processModule"
-							namespace="/security/access" method="selectModule">
-							<s:param name="moduleForm.module.moduleId" value="%{moduleId}"></s:param>
-						</s:url> <s:a href="%{moduleIDURL}">
-							<s:property value="moduleName" />
-						</s:a></td>
+						<td>
+						<a href="/mvc/security/access/module/${m.moduleId}">
+							<c:out value="${m.moduleName}" />
+						</a>
+						</td>
 					</tr>
-				</s:iterator>
+				</c:forEach>
 			</table>
-		</s:form>
+		</form>
 
 	</tiles:putAttribute>
 </tiles:insertDefinition>

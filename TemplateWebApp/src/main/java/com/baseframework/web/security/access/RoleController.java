@@ -5,63 +5,84 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.baseframework.biz.security.access.RoleService;
 import com.baseframework.domain.security.access.Role;
 import com.baseframework.domain.vo.JSONDetails;
+import com.baseframework.web.security.core.userdetails.UserForm;
 
-public class RoleAction implements JSONDetails {
-	
-	private static final Logger LOG = LoggerFactory.getLogger(RoleAction.class);
+@Controller
+@Scope("prototype")
+@RequestMapping(value = "/security/access")
+public class RoleController implements JSONDetails {
+
+	private static final Logger LOG = LoggerFactory.getLogger(RoleController.class);
 
 	private RoleForm RoleForm = null;
 
+	@Autowired
 	private RoleService roleService = null;
 
-	public String onLoad() {	
+	@RequestMapping(value = "/roles", method = RequestMethod.GET)
+	public ModelAndView onLoad() {
 		LOG.info("onload of Role Action");
 		List<Role> userRole = getRoleService().selectAllRole();
 		RoleForm f = getRoleForm() == null ? new RoleForm() : getRoleForm();
 		f.setRoleList(userRole);
-		setRoleForm(f);		
-		return "success";
+		setRoleForm(f);
+
+		ModelAndView model = new ModelAndView("/jsp/base/security/role.jsp");
+		model.addObject("roleForm", f);
+		return model;
 	}
 
-	public String addRole() {
-		Role r = getRoleForm().getRole();
+	@RequestMapping(value = "/roles", method = RequestMethod.POST)
+	public ModelAndView addRole(@ModelAttribute("roleForm") RoleForm roleForm) {
+		Role r = roleForm.getRole();
 		getRoleService().insertRole(r);
-		return "redirect_onLoad";
+		return new ModelAndView("redirect:/mvc/security/access/roles");
 	}
 
-	public String selectRole() {
-		Role r = getRoleForm().getRole();
-		Role loadedRole = getRoleService().selectRole(r.getRoleId());
+	@RequestMapping(value = "/role/{roleId}", method = RequestMethod.GET)
+	public ModelAndView selectRole(@PathVariable Integer roleId) {
+		Role loadedRole = getRoleService().selectRole(roleId);
+		setRoleForm(new RoleForm());
 		getRoleForm().setRole(loadedRole);
 		getRoleForm().setAction("update");
-		return "onLoad";
+		return onLoad();
 	}
 
-	public String updateRole() {
-		Role m = getRoleForm().getRole();
+	@RequestMapping(value = "/role/{roleId}", method = RequestMethod.POST)
+	public ModelAndView updateRole(@ModelAttribute("roleForm") RoleForm roleForm) {
+		Role m = roleForm.getRole();
 		getRoleService().updateRole(m);
-		return "redirect_onLoad";
+		return new ModelAndView("redirect:/mvc/security/access/roles");
 	}
 
-	public String deleteRoles() {
-		List<Integer> roleList = getRoleForm().getSelectedRoleList();
-		
+	@RequestMapping(value = "/roles/delete", method = RequestMethod.POST)
+	public ModelAndView deleteRoles(@ModelAttribute("roleForm") RoleForm roleForm) {
+		List<Integer> roleList =roleForm.getSelectedRoleList();
+
 		List<Integer> selectedRoleList_ = new ArrayList<Integer>();
-		for(Object o : roleList){
-			try{
+		for (Object o : roleList) {
+			try {
 				Integer i = Integer.parseInt(o.toString());
 				selectedRoleList_.add(i);
-			}catch(NumberFormatException e){
-				//ignore this
+			} catch (NumberFormatException e) {
+				// ignore this
 			}
 		}
-		
+
 		getRoleService().deleteRole(selectedRoleList_);
-		return "redirect_onLoad";
+		return new ModelAndView("redirect:/mvc/security/access/roles");
 	}
 
 	public RoleForm getRoleForm() {

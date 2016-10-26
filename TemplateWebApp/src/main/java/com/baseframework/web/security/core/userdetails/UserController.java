@@ -72,6 +72,7 @@ public class UserController implements JSONDetails {
 		return onLoad();
 	}
 
+
 	@RequestMapping(value = "/user/{userId}", method = RequestMethod.POST)
 	@Secured({ "BF_UPDATE_USER" })
 	public ModelAndView updateUser(@ModelAttribute("userForm") UserForm userform) {

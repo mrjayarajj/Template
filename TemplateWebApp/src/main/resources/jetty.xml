@@ -3,6 +3,8 @@
 
 <Configure id="server" class="org.eclipse.jetty.server.Server">
 
+	<!-- https://confluence.atlassian.com/fisheye/configuring-ssl-cipher-suites-for-jetty-414188522.html -->
+
 	<New id="dataSource" class="org.eclipse.jetty.plus.jndi.Resource">
 		<Arg></Arg>
 		<Arg>testDS</Arg>

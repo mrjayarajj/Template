@@ -26,7 +26,7 @@ public class HsqldbContextListener implements ServletContextListener {
 		}	
 		*/
 		
-		String dbPath = "/Users/admin/Downloads/hsqldb/BASE";
+		String dbPath = "/Users/mrjayarajj/Downloads/hsqldb/BASE";
 			
 		Server.start(dbPath);
 		

@@ -9,5 +9,11 @@ public class Order {
 
 	private List<OrderItem> orderItem;
 
+	private CreditCard creditCard;
+
 	private Status status;
+
+	public CreditCard getCreditCard() {
+		return this.creditCard;
+	}
 }

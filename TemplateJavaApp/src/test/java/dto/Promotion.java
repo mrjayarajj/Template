@@ -1,6 +1,6 @@
 package dto;
 
-public class Promotion extends Payment {
+public class Promotion extends PaymentService {
 
 	private String promotionCode;
 

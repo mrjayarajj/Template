@@ -7,8 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -24,15 +24,16 @@ import com.baseframework.biz.security.core.userdetails.UserService;
 import com.baseframework.domain.security.access.Role;
 import com.baseframework.domain.security.core.userdetails.User;
 
-
-public class UserRestControllerImpl implements UserRestController {
+@RestController
+@RequestMapping(value = "/v1.1/security/core/userdetails")
+public class UserRestController {
 
 	public static final String DUMMY_USERS = "/dummy";
 	public static final String USERS_BY_ID = "/{id}";
 	public static final String USERS_BY_USER_NAME = "/name";
 	public static final String USERS = "/users";
 
-	private static final Logger LOG = LoggerFactory.getLogger(UserRestControllerImpl.class);
+	private static final Logger LOG = LoggerFactory.getLogger(UserRestController.class);
 
 	@Autowired
 	private UserService userService;
@@ -86,6 +87,10 @@ public class UserRestControllerImpl implements UserRestController {
 		LOG.info("Start getAllUsers.");
 		List<User> users = userService.selectAllUser();
 
+		for(User u : users){
+			u.getRole().setFunctions(null);
+		}
+		
 		return users;
 	}
 

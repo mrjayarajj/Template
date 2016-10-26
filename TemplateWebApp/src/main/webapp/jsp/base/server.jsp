@@ -1,6 +1,5 @@
 <%@ page import="java.net.*"%>
 
-<%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
@@ -9,21 +8,21 @@
 	<tiles:putAttribute name="title" value="Server" type="String" />
 	<tiles:putAttribute name="css_style" type="String">
 		<style>
-.wrap {
-	width: 352px;
-}
-
-.wrap table {
-	width: 550px;
-	table-layout: fixed;
-}
-
-table tr td {
-	padding: 0px;
-	border: 0px solid #eee;
-	word-wrap: break-word;
-}
-</style>
+		.wrap {
+			width: 352px;
+		}
+		
+		.wrap table {
+			width: 550px;
+			table-layout: fixed;
+		}
+		
+		table tr td {
+			padding: 0px;
+			border: 0px solid #eee;
+			word-wrap: break-word;
+		}
+		</style>
 	</tiles:putAttribute>
 	<tiles:putAttribute name="java_script" type="String">
 		<script>
@@ -63,39 +62,6 @@ table tr td {
 					<td><b>Server Path :</b></td>
 					<td><%=this.getClass().getResource("/")%></td>
 				</tr>
-				<s:iterator status="s" value="#request">
-					<tr>
-						<td><b>REQ:</b> <s:property value="key" /></td>
-						<td><s:property value="value" /></td>
-					</tr>
-				</s:iterator>
-				<s:iterator status="s" value="#response">
-					<tr>
-						<td><b>RES:</b> <s:property value="key" /></td>
-						<td><s:property value="value" /></td>
-					</tr>
-				</s:iterator>
-				<s:iterator status="s" value="#page">
-					<tr>
-						<td><b>PGE:</b> <s:property value="key" /></td>
-						<td><s:property value="value" /></td>
-					</tr>
-				</s:iterator>
-				<s:iterator status="s" value="#session">
-					<tr>
-						<td><b>SES:</b> <s:property value="key" /></td>
-						<td><s:property value="value" /></td>
-					</tr>
-				</s:iterator>
-				<!--  
-				<c:forEach varStatus="i" var="cookie"
-					items="${pageContext.request.cookies}">
-					<tr>
-						<td><b>COOKIE:</b></td>
-						<td><c:out value="${cookie}" /></td>
-					</tr>
-				</c:forEach>
-				-->
 				<%
 					Cookie[] cookie = request.getCookies();
 							for (int i = 0; i < cookie.length; i++) {
@@ -104,9 +70,7 @@ table tr td {
 					<td><b>COOKIE:</b></td>
 					<td><%=cookie[i].getName()%>=<%=cookie[i].getValue()%>,<%=cookie[i].getDomain()%></td>
 				</tr>
-				<%
-					}
-				%>
+				<%}%>
 				<!--x-debug-enabled = com.baseframework.web.filters.JSPIncludeFilter-DEBUG#com.baseframework.web.filters.RequestLoggerFilter$Cookie-DEBUG#com.baseframework.web.filters.RequestLoggerFilter$Header-DEBUG# -->
 			</table>
 		</div>
@@ -114,11 +78,13 @@ table tr td {
 </tiles:insertDefinition>
 
 <%
-ClassLoader cl = ClassLoader.getSystemClassLoader();
+	ClassLoader cl = ClassLoader.getSystemClassLoader();
 
-URL[] urls = ((URLClassLoader)cl).getURLs();
+	URL[] urls = ((URLClassLoader) cl).getURLs();
 
-for(URL url: urls){
-	System.out.println(url.getFile());
-}
+	for (URL url : urls) {
+		System.out.println(url.getFile());
+	}
+	//Properties props = System.getProperties();
+	//props.list(System.out);
 %>

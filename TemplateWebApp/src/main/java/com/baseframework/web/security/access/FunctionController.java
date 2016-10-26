@@ -5,56 +5,78 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.baseframework.biz.security.access.FunctionService;
 import com.baseframework.domain.security.access.Function;
 import com.baseframework.domain.security.access.Module;
 import com.baseframework.domain.vo.JSONDetails;
 
-public class FunctionAction implements JSONDetails {
+@Controller
+@Scope("prototype")
+@RequestMapping(value = "/security/access")
+public class FunctionController implements JSONDetails {
 	
-	public static final Logger Log = LoggerFactory.getLogger(FunctionAction.class);
+	public static final Logger Log = LoggerFactory.getLogger(FunctionController.class);
 
 	private FunctionForm functionForm = null;
 
+	@Autowired
 	private FunctionService functionService = null;
 
-	public String onLoad() {
+	@RequestMapping(value = "/functions", method = RequestMethod.GET)
+	public ModelAndView onLoad() {
 		List<Module> moduleList = getFunctionService().selectAllModule();
 		List<Function> functionList = getFunctionService().selectAllFunctionsWithModule();
 		FunctionForm f = getFunctionForm() == null ? new FunctionForm() : getFunctionForm();
 		f.setFunctionList(functionList);
 		f.setModuleList(moduleList);
 		setFunctionForm(f);
-		return "success";
+		ModelAndView model = new ModelAndView("/jsp/base/security/function.jsp");
+		model.addObject("functionForm", f);
+		return model;
 	}
 
-	public String addFunction() {
-		Function r = getFunctionForm().getFunction();
+	@RequestMapping(value = "/functions", method = RequestMethod.POST)
+	public ModelAndView addFunction(@ModelAttribute("functionForm") FunctionForm functionForm) {
+		Function r = functionForm.getFunction();
 		getFunctionService().insertFunction(r);
-		return "redirect_onLoad";
+		return new ModelAndView("redirect:/mvc/security/access/functions");
 	}
 
-	public String selectFunction() {
-		Function f = getFunctionForm().getFunction();
-		Function loadedFunction = getFunctionService().selectFunction(f.getFunctionId());
+	@RequestMapping(value = "/function/{functionId}", method = RequestMethod.GET)
+	public ModelAndView selectFunction(@PathVariable Integer functionId) {
+		Function loadedFunction = getFunctionService().selectFunction(functionId);
+		setFunctionForm(new FunctionForm());
 		getFunctionForm().setFunction(loadedFunction);
 		getFunctionForm().setAction("update");
-		return "onLoad";
+		return onLoad();
 	}
 
-	public String updateFunction() {
-		Function f = getFunctionForm().getFunction();
+	@RequestMapping(value = "/function/{functionId}", method = RequestMethod.POST)
+	public ModelAndView updateFunction(@ModelAttribute("functionForm") FunctionForm functionForm) {
+		Function f = functionForm.getFunction();
 		getFunctionService().updateFunction(f);
-		return "redirect_onLoad";
+		return new ModelAndView("redirect:/mvc/security/access/functions");
 	}
 
-	public String deleteFunctions() {
-		List<Integer> functionList = getFunctionForm().getSelectedFunctionList();
+	@RequestMapping(value = "/functions/delete", method = RequestMethod.POST)
+	public ModelAndView deleteFunctions(@ModelAttribute("functionForm") FunctionForm functionForm) {
+		List<Integer> functionList = functionForm.getSelectedFunctionList();
 		
 		List<Integer> selectedFunctionList_ = new ArrayList<Integer>();
 		for(Object o : functionList){
 			try{
+				if(o==null){
+					continue;
+				}
 				Integer i = Integer.parseInt(o.toString());
 				selectedFunctionList_.add(i);
 			}catch(NumberFormatException e){
@@ -63,7 +85,7 @@ public class FunctionAction implements JSONDetails {
 		}
 		
 		getFunctionService().deleteFunction(selectedFunctionList_);
-		return "redirect_onLoad";
+		return new ModelAndView("redirect:/mvc/security/access/functions");
 	}
 
 	public FunctionForm getFunctionForm() {

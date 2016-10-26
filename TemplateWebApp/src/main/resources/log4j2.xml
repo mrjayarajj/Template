@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="debug" packages="com.baseframework.log">
 	<Properties>
-		<Property name="log-path">/Users/admin/log</Property>
+		<Property name="log-path">/Users/mrjayarajj/Downloads/log/</Property>
 	</Properties>
 	<!-- configuration of the new defined filter -->
 	<DynamicThresholdUserFilter key="x-debug-enabled"
