@@ -60,22 +60,10 @@
 	</listener>
 	<!-- ##### LISTENER END HERE ##### -->
 	<!-- ##### FILTER STARTS HERE ##### -->
-	<filter>
-		<description>This must be first filter to log any request. IMPORTANT: This should not be moved from here</description>
-		<filter-name>log4jServletFilter</filter-name>
-		<filter-class>org.apache.logging.log4j.web.Log4jServletFilter</filter-class>
-		<async-supported>true</async-supported>
-	</filter>
-	<filter-mapping>
-		<filter-name>log4jServletFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-		<dispatcher>REQUEST</dispatcher>
-		<dispatcher>FORWARD</dispatcher>
-		<dispatcher>INCLUDE</dispatcher>
-		<dispatcher>ERROR</dispatcher>
-		<dispatcher>ASYNC</dispatcher><!-- Servlet 3.0 w/ disabled auto-initialization 
-			only; not supported in 2.5 -->
-	</filter-mapping>
+	<!--No need to configure org.apache.logging.log4j.web.Log4jServletFilter 
+		because main WARN WARNING: In a Servlet 3.0+ application, you should not define 
+		a log4jServletFilter in web.xml. Log4j 2 normally does this for you automatically. 
+		Log4j 2 web auto-initialization has been canceled. -->
 	<filter>
 		<filter-name>RequestLoggerFilter</filter-name>
 		<filter-class>com.baseframework.web.filters.RequestLoggerFilter</filter-class>

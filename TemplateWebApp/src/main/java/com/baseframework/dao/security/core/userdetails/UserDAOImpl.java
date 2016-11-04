@@ -77,7 +77,7 @@ public class UserDAOImpl implements UserDAO {
 		User user = list != null && list.size() > 0 ? list.get(0) : null;
 
 		if (user == null) {
-			throw new ObjectNotFoundException(user, User.class.toString());
+			throw new ObjectNotFoundException(new User(id,null,null), User.class.toString());
 		}
 
 		return user;

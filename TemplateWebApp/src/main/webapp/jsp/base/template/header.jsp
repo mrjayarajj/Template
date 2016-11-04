@@ -10,7 +10,7 @@
 <table border="0" width="100%">
 	<tr>
 		<td width="100%" align="right">
-			<c:if test="${session.SPRING_SECURITY_CONTEXT!=null}" >
+			<c:if test="${sessionScope.SPRING_SECURITY_CONTEXT!=null}" >
 				Welcome , <sec:authentication property="principal.username"/>
 			</c:if>
 		</td>

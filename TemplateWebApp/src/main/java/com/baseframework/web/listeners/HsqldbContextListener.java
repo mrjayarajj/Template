@@ -37,7 +37,7 @@ public class HsqldbContextListener implements ServletContextListener {
 		try {
 			Server.stop();
 		} catch (Exception e) {
-			throw new RuntimeException(e);
+			LOG.error("DB stop called before it is started or not able to stop DB server while stopping the server",e);
 		}
 		LOG.debug("HsqldbContextListener Stopped>>>");
 	}

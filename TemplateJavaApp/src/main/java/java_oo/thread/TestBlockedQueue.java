@@ -81,7 +81,7 @@ class Consumer implements Runnable {
 
 			while (true) {
 
-				for (int i = 0; i < 1; i++) {
+				for (int i = 0; i < 10; i++) {
 					String message = queue.take();
 					LOG.logln("Got message [" + queue.size() + "]: " + message);
 				}

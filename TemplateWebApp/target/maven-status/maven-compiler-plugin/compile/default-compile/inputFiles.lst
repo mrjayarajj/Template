@@ -8,12 +8,10 @@
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/web/security/access/ModuleForm.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/web/security/authentication/LoginController.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/org/springframework/samples/QuestionsHandler.java
-/Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/web/security/access/CacheMonitorAction.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/org/springframework/samples/HelloController.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/dao/security/access/FunctionDAO.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/web/exception/ExceptionAction.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/dao/security/access/RoleDAO.java
-/Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/web/interceptor/CookieInterceptor.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/biz/security/access/AuthenticateServiceImpl.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/web/security/core/userdetails/UserForm.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/dao/security/core/userdetails/UserDAOImpl.java
@@ -35,6 +33,7 @@
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/org/springframework/samples/EchoHandler.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/web/filters/RequestLoggerFilter.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/rws/security/core/userdetails/UserRestController.java
+/Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/error/FieldError.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/target/generated-sources/jaxb/com/baseframework/ws/security/core/userdetails/ObjectFactory.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/dao/security/core/userdetails/UserDAO.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/dao/security/access/ModuleDAO.java
@@ -51,9 +50,9 @@
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/log/BaseLoggerInterceptor.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/biz/util/JSONConvertor.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/biz/security/access/FunctionService.java
-/Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/web/security/authentication/logout/LogoutAction.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/org/springframework/samples/WebSocketConfig.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/biz/security/access/ModuleServiceImpl.java
+/Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/error/ErrorInfo.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/domain/security/core/userdetails/User.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/web/interceptor/SessionResetForm.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/target/generated-sources/jaxb/com/baseframework/ws/security/core/userdetails/GetUserDetailsRequest.java
@@ -64,6 +63,7 @@
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/domain/security/access/Module.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/web/security/core/userdetails/UserController.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/web/listeners/HsqldbContextListener.java
+/Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/domain/security/core/userdetails/UserList.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/web/listeners/ContextListener.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/web/listeners/SessionListener.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/biz/security/access/ModuleService.java
@@ -79,4 +79,4 @@
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/dao/security/access/AuthenticateDAOImpl.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/web/servlets/RequestController.java
 /Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/dao/security/access/FunctionDAOImpl.java
-/Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/web/interceptor/SessionAttributeResetInterceptor.java
+/Users/mrjayarajj/apple/software/git/Template/TemplateWebApp/src/main/java/com/baseframework/rws/error/RestResponseEntityExceptionHandler.java

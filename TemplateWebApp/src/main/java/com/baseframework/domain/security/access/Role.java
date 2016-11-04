@@ -16,7 +16,7 @@ public class Role implements java.io.Serializable, GrantedAuthority {
 
 	public Role() {
 	}
-	
+
 	public Role(Integer roleId) {
 		this.roleId = roleId;
 	}
@@ -46,19 +46,21 @@ public class Role implements java.io.Serializable, GrantedAuthority {
 		return this.functions;
 	}
 
+	@JsonIgnore
 	public Set<GrantedAuthority> getGrantedAuthoritys() {
 		return this.functions;
 	}
-	
+
 	public void setFunctions(Set<Function> functions) {
 		this.functions = functions;
 	}
 
+	@JsonIgnore
 	public String getAuthority() {
 		return getRoleName();
-	}	
-	
-	public String toString() {		
-		return this.roleId+"-"+this.roleName;
+	}
+
+	public String toString() {
+		return this.roleId + "-" + this.roleName;
 	}
 }

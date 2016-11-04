@@ -11,10 +11,17 @@
 		<Arg>
 			<New class="org.hsqldb.jdbc.JDBCDataSource">
 				<Set name="Url">jdbc:hsqldb:hsql://127.0.0.1:9001/BASE</Set>
+				<!-- NON-SECURE DB CONNECTION ./sqlplus templateUser/templatePassword@template.com:1546/templateDb 
+					SELECT PRODUCT,VERSION FROM PRODUCT_COMPONENT_VERSION; exit sqlplus templateUser/templatePassword@template.com:1546/templateDb 
+					SECURE DB CONNECTION jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS_LIST = (ADDRESS 
+					= (PROTOCOL = TCPS) (HOST = template.com) (PORT = 1525))) (CONNECT_DATA = 
+					(SID = templateDb))) -->
 				<Set name="User">SA</Set>
 				<Set name="Password">SA</Set>
 			</New>
 		</Arg>
 	</New>
+
+
 
 </Configure>

@@ -9,11 +9,11 @@
 	<Appenders>
 		<Console name="CONSOLE" target="SYSTEM_OUT">
 			<PatternLayout
-				pattern="log4j2 : %d{yyyy-MM-dd HH:mm:ss} %t | %X{requestId} | %X{sessionId} | %X{userId} | %-5p | %c:%L | - %m%n" />
+				pattern="log4j2 : %d{yyyy-MM-dd HH:mm:ss} %t | %X{requestId} | %X{sessionId} | %X{ipAddress} | %X{userId} | %-5p | %c:%L | - %m%n" />
 		</Console>
 		<File name="FILE" fileName="${log-path}template-application.log">
 			<PatternLayout
-				pattern="log4j2 : %d{yyyy-MM-dd HH:mm:ss} %t | %X{requestId} | %X{sessionId} | %X{userId} | %-5p | %c:%L | - %m%n" />
+				pattern="log4j2 : %d{yyyy-MM-dd HH:mm:ss} %t | %X{requestId} | %X{sessionId} | %X{ipAddress} | %X{userId} | %-5p | %c:%L | - %m%n" />
 		</File>
 		<Async name="ASYNC">
 			<AppenderRef ref="FILE" />
@@ -26,16 +26,21 @@
 			<AppenderRef ref="ASYNC" />
 		</Root>
 
-		<Logger name="org.hibernate" level="off" />
-		<Logger name="org.hibernate.connection" level="off" />
+		<Logger name="net.sf.ehcache.constructs.web.filter.Filter"
+			level="ERROR" />
+		<Logger name="net.sf.ehcache.constructs.web.filter.GzipFilter"
+			level="ERROR" />
+
+		<Logger name="org.hibernate" level="ERROR" />
+		<Logger name="org.hibernate.connection" level="ERROR" />
 		<Logger name="org.hibernate.SQL" level="DEBUG" />
-		<Logger name="org.hibernate.Type" level="off" />
-		<Logger name="org.hibernate.hql.ast.QueryTranslatorImpl" level="off" />
+		<Logger name="org.hibernate.Type" level="DEBUG" />
+		<Logger name="org.hibernate.hql.ast.QueryTranslatorImpl" level="DEBUG" />
 
 		<Logger name="LC_USER" level="debug" />
 
-		<Logger name="com.baseframework" level="off" />
-		<Logger name="com.baseframework.rws" level="off" />
+		<Logger name="com.baseframework" level="ERROR" />
+		<Logger name="com.baseframework.rws" level="ERROR" />
 		<Logger name="com.baseframework.log.BaseLoggerInterceptor"
 			level="DEBUG" />
 		<Logger name="com.baseframework.web.filters.JSPIncludeFilter"
@@ -43,26 +48,26 @@
 		<Logger name="com.baseframework.web.filters.RequestLoggerFilter"
 			level="debug" />
 		<Logger name="com.baseframework.web.filters.RequestLoggerFilter$Cookie"
-			level="info" />
+			level="DEBUG" />
 		<Logger name="com.baseframework.web.filters.RequestLoggerFilter$Header"
-			level="info" />
+			level="DEBUG" />
 		<!-- LogPerReq must be first enabled in the system to use it -->
 		<Logger name="com.baseframework.web.filters.RequestLoggerFilter$LogPerReq"
-			level="off" />
+			level="ERROR" />
 		<Logger
 			name="com.baseframework.web.filters.RequestLoggerFilter$DispatcherType.INCLUDE"
-			level="off" />
+			level="ERROR" />
 		<Logger
 			name="com.baseframework.web.filters.RequestLoggerFilter$DispatcherType.FORWARD"
-			level="off" />
+			level="ERROR" />
 		<Logger name="com.baseframework.web.listeners.HsqldbContextListener"
-			level="off" />
+			level="ERROR" />
 		<Logger name="com.baseframework.web.listeners.ContextListener"
-			level="off" />
+			level="ERROR" />
 		<Logger name="com.baseframework.web.listeners.RequestListener"
-			level="off" />
+			level="ERROR" />
 		<Logger name="com.baseframework.web.listeners.SessionListener"
-			level="off" />
+			level="ERROR" />
 
 	</Loggers>
 </Configuration>

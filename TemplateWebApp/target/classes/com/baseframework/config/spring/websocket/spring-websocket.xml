@@ -10,6 +10,4 @@
 
 	<context:component-scan base-package="org.springframework.samples" />
 
-	<annotation-driven />
-
 </beans:beans>

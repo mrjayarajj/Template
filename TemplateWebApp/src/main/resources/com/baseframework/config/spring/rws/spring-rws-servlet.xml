@@ -6,30 +6,36 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<!-- DispatcherServlet Context: defines this servlet's request-processing 
-		infrastructure -->
 
-	<!-- if your war is just contains REST controller then go for spring-web 
-		with jercy , no need to spring mvc -->
+	<!-- I have JAXB2 and Jackson on my classpath, Spring MVC will automatically 
+		setup the necessary HttpMessageConverters. -->
 
-	<!-- Configure to plugin JSON as request and response in method handler -->
-	<beans:bean
-		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-		<beans:property name="messageConverters">
-			<beans:list>
-				<beans:ref bean="jsonMessageConverter" />
-				<beans:ref bean="xmlMessageConverter" />
-			</beans:list>
+	<!-- https://spring.io/blog/2013/05/11/content-negotiation-using-spring-mvc -->
+	<!-- Setup a simple strategy: 1. Take all the defaults. 2. Return XML by 
+		default when not sure. -->
+	<beans:bean id="contentNegotiationManager"
+		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<beans:property name="favorPathExtension" value="true" />
+		<beans:property name="favorParameter" value="false" /> <!-- ?mediaType= -->
+		<beans:property name="parameterName" value="mediaType" />
+		<beans:property name="ignoreAcceptHeader" value="false" />
+		<beans:property name="useJaf" value="false" />
+		<beans:property name="defaultContentType" value="application/json" />
+		<beans:property name="mediaTypes">
+			<beans:map>
+				<beans:entry key="json" value="application/json" />
+				<beans:entry key="xml" value="application/xml" />
+			</beans:map>
 		</beans:property>
 	</beans:bean>
 
-	<!-- Configure bean to convert JSON to POJO and vice versa -->
-	<beans:bean id="jsonMessageConverter"
-		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
-	<beans:bean id="xmlMessageConverter"
-		class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter" />
-
-	<annotation-driven />
+	<!-- Make this available across all of Spring MVC -->
+	<!-- If you dont include mvc:annotation-driven also your MVC application 
+		would work if you have used the context:component-scan for creating the beans 
+		or defined the beans in your XML file. But, mvc:annotation-driven does some 
+		extra job on configuring the special beans that would not have been configured 
+		if you are not using this element in your XML file. -->
+	<annotation-driven content-negotiation-manager="contentNegotiationManager" />
 	<context:component-scan base-package="com.baseframework.rws" />
 
 </beans:beans>

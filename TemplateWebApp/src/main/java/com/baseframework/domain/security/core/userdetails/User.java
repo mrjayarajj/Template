@@ -11,9 +11,9 @@ import java.util.List;
 import java.util.Set;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.apache.commons.beanutils.BeanUtils;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -34,6 +34,7 @@ public class User implements java.io.Serializable, UserDetails, /* CacheDetails,
 	 * char[] are stored in
 	 */
 	private transient String userPassword;
+
 	private char gender;
 	private boolean status;
 	private boolean selected;
@@ -50,6 +51,14 @@ public class User implements java.io.Serializable, UserDetails, /* CacheDetails,
 		this.userName = userName;
 		this.userPassword = userPassword;
 		this.status = true;
+	}
+
+	public User(Integer userId, String userName, String userPassword, Role role) {
+		this.userId = userId;
+		this.userName = userName;
+		this.userPassword = userPassword;
+		this.status = true;
+		this.role = role;
 	}
 
 	public Integer getUserId() {
@@ -135,6 +144,7 @@ public class User implements java.io.Serializable, UserDetails, /* CacheDetails,
 		return getUserPassword();
 	}
 
+	@JsonIgnore
 	public String getUsername() {
 		return getUserName();
 	}

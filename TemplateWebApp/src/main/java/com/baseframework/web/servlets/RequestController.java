@@ -7,18 +7,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/abc")
 public class RequestController {
 
-	@RequestMapping(value = "/js/jquery.js", method = RequestMethod.GET)
+	@RequestMapping(value = "/media/js/jquery.js", method = RequestMethod.GET)
 	public ModelAndView jqueryForward(ModelMap model) {
 		return new ModelAndView("forward:/ext/jquery/js/jquery.js", model);
 	}
 
-	
-
 }
-
-// www.gymboree.com:8080/abc/js/jquey.js
-//www.gymboree.com:8080/abc/css/jquey.js
-

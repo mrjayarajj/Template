@@ -4,8 +4,11 @@ import java.util.List;
 
 import com.baseframework.domain.security.access.Role;
 import com.baseframework.domain.security.core.userdetails.User;
+import com.baseframework.error.ErrorInfo;
 
 public class UserForm {
+
+	private ErrorInfo errorInfo = null;
 
 	private String action = "add";
 
@@ -18,6 +21,14 @@ public class UserForm {
 	private List<Role> roles = null;
 
 	private List<User> selectedUserList = null;
+
+	public ErrorInfo getErrorInfo() {
+		return errorInfo;
+	}
+
+	public void setErrorInfo(ErrorInfo errorInfo) {
+		this.errorInfo = errorInfo;
+	}
 
 	public User getUser() {
 		return user;
@@ -46,10 +57,10 @@ public class UserForm {
 	public List<User> getUsers() {
 		return users;
 	}
-	
-	public String getUsersInfoAsString(){
+
+	public String getUsersInfoAsString() {
 		StringBuffer sb = new StringBuffer();
-		for(User u : getUsers()){
+		for (User u : getUsers()) {
 			sb.append(u);
 		}
 		return sb.toString();

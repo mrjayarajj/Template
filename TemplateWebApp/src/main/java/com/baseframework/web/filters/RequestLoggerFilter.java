@@ -198,11 +198,12 @@ public class RequestLoggerFilter implements Filter {
 		org.apache.log4j.MDC.remove("userId");
 		org.apache.log4j.MDC.remove("hostName");
 
-		// org.slf4j.MDC.remove("requestId");
-		// org.slf4j.MDC.remove("ipAddress");
-		// org.slf4j.MDC.remove("sessionId");
-		// org.slf4j.MDC.remove("userId");
-		// org.slf4j.MDC.remove("hostName");
+		//remove it, else it has the same info for all clients
+		org.slf4j.MDC.remove("requestId");
+		org.slf4j.MDC.remove("ipAddress");
+		org.slf4j.MDC.remove("sessionId");
+		org.slf4j.MDC.remove("userId");
+		org.slf4j.MDC.remove("hostName");
 
 	}
 

@@ -1,13 +1,16 @@
 package com.baseframework.web.security.core.userdetails;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
+import org.hibernate.ObjectNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +21,7 @@ import com.baseframework.biz.security.core.userdetails.UserService;
 import com.baseframework.domain.security.access.Role;
 import com.baseframework.domain.security.core.userdetails.User;
 import com.baseframework.domain.vo.JSONDetails;
+import com.baseframework.error.ErrorInfo;
 
 @Controller
 @Scope("prototype")
@@ -36,6 +40,19 @@ public class UserController implements JSONDetails {
 	public String cancel() {
 		return "redirect_onLoad";
 	}
+
+	/**
+	 * https://spring.io/blog/2013/11/01/exception-handling-in-spring-mvc
+	 * 
+	 * @param e
+	 * @return
+	 */
+	@ExceptionHandler({ ObjectNotFoundException.class, SQLIntegrityConstraintViolationException.class })
+    public ModelAndView handleException(Exception e) {
+		ModelAndView model = onLoad();
+		((UserForm)model.getModelMap().get("userForm")).setErrorInfo(new ErrorInfo("InvalidRequest","Please validate your request"));
+		return model;
+    }
 
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	@Secured({ "BF_VIEW_USER" })
@@ -71,7 +88,6 @@ public class UserController implements JSONDetails {
 		getUserForm().setAction("update");
 		return onLoad();
 	}
-
 
 	@RequestMapping(value = "/user/{userId}", method = RequestMethod.POST)
 	@Secured({ "BF_UPDATE_USER" })

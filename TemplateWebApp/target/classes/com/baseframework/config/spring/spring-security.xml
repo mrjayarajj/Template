@@ -24,6 +24,7 @@
 			- IS_AUTHENTICATED_FULLY
 		-->
 		<sec:intercept-url pattern="/jsp/base/language.jsp" access="permitAll" requires-channel="http"   />
+		<sec:intercept-url pattern="/favicon.ico" access="permitAll" requires-channel="http"   />
 		<sec:intercept-url pattern="/action/processForward!forward.action" access="permitAll" requires-channel="http" />
 		<sec:intercept-url pattern="/jsp/base/server.jsp" access="permitAll" requires-channel="http" />
 		<sec:intercept-url pattern="/jsp/base/webservice.jsp" access="permitAll" requires-channel="http"  />
@@ -41,6 +42,7 @@
 		-->
 		<sec:intercept-url pattern="/jsp/base/security/login.jsp" access="permitAll" requires-channel="http" />
 		<sec:intercept-url pattern="/login" access="permitAll" requires-channel="http"  />
+		<sec:intercept-url pattern="/mvc/media/**" access="permitAll" requires-channel="http"  />
 		<sec:intercept-url pattern="/media/**" access="permitAll" requires-channel="http"  />
 		
 		<sec:intercept-url pattern="/rws/**" access="permitAll" requires-channel="http"  />

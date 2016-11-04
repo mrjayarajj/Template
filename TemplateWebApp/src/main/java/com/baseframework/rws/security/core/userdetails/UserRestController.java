@@ -3,14 +3,14 @@ package com.baseframework.rws.security.core.userdetails;
 import java.util.List;
 
 import org.hibernate.ObjectNotFoundException;
+import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,22 +21,35 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baseframework.biz.security.core.userdetails.UserService;
+import com.baseframework.domain.security.access.Function;
 import com.baseframework.domain.security.access.Role;
 import com.baseframework.domain.security.core.userdetails.User;
+import com.baseframework.domain.security.core.userdetails.UserList;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.module.jsonSchema.JsonSchema;
+import com.fasterxml.jackson.module.jsonSchema.JsonSchemaGenerator;
 
 @RestController
 @RequestMapping(value = "/v1.1/security/core/userdetails")
 public class UserRestController {
 
-	public static final String DUMMY_USERS = "/dummy";
-	public static final String USERS_BY_ID = "/{id}";
-	public static final String USERS_BY_USER_NAME = "/name";
+	public static final String DUMMY_USER = "/user/dummy";
+	public static final String USER = "/user";
+	public static final String USER_ID = "/user/{userId}";
 	public static final String USERS = "/users";
+	public static final String USERS_JSON = "/users.json";
+	public static final String USERS_XML = "/users.xml";
+	public static final String USERS_SCHEMA = "/users.jsd";
 
 	private static final Logger LOG = LoggerFactory.getLogger(UserRestController.class);
 
 	@Autowired
 	private UserService userService;
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
 
 	@Autowired
 	@Qualifier("userService")
@@ -47,7 +60,7 @@ public class UserRestController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = DUMMY_USERS, method = RequestMethod.GET)
+	@RequestMapping(value = DUMMY_USER, method = RequestMethod.GET)
 	public @ResponseBody User getDummyUser() {
 		LOG.info("Start getDummyUser");
 		User user = new User();
@@ -56,57 +69,132 @@ public class UserRestController {
 		return user;
 	}
 
-	@RequestMapping(value = USERS_BY_ID, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<User> getUser(@PathVariable("id") int userID) {
-		LOG.info("Start getUser. ID=" + userID);
-		User detachedObj = null;
-		try {
-			detachedObj = userService.selectUserProfile(userID);
-			detachedObj.setRole(new Role(detachedObj.getRole().getRoleId()));
-			LOG.debug("User:" + detachedObj.getUserId() + " Role:" + detachedObj.getRole().getRoleName());
-		} catch (ObjectNotFoundException e) {
-			return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
-		}
+	@RequestMapping(value = USERS_SCHEMA, method = RequestMethod.GET)
+	public @ResponseBody JsonSchema getUserByIdSchema() throws JsonProcessingException {
+		ObjectMapper mapper = new ObjectMapper();
+		// configure mapper, if necessary, then create schema generator
+		JsonSchemaGenerator schemaGen = new JsonSchemaGenerator(mapper);
+		JsonSchema schema = schemaGen.generateSchema(User.class);
+		return schema;
+	}
+
+	public static void main(String[] args) throws JsonProcessingException {
+		new UserRestController().getUserByIdSchema();
+	}
+
+	@RequestMapping(value = USERS_JSON, params = { "userId" }, method = RequestMethod.GET)
+	public @ResponseBody ResponseEntity<UserList> getUserByUserIdAsJSON(@RequestParam("userId") int userId) {
+		return getUserByUserIdAsUserList(userId);
+	}
+
+	@RequestMapping(value = USERS_XML, params = { "userId" }, method = RequestMethod.GET)
+	public @ResponseBody ResponseEntity<UserList> getUserByUserIdAsXML(@RequestParam("userId") int userId) {
+		return getUserByUserIdAsUserList(userId);
+	}
+
+	@RequestMapping(value = USER_ID, method = RequestMethod.GET)
+	public @ResponseBody ResponseEntity<User> getUserByUserIdAsUserWithResponseEntity(
+			@PathVariable("userId") int userId) {
+		User detachedObj = getUserByUserIdAsUser(userId);
 		return new ResponseEntity<User>(detachedObj, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = USERS_BY_USER_NAME, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<User> getUserWithRole(@RequestParam("userName") String userName) {
-		LOG.info("Start getUser. userName=" + userName);
-		UserDetails detachedObj = null;
+	private User getUserByUserIdAsUser(int userId) {
+		User detachedObj = userService.selectUserProfile(userId);
+		detachedObj.setRole(new Role(detachedObj.getRole().getRoleId()));
+		LOG.debug("User:" + detachedObj.getUserId() + " Role:" + detachedObj.getRole().getRoleName());
+		return detachedObj;
+	}
+
+	@RequestMapping(value = USERS, params = { "userId" }, method = RequestMethod.GET)
+	public @ResponseBody ResponseEntity<UserList> getUserByUserIdAsUserList(@RequestParam("userId") int userId) {
+		LOG.info("Start getUser. ID=" + userId);
+		UserList userList = new UserList();
 		try {
-			detachedObj = userDetailsService.loadUserByUsername(userName);
+			User detachedObj = getUserByUserIdAsUser(userId);
+			userList.addUser(detachedObj);
+
 		} catch (ObjectNotFoundException e) {
-			return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<UserList>(HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<User>((User) detachedObj, HttpStatus.OK);
+		return new ResponseEntity<UserList>(userList, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = USERS_JSON, params = { "userName" }, method = RequestMethod.GET)
+	public @ResponseBody ResponseEntity<UserList> getUserByUserNameAsJSON(@RequestParam("userName") String userName) {
+		return getUserByUserName(userName);
+	}
+
+	@RequestMapping(value = USERS_XML, params = { "userName" }, method = RequestMethod.GET)
+	public @ResponseBody ResponseEntity<UserList> getUserByUserNameAsXML(@RequestParam("userName") String userName) {
+		return getUserByUserName(userName);
+	}
+
+	@RequestMapping(value = USERS, params = { "userName" }, method = RequestMethod.GET)
+	public @ResponseBody ResponseEntity<UserList> getUserByUserName(@RequestParam("userName") String userName) {
+		LOG.info("Start getUser. userName=" + userName);
+		UserList userList = new UserList();
+		try {
+			User detachedObj = (User) userDetailsService.loadUserByUsername(userName);
+			for (Function f : detachedObj.getRole().getFunctions()) {
+				f.setModule(null);
+			}
+			userList.addUser(detachedObj);
+
+		} catch (ObjectNotFoundException e) {
+			return new ResponseEntity<UserList>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<UserList>(userList, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = USERS_JSON, method = RequestMethod.GET)
+	public @ResponseBody ResponseEntity<UserList> getAllUsersAsJSON() {
+		return getAllUsers();
+	}
+
+	@RequestMapping(value = USERS_XML, method = RequestMethod.GET)
+	public @ResponseBody ResponseEntity<UserList> getAllUsersAsXML() {
+		return getAllUsers();
 	}
 
 	@RequestMapping(value = USERS, method = RequestMethod.GET)
-	public @ResponseBody List<User> getAllUsers() {
+	public @ResponseBody ResponseEntity<UserList> getAllUsers() {
 		LOG.info("Start getAllUsers.");
 		List<User> users = userService.selectAllUser();
 
-		for(User u : users){
+		for (User u : users) {
 			u.getRole().setFunctions(null);
 		}
-		
-		return users;
+
+		if (users.size() == 0) {
+			return new ResponseEntity<UserList>(HttpStatus.NO_CONTENT);
+		}
+
+		return new ResponseEntity<UserList>(new UserList(users), HttpStatus.OK);
 	}
 
-	@RequestMapping(value = USERS, method = RequestMethod.POST)
-	public @ResponseBody User createUser(@RequestBody User user) {
+	@RequestMapping(value = USER, method = RequestMethod.POST)
+	public @ResponseBody ResponseEntity<User> createUser(@RequestBody User user) {
 		LOG.info("Start createUser.");
-		userService.insertUser(user);
-		return user;
+		try {
+			userService.insertUser(user);
+		} catch (ConstraintViolationException e) {
+			return new ResponseEntity<User>(HttpStatus.ALREADY_REPORTED);
+		}
+		return new ResponseEntity<User>(HttpStatus.ACCEPTED);
 	}
 
-	@RequestMapping(value = USERS, method = RequestMethod.DELETE)
-	public @ResponseBody User deleteUser(@PathVariable("id") int userID) {
+	@RequestMapping(value = USER_ID, method = RequestMethod.DELETE)
+	public @ResponseBody ResponseEntity<User> deleteUser(@PathVariable("id") int userID) {
 		LOG.info("Start deleteUser.");
-		User user = userService.selectUserDetail(userID);
-		userService.deleteUser(userID);
-		return user;
+		try {
+			User user = userService.selectUserDetail(userID);
+			userService.deleteUser(userID);
+		} catch (Exception e) {
+			return new ResponseEntity<User>(HttpStatus.EXPECTATION_FAILED);
+		}
+
+		return new ResponseEntity<User>(HttpStatus.ACCEPTED);
 	}
 
 }

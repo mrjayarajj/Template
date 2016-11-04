@@ -10,6 +10,7 @@ com/baseframework/web/security/access/RoleController.class
 com/baseframework/web/security/access/vote/BusinessVoter.class
 com/baseframework/ws/security/core/userdetails/GetUserDetailsResponse$Authorities.class
 com/baseframework/biz/util/TemplateConstants.class
+com/baseframework/error/FieldError.class
 com/baseframework/web/listeners/RequestListener.class
 com/baseframework/web/security/access/ModuleForm.class
 com/baseframework/web/filters/CacheFilter.class
@@ -20,10 +21,9 @@ org/springframework/samples/HelloMessage.class
 com/baseframework/web/security/access/FunctionController.class
 com/baseframework/biz/security/core/userdetails/GravityDSRealm.class
 org/springframework/samples/HelloController.class
+com/baseframework/error/ErrorInfo.class
 META-INF/org/apache/logging/log4j/core/config/plugins/Log4j2Plugins.dat
 org/springframework/samples/HttpSessionIdHandshakeInterceptor.class
-com/baseframework/web/interceptor/SessionAttributeResetInterceptor.class
-com/baseframework/web/security/access/CacheMonitorAction.class
 com/baseframework/web/security/access/RoleForm.class
 com/baseframework/biz/security/access/RoleService.class
 com/baseframework/dao/security/access/RoleDAOImpl.class
@@ -71,11 +71,11 @@ com/baseframework/biz/security/core/userdetails/UserService.class
 com/baseframework/ws/security/core/userdetails/ObjectFactory.class
 com/baseframework/web/interceptor/SessionResetAware.class
 com/baseframework/web/filters/JSPIncludeFilter.class
+com/baseframework/domain/security/core/userdetails/UserList.class
 com/baseframework/web/listeners/SessionListener.class
 com/baseframework/web/security/access/AuthenticateController.class
-com/baseframework/web/security/authentication/logout/LogoutAction.class
+com/baseframework/rws/error/RestResponseEntityExceptionHandler.class
 com/baseframework/biz/security/access/ModuleServiceImpl.class
-com/baseframework/web/interceptor/CookieInterceptor.class
 com/baseframework/biz/security/access/AuthenticateServiceImpl.class
 com/baseframework/web/servlets/RequestController.class
 com/baseframework/web/interceptor/SessionResetForm.class

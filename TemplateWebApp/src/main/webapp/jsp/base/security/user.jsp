@@ -12,6 +12,10 @@
 	</tiles:putAttribute>
 	<tiles:putAttribute name="body">
 	
+		<c:if test="${userForm.errorInfo!=null}" >
+			<div style="color:red" ><c:out value="${userForm.errorInfo.errorMessage}" /> </div>
+		</c:if>
+	
 		<c:if test="${userForm.action=='update'}" >
 			<c:set var="url" value="/mvc/security/core/userdetails/user/${userForm.user.userId}" />
 		</c:if>

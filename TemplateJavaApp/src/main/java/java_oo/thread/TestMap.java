@@ -13,15 +13,39 @@ import java_oo.swing.ConsoleThreadLocal;
 public class TestMap {
 
 	public static void main(String args[]) {
-		Map<String, Integer> m = new MyMap<String, Integer>();
-		new Sender(m);
-		new Receiver(m);
 
+		// Map<String, Integer> m = new MyMap<String, Integer>();
+		// new Sender(m);
+		// new Receiver(m);
+
+		testCloneHashMap();
+	}
+
+	public static void testCloneHashMap() {
+		
+		ConsoleThreadLocal.set(new Console());
+
+		ConcurrentHashMap<String, Integer> map = new MyMap<String, Integer>();
+		map.put("a", 1);
+		map.put("b", 2);
+
+		Iterator<String> keyItr = map.keySet().iterator();
+
+		while (keyItr.hasNext()) {
+			String key = keyItr.next();
+		}
+
+		new Scanner(System.in).nextLine();
 	}
 
 }
 
 class MyMap<K, V> extends ConcurrentHashMap<K, V> {
+	
+	
+	public MyMap(){
+		System.out.println("MyMap Created..");
+	}
 
 	public static final String ALPHA[] = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j" };
 
