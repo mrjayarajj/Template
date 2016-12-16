@@ -20,7 +20,7 @@ public class LoginController {
 		return SSO_PAGE;
 	}
 
-	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
+	@RequestMapping(value = "/sso-welcome", method = RequestMethod.GET)
 	public String dsReturn(HttpServletRequest request, HttpServletResponse response) {
 
 		String pageToBeshown = SSO_PAGE;

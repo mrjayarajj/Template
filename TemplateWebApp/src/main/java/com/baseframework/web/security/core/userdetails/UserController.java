@@ -50,7 +50,7 @@ public class UserController implements JSONDetails {
 	@ExceptionHandler({ ObjectNotFoundException.class, SQLIntegrityConstraintViolationException.class })
     public ModelAndView handleException(Exception e) {
 		ModelAndView model = onLoad();
-		((UserForm)model.getModelMap().get("userForm")).setErrorInfo(new ErrorInfo("InvalidRequest","Please validate your request"));
+		((UserForm)model.getModelMap().get("form")).setErrorInfo(new ErrorInfo("NoUserDataFoundRequest","Please validate your user request"));
 		return model;
     }
 
@@ -66,13 +66,13 @@ public class UserController implements JSONDetails {
 		LOG.debug("Fetched All User information " + f.getUsers());
 
 		ModelAndView model = new ModelAndView("/jsp/base/security/user.jsp");
-		model.addObject("userForm", f);
+		model.addObject("form", f);
 		return model;
 	}
 
 	@RequestMapping(value = "/users", method = RequestMethod.POST)
 	@Secured({ "BF_ADD_USER" })
-	public ModelAndView addUser(@ModelAttribute("userForm") UserForm userform) {
+	public ModelAndView addUser(@ModelAttribute("form") UserForm userform) {
 		User u = userform.getUser();
 		getUserService().insertUser(u);
 		return new ModelAndView("redirect:/mvc/security/core/userdetails/users");
@@ -91,7 +91,7 @@ public class UserController implements JSONDetails {
 
 	@RequestMapping(value = "/user/{userId}", method = RequestMethod.POST)
 	@Secured({ "BF_UPDATE_USER" })
-	public ModelAndView updateUser(@ModelAttribute("userForm") UserForm userform) {
+	public ModelAndView updateUser(@ModelAttribute("form") UserForm userform) {
 		LOG.debug("updateUser : " + userform.getUser());
 		User u = userform.getUser();
 		getUserService().updateUser(u);
@@ -100,7 +100,7 @@ public class UserController implements JSONDetails {
 
 	@RequestMapping(value = "/users/delete", method = RequestMethod.POST)
 	@Secured({ "BF_DELETE_USER" })
-	public ModelAndView deleteUsers(@ModelAttribute("userForm") UserForm userform) {
+	public ModelAndView deleteUsers(@ModelAttribute("form") UserForm userform) {
 		List<User> userList = userform.getSelectedUserList();
 		getUserService().deleteUser(userList);
 		return new ModelAndView("redirect:/mvc/security/core/userdetails/users");

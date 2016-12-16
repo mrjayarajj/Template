@@ -1,13 +1,6 @@
-<%@ taglib prefix="s" uri="/struts-tags" %>
-
-<%-- 
-<s:bean name="com.baseframework.biz.util.JSONConvertor" id="jsonUtil" >
-	<s:param name="javaValue" value="%{javaValue}"  />
-</s:bean>
---%>
-
-<!-- {{{ -->
-<script>
-	<%--var form = ${jsonUtil.json} ;--%>	
-</script>
-<!-- }}} -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:if test="${json!=null || json.length>0}">
+	<script>
+		var form = ${json};
+	</script>
+</c:if>

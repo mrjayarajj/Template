@@ -58,11 +58,18 @@ class USIncomeTax {
 
 public class Lamda {
 
+	public static void stream() {
+		List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8);
+		long l = numbers.stream().mapToLong(e -> e).sum();
+		System.out.println(l);
+	}
+
 	public static void findHighestIncomeTaxState() throws Exception {
 		List<String> states = Arrays.asList("CA", "MA", "TX");
 
 		USIncomeTax higStateTax = new USIncomeTax("??", 0.0);
-		System.out.println(states.stream().map(USIncomeTaxUtil::getIncomeTaxForState).reduce(higStateTax, (c, e) -> c.getTax() < e.getTax() ? e : c));
+		System.out.println(states.stream().map(USIncomeTaxUtil::getIncomeTaxForState).reduce(higStateTax,
+				(c, e) -> c.getTax() < e.getTax() ? e : c));
 	}
 
 	public static boolean isPrime(Integer givenNumber) {
@@ -97,19 +104,13 @@ public class Lamda {
 			}
 		}
 
-		//System.out.println(sqrtPrimes);
+		// System.out.println(sqrtPrimes);
 
 		System.out.println(
-		
-		Stream.iterate(1, i -> i + 1)
-		       .filter(Lamda::isPrime)
-			   .map(Math::sqrt)
-			   .limit(100)
-			   .collect(toList())
-			   
-			   );
 
+				Stream.iterate(1, i -> i + 1).filter(Lamda::isPrime).map(Math::sqrt).limit(100).collect(toList())
 
+		);
 
 	}
 
@@ -138,7 +139,8 @@ public class Lamda {
 		// findHighestNumber();
 		// filterNumbersLessThan(5);
 		// isPrime(3);
-		showSquareOfPrimesTill(100);
+		// showSquareOfPrimesTill(100);
+		stream();
 	}
 
 }

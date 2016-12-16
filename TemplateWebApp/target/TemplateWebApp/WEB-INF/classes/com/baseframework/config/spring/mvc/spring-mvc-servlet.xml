@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/mvc"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 
 	<beans:import
@@ -23,5 +25,16 @@
 	<!-- allowing static resource requests to be handled by the container’s 
 		default Servlet. -->
 	<default-servlet-handler />
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<beans:bean class="com.baseframework.web.interceptor.JSONConvertorInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	<mvc:resources location="classpath:/META-INF/resources/webjars/jquery/3.1.1/" mapping="/media/js/jquery/**" />
+	<mvc:resources location="classpath:/META-INF/resources/webjars/jquery-ui/1.12.1/" mapping="/media/js/jquery-ui/**" />
+	<mvc:resources location="classpath:/META-INF/resources/webjars/jquery-ui/1.12.1/" mapping="/media/css/jquery-ui/**" />
 
 </beans:beans>

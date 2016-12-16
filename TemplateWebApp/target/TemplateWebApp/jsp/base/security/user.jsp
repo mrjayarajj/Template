@@ -12,15 +12,15 @@
 	</tiles:putAttribute>
 	<tiles:putAttribute name="body">
 	
-		<c:if test="${userForm.errorInfo!=null}" >
-			<div style="color:red" ><c:out value="${userForm.errorInfo.errorMessage}" /> </div>
+		<c:if test="${form.errorInfo!=null}" >
+			<div style="color:red" ><c:out value="${form.errorInfo.errorMessage}" /> </div>
 		</c:if>
 	
-		<c:if test="${userForm.action=='update'}" >
-			<c:set var="url" value="/mvc/security/core/userdetails/user/${userForm.user.userId}" />
+		<c:if test="${form.action=='update'}" >
+			<c:set var="url" value="/mvc/security/core/userdetails/user/${form.user.userId}" />
 		</c:if>
 		
-		<c:if test="${userForm.action=='add'}" >
+		<c:if test="${form.action=='add'}" >
 			<c:set var="url" value="/mvc/security/core/userdetails/users" />
 		</c:if>
 	
@@ -38,38 +38,38 @@
 				<c:set var="user_editor" value="1" />
 			</sec:authorize>
 
-			<c:if test="${user_editor==1 || userForm.action=='update' }">
+			<c:if test="${user_editor==1 || form.action=='update' }">
 				<table>
 					<tr>
 						<td>User ID:</td>
-						<td><c:if test="${userForm.action=='add'}">
+						<td><c:if test="${form.action=='add'}">
 								<input type="text" name="user.userId" />
-							</c:if> <c:if test="${userForm.action=='update'}">
+							</c:if> <c:if test="${form.action=='update'}">
 								<input type="hidden" name="user.userId"
-									value="${userForm.user.userId}" />
-								<c:out value="${userForm.user.userId}" />
+									value="${form.user.userId}" />
+								<c:out value="${form.user.userId}" />
 							</c:if></td>
 					</tr>
 					<tr>
 						<td>User Name:</td>
 						<td><input type="text" name="user.userName"
-							value="${userForm.user.userName}" /></td>
+							value="${form.user.userName}" /></td>
 					</tr>
 
 					<tr>
 						<td>Password:</td>
 						<td><input type="text" name="user.userPassword"
-							name="${userForm.user.userPassword}" /></td>
+							name="${form.user.userPassword}" /></td>
 					</tr>
 
 					<tr>
 						<td>Role:</td>
 						<td><select name="user.role.roleId">
-								<c:forEach var="r" items="${userForm.roles}">
-									<c:if test="${userForm.user.role.roleId==r.roleId}">
+								<c:forEach var="r" items="${form.roles}">
+									<c:if test="${form.user.role.roleId==r.roleId}">
 										<option selected value="${r.roleId}">${r.roleName}</option>
 									</c:if>
-									<c:if test="${userForm.user.role.roleId!=r.roleId}">
+									<c:if test="${form.user.role.roleId!=r.roleId}">
 										<option value="${r.roleId}">${r.roleName}</option>
 									</c:if>
 								</c:forEach>
@@ -79,21 +79,21 @@
 					<tr>
 						<td>Expire Date:</td>
 						<td><input type="text" name="user.expireDateAsString"
-							value="${userForm.user.expireDateAsString}" /> MM/dd/yyyy</td>
+							value="${form.user.expireDateAsString}" /> MM/dd/yyyy</td>
 					</tr>
 
 					<tr>
 						<td>Status</td>
 						<td><input type="checkbox" name="user.status"
-							${userForm.user.status==true? 'checked=checked' : '' } /></td>
+							${form.user.status==true? 'checked=checked' : '' } /></td>
 					</tr>
 
 					<tr>
 						<td>Gender</td>
 						<td><input type="radio" name="user.gender"
-							${userForm.user.gender eq 'M'.charAt(0)  ? 'checked=checked' : '' }
+							${form.user.gender eq 'M'.charAt(0)  ? 'checked=checked' : '' }
 							value="M" /> Male <input type="radio" name="user.gender"
-							${userForm.user.gender eq 'F'.charAt(0)  ? 'checked=checked' : '' }
+							${form.user.gender eq 'F'.charAt(0)  ? 'checked=checked' : '' }
 							value="F" /> Female</td>
 					</tr>
 
@@ -104,7 +104,7 @@
 							<sec:authorize access="hasAnyAuthority('BF_ADD_USER')">
 								<!-- show all user information if user has BF_VIEW_USER permission after clicking add -->
 								<sec:authorize access="hasAnyAuthority('BF_VIEW_USER')">
-									<c:if test="${userForm.action=='add'}">
+									<c:if test="${form.action=='add'}">
 										<input type="hidden" name="redirectName"
 											value="redirect_onLoad" />
 										<input type="submit" value="add" action="processUser"
@@ -113,7 +113,7 @@
 								</sec:authorize>
 								<!-- if user don't have BF_VIEW_USER permission but has add permission  -->
 								<sec:authorize access="!hasAnyAuthority('BF_VIEW_USER')">
-									<c:if test="${userForm.action=='add'}">
+									<c:if test="${form.action=='add'}">
 										<input type="hidden" name="redirectName"
 											value="redirect_showUser" />
 										<input type="submit" value="add" action="processUser!addUser" />
@@ -121,7 +121,7 @@
 								</sec:authorize>
 							</sec:authorize> <!-- show update button only if user has BF_UPDATE_USER permission  -->
 							<sec:authorize access="hasAnyAuthority('BF_UPDATE_USER')">
-								<c:if test="${userForm.action=='update'}">
+								<c:if test="${form.action=='update'}">
 									<input type="submit" value="update" />
 									<input type="submit" value="cancel" action="processUser!cancel" />
 								</c:if>
@@ -131,7 +131,7 @@
 				</table>
 			</c:if>
 		</form>
-		<form id="userForm" method="POST"
+		<form  method="POST"
 			action="/mvc/security/core/userdetails/users/delete">
 			<sec:csrfInput />
 			<!-- show the below user table only if user can perform the 3 operation (view,update and delete) 
@@ -151,7 +151,7 @@
 						<td><b>Expire Date</b></td>
 					</tr>
 					<c:forEach varStatus="loopCounter" var="u"
-						items="${userForm.users}">
+						items="${form.users}">
 
 						<tr>
 							<!-- show delete check box only if user has BF_DELETE_USER permission   -->

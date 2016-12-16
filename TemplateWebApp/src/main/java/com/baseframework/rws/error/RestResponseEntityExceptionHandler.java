@@ -14,7 +14,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
 	@ExceptionHandler({ ObjectNotFoundException.class })
 	protected ResponseEntity<ErrorInfo> handle(ObjectNotFoundException e) {
-		ErrorInfo error = new ErrorInfo("InvalidRequest", e.getMessage());
-		return new ResponseEntity<ErrorInfo>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+		ErrorInfo error = new ErrorInfo("NoDataFoundRequest", e.getMessage());
+		return new ResponseEntity<ErrorInfo>(error, HttpStatus.NOT_FOUND);
 	}
 }

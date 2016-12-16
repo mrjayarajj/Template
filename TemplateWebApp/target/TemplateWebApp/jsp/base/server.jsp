@@ -46,41 +46,7 @@
 			<tr>
 				<td><b>Server Path :</b></td>
 				<td><%=this.getClass().getResource("/")%></td>
-			</tr>
-			<tr>
-				<td><b>Request :</b></td>
-				<td><div style="max-width: 300px">${requestScope}</div></td>
-			</tr>
-			
-			<tr>
-				<td><b>Session :</b></td>
-				<td><div style="max-width: 300px">${sessionScope}</div></td>
-			</tr>
-			<%
-				Cookie[] cookie = request.getCookies();
-						for (int i = 0; i < cookie.length; i++) {
-			%>
-			<tr>
-				<td><b>Cookie :</b></td>
-				<td><div style="max-width: 300px"><%=cookie[i].getName()%>=<%=cookie[i].getValue()%>,<%=cookie[i].getDomain()%></div></td>
-			</tr>
-			<%
-				}
-			%>
-			
-			<!--x-debug-enabled = com.baseframework.web.filters.JSPIncludeFilter-DEBUG#com.baseframework.web.filters.RequestLoggerFilter$Cookie-DEBUG#com.baseframework.web.filters.RequestLoggerFilter$Header-DEBUG# -->
+			</tr>			
 		</table>
 	</tiles:putAttribute>
 </tiles:insertDefinition>
-
-<%
-	ClassLoader cl = ClassLoader.getSystemClassLoader();
-
-	URL[] urls = ((URLClassLoader) cl).getURLs();
-
-	for (URL url : urls) {
-		System.out.println(url.getFile());
-	}
-	//Properties props = System.getProperties();
-	//props.list(System.out);
-%>

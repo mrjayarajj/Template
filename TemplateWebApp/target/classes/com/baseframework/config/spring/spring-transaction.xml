@@ -81,6 +81,7 @@
 	<context:component-scan base-package="com.baseframework.biz" />
 	
 	<tx:annotation-driven transaction-manager="transactionManager" />
+	
 	<tx:advice id="txAdvice" transaction-manager="transactionManager"  >
 		<tx:attributes>
 	  		<tx:method name="select*" propagation="REQUIRED"  isolation="READ_UNCOMMITTED" read-only="true" />

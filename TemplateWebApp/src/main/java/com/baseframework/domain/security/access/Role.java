@@ -42,6 +42,7 @@ public class Role implements java.io.Serializable, GrantedAuthority {
 	}
 
 	@XmlTransient
+	@JsonIgnore
 	public Set<Function> getFunctions() {
 		return this.functions;
 	}
@@ -51,6 +52,7 @@ public class Role implements java.io.Serializable, GrantedAuthority {
 		return this.functions;
 	}
 
+	@JsonIgnore
 	public void setFunctions(Set<Function> functions) {
 		this.functions = functions;
 	}

@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,7 @@ import com.baseframework.domain.security.access.Function;
 import com.baseframework.domain.security.access.Role;
 import com.baseframework.domain.security.core.userdetails.User;
 import com.baseframework.domain.security.core.userdetails.UserList;
+import com.baseframework.error.ErrorInfo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.module.jsonSchema.JsonSchema;
@@ -35,14 +37,26 @@ import com.fasterxml.jackson.module.jsonSchema.JsonSchemaGenerator;
 public class UserRestController {
 
 	public static final String DUMMY_USER = "/user/dummy";
+	
 	public static final String USER = "/user";
+	
 	public static final String USER_ID = "/user/{userId}";
+	public static final String USER_ID_XML = "/user/{userId}.xml";
+	public static final String USER_ID_JSON = "/user/{userId}.json";
+	
 	public static final String USERS = "/users";
 	public static final String USERS_JSON = "/users.json";
 	public static final String USERS_XML = "/users.xml";
+	
 	public static final String USERS_SCHEMA = "/users.jsd";
 
 	private static final Logger LOG = LoggerFactory.getLogger(UserRestController.class);
+
+	@ExceptionHandler({ ObjectNotFoundException.class })
+	protected ResponseEntity<ErrorInfo> handle(ObjectNotFoundException e) {
+		ErrorInfo error = new ErrorInfo("NoUserDataFoundRequest", e.getMessage());
+		return new ResponseEntity<ErrorInfo>(error, HttpStatus.NOT_FOUND);
+	}
 
 	@Autowired
 	private UserService userService;
@@ -91,9 +105,23 @@ public class UserRestController {
 	public @ResponseBody ResponseEntity<UserList> getUserByUserIdAsXML(@RequestParam("userId") int userId) {
 		return getUserByUserIdAsUserList(userId);
 	}
-
+	
 	@RequestMapping(value = USER_ID, method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<User> getUserByUserIdAsUserWithResponseEntity(
+	public @ResponseBody ResponseEntity<User> getUserByUserIdAsUserInResponseEntity(
+			@PathVariable("userId") int userId) {
+		User detachedObj = getUserByUserIdAsUser(userId);
+		return new ResponseEntity<User>(detachedObj, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = USER_ID_XML, method = RequestMethod.GET)
+	public @ResponseBody ResponseEntity<User> getUserByUserIdAsUserAsXML(
+			@PathVariable("userId") int userId) {
+		User detachedObj = getUserByUserIdAsUser(userId);
+		return new ResponseEntity<User>(detachedObj, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = USER_ID_JSON, method = RequestMethod.GET)
+	public @ResponseBody ResponseEntity<User> getUserByUserIdAsUserAsJSON(
 			@PathVariable("userId") int userId) {
 		User detachedObj = getUserByUserIdAsUser(userId);
 		return new ResponseEntity<User>(detachedObj, HttpStatus.OK);
@@ -184,7 +212,7 @@ public class UserRestController {
 		return new ResponseEntity<User>(HttpStatus.ACCEPTED);
 	}
 
-	@RequestMapping(value = USER_ID, method = RequestMethod.DELETE)
+	@RequestMapping(value = USER_ID_XML, method = RequestMethod.DELETE)
 	public @ResponseBody ResponseEntity<User> deleteUser(@PathVariable("id") int userID) {
 		LOG.info("Start deleteUser.");
 		try {

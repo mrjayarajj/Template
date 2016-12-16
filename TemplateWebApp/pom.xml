@@ -218,9 +218,14 @@
 			<version>1.2</version>
 		</dependency>
 		<dependency>
-			<groupId>com.efsavage.jquery</groupId>
-			<artifactId>jquery-maven</artifactId>
-			<version>1.8.2</version>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>3.1.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery-ui</artifactId>
+			<version>1.12.1</version>
 		</dependency>
 		<dependency>
 			<!-- SLF4J is basically an abstraction layer. It is not a logging implementation. -->

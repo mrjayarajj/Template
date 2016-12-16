@@ -9,9 +9,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class RequestController {
 
+	/*
 	@RequestMapping(value = "/media/js/jquery.js", method = RequestMethod.GET)
 	public ModelAndView jqueryForward(ModelMap model) {
 		return new ModelAndView("forward:/ext/jquery/js/jquery.js", model);
 	}
+	*/
 
 }

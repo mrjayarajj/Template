@@ -8,6 +8,6 @@
         http://www.springframework.org/schema/websocket/spring-websocket.xsd">
 
 
-	<context:component-scan base-package="org.springframework.samples" />
+	<context:component-scan base-package="org.springframework.wst" />
 
 </beans:beans>

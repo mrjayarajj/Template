@@ -27,6 +27,7 @@
 		<sec:intercept-url pattern="/favicon.ico" access="permitAll" requires-channel="http"   />
 		<sec:intercept-url pattern="/action/processForward!forward.action" access="permitAll" requires-channel="http" />
 		<sec:intercept-url pattern="/jsp/base/server.jsp" access="permitAll" requires-channel="http" />
+		<sec:intercept-url pattern="/jsp/base/client.jsp" access="permitAll" requires-channel="http" />
 		<sec:intercept-url pattern="/jsp/base/webservice.jsp" access="permitAll" requires-channel="http"  />
 		
 		<!-- 
@@ -44,16 +45,18 @@
 		<sec:intercept-url pattern="/login" access="permitAll" requires-channel="http"  />
 		<sec:intercept-url pattern="/mvc/media/**" access="permitAll" requires-channel="http"  />
 		<sec:intercept-url pattern="/media/**" access="permitAll" requires-channel="http"  />
+		<sec:intercept-url pattern="/static/**" access="permitAll" requires-channel="http"  />
 		
 		<sec:intercept-url pattern="/rws/**" access="permitAll" requires-channel="http"  />
-		<sec:intercept-url pattern="/ws/**" access="permitAll" requires-channel="https"  />
+		<sec:intercept-url pattern="/ws/**" access="permitAll" requires-channel="https"   />
+		<sec:intercept-url pattern="/wst/**" access="permitAll" requires-channel="http"  />
 		
 		<sec:intercept-url pattern="/**" access="isAuthenticated()" requires-channel="http" />
 		
 		<sec:anonymous />
 		<!-- Uncomment to limit the number of sessions a user can have -->
 		<sec:session-management invalid-session-url="/jsp/base/security/timeout.jsp">
-			<sec:concurrency-control max-sessions="1" error-if-maximum-exceeded="true" />
+			<sec:concurrency-control max-sessions="1" expired-url="/session_error.jsp" />
 		</sec:session-management>
 		
 		<sec:port-mappings>
@@ -77,15 +80,15 @@
 		
 		<sec:csrf disabled="false" />	
 	</sec:http>
+
 	
 	<bean id="customUsernamePasswordAuthenticationFilter" class="com.baseframework.web.security.authentication.AuthenticationFilter">
 		<property name="rememberMeServices" ref="rememberMeServices" />
 		<!--  
 		<property name="filterProcessesUrl" value="j_spring_security_check" />
 		-->
-		<!--  
-		<property name="sessionAuthenticationStrategy" ref="sessionAuthenticationStrategy" />
-		-->
+		
+		<property name="sessionAuthenticationStrategy" ref="registerSessionAuthenticationStrategy" />
 		<property name="authenticationManager" ref="authenticationManager" />
 		<property name="authenticationFailureHandler" ref="failureHandler" />
 		<property name="authenticationSuccessHandler" ref="successHandler" />
@@ -140,23 +143,16 @@
 	
 	
 	
-	<!--  
-	<bean id="sessionAuthenticationStrategy" class="org.springframework.security.web.authentication.session.ConcurrentSessionControlStrategy">
-		<constructor-arg name="sessionRegistry" ref="sessionRegistry" />
-		<property name="maximumSessions" value="1" />
-	</bean>	
+	
+
+	
+	
+	
+	<bean id="registerSessionAuthenticationStrategy" class="org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy" >
+		<constructor-arg index="0" ref="sessionRegistry" />
+	</bean>
 	<bean id="sessionRegistry" class="org.springframework.security.core.session.SessionRegistryImpl" />
-	-->
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	<bean id="customRememberMeFilter" class="org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter">
 		<constructor-arg index="0" ref="authenticationManager" />
 		<constructor-arg index="1" ref="rememberMeServices" />		

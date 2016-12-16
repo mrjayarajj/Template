@@ -11,12 +11,12 @@
 		setup the necessary HttpMessageConverters. -->
 
 	<!-- https://spring.io/blog/2013/05/11/content-negotiation-using-spring-mvc -->
-	<!-- Setup a simple strategy: 1. Take all the defaults. 2. Return XML by 
+	<!-- Setup a simple strategy: 1. Take all the defaults. 2. Return JSON by 
 		default when not sure. -->
 	<beans:bean id="contentNegotiationManager"
 		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
 		<beans:property name="favorPathExtension" value="true" />
-		<beans:property name="favorParameter" value="false" /> <!-- ?mediaType= -->
+		<beans:property name="favorParameter" value="true" /> <!-- ?mediaType=json -->
 		<beans:property name="parameterName" value="mediaType" />
 		<beans:property name="ignoreAcceptHeader" value="false" />
 		<beans:property name="useJaf" value="false" />
